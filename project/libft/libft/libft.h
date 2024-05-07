@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 09:35:42 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:41:04 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_list
 {
 	void			*content;
 	struct s_list	*next;
-};					t_list;
+}					t_list;
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
