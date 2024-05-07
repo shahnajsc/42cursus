@@ -6,8 +6,12 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 09:04:14 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 09:04:53 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:06:49 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+t_list *ft_lstnew(void *content)
+{
+}
