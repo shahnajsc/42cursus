@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:16:18 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 12:54:17 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:25:49 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int main(void)
 
     ft_lstadd_front(&lst_1, new_1);
     printf("after adding new, lst_1 content: %s\n", (char *)lst_1->content);
-
 } */
 /*
 	- Need to add a new node 'new' at the beginning of the list 'lst'
