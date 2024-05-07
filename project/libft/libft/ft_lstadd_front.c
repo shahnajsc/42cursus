@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:16:18 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 14:25:49 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:54:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_list	*ft_lstnew(void *content)
 
 int main(void)
 {
+	t_list *addl =ft_lstnew("world");
     t_list *lst_1 = ft_lstnew("Hello");
     printf("lst_1 content: %s\n", (char *)lst_1->content);
 
@@ -48,6 +49,14 @@ int main(void)
 
     ft_lstadd_front(&lst_1, new_1);
     printf("after adding new, lst_1 content: %s\n", (char *)lst_1->content);
+	int count =0;
+	ft_lstadd_front(&addl, lst_1);
+	while (addl != NULL)
+    {
+        addl = addl->next;
+		printf("with loop: %s\n", (char *)addl->content);
+        count++;
+    }
 } */
 /*
 	- Need to add a new node 'new' at the beginning of the list 'lst'
