@@ -6,23 +6,23 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:29:38 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 15:07:04 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/07 15:16:37 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    while (lst != NULL)
-    {
-        lst = lst->next;
-        count++;
-    }
-    return (count);
+	count = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		count++;
+	}
+	return (count);
 }
 /*
 #include <stdio.h>
