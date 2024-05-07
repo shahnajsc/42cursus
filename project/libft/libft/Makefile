@@ -33,9 +33,15 @@ all	:	${NAME}
 ${NAME}	:	${OBJS}
 	ar rcs $@ $^
 
+# Target to create the library with bonus
+bonus: .bonus
+.bonus: ${NAME} ${OBJS_BN}
+	ar rcs ${NAME} ${OBJS_BN}
+	@touch .bonus
+
 # Target to clean object files
 clean	:
-	rm -f ${OBJS} 
+	rm -f ${OBJS} ${OBJS_BN} .bonus
 
 # Target to clean library and object files
 fclean	: clean
@@ -45,4 +51,4 @@ fclean	: clean
 re	: fclean all
 
 # Ensure that 'clean', 'fclean', and 're' are not dependent on actual file names
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
