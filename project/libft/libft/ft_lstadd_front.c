@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:16:18 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 12:46:42 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:54:17 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,10 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	{
 		return ;
 	}
-	if (lst)
-	{
-		new->next = *lst;
-		*lst = new;
-	}
-	else
-	{
-		*lst = new;
-	}
+	new->next = *lst;
+	*lst = new;
 }
-
+/*
 #include <stdio.h>
 
 t_list	*ft_lstnew(void *content)
@@ -56,7 +49,7 @@ int main(void)
     ft_lstadd_front(&lst_1, new_1);
     printf("after adding new, lst_1 content: %s\n", (char *)lst_1->content);
 
-}
+} */
 /*
 	- Need to add a new node 'new' at the beginning of the list 'lst'
 	- lst:  The address of a pointer to the first link of a list.
