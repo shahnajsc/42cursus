@@ -6,13 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:56:20 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/08 14:01:12 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/08 14:20:01 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	if (!lst || !del || !(*lst))
 		return ;
@@ -48,4 +48,5 @@ int	main(void)
     - Finally, the pointer to the list must be set to NULL.
     - 'lst' The address of a pointer to a node.
     - 'del' The address of the function used to delete the content of the node.
+	- 
 */
