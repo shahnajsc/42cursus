@@ -6,21 +6,20 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:16:37 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/08 11:45:29 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:52:37 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-    if (!lst || !del)
+	if (!lst || !del)
 		return ;
 	del(lst->content);
 	free(lst);
-
 }
-
+/*
 static void	del(void *content)
 {
 	free(content);
@@ -33,6 +32,7 @@ int	main(void)
 	list = ft_lstnew(ft_strdup("abcde"));
 	ft_lstdelone(list, &del);
 }
+*/
 /*
     - Takes as a parameter an elem and frees the memory of the elem’s content
     - Using the function ’del’ given as a parameter and free the elem.
