@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:12:03 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/25 11:25:35 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:33:09 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (str);
 }
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -38,4 +38,4 @@ int main(void)
 	printf("from lib function: %s\n", strchr(s, 'e'));
 	printf("from ft function: %s\n", ft_strchr(s, 'e'));
 }
-
+*/
