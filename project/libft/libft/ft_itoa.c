@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:18:32 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/06 13:54:23 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:21:45 by shahnaj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*ft_itoa(int n)
 	int				is_neg;
 	unsigned int	nbr;
 
+	is_neg = 0;
 	if (n < 0)
 		is_neg = 1;
 	len = n_len(n);
