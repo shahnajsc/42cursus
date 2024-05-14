@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:12:03 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/14 14:10:24 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:14:07 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(void)
 }
 */
 /*
-	-It locates the first occurence of 'c' in the string.
+	-It locates the FIRST occurence of 'c' in the string.
 	- 'c' converted to a char.
 	- '\0' NULL terminator is also considered as character of string 's'
 		and locates.

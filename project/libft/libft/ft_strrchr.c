@@ -6,39 +6,26 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:46:07 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/24 14:28:26 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:33:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-int	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (s[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
-}
-*/
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*str;
 
 	str = (char *)s + ft_strlen(s);
-	while (*str != c)
+	while (str >= s)
 	{
-		if (str == s)
+		if (*str == (char)c)
 		{
-			return (NULL);
+			return (str);
 		}
 		str--;
 	}
-	return (str);
+	return (NULL);
 }
 /*
 #include <stdio.h>
@@ -46,9 +33,21 @@ char	*ft_strrchr(const char *s, int c)
 
 int main(void)
 {
-	char s[] = "abcdefgh123456e";
+	//char s[] = "abcdefgh123456e";
 
-	printf("from lib function: %s\n", strrchr(s, '3'));
-	printf("from ft function: %s\n", ft_strrchr(s, '3'));
+	printf("from lib function: %s\n", strrchr("npe y ceparlos", 'n'));
+	printf("from ft function: %s\n", ft_strrchr("npe y ceparlos", 'n'));
+
+	//if (*str == (char)c)
+	//{
+	//	return (str);
+	//}
 }
+*/
+/*
+	-It locates the LAST occurence of 'c' in the string.
+	- 'c' converted to a char.
+	- '\0' NULL terminator is also considered as character of string 's'
+		and locates.
+	- Returns pointer to the located character or NULL if no occurence.
 */
