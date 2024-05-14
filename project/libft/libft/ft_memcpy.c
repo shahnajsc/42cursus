@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:15:01 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/23 12:38:26 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:24:38 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	count;
 	char	*ptrdst;
 	char	*ptrsrc;
 
-	count = 0;
 	ptrdst = (char *)dst;
 	ptrsrc = (char *)src;
 	if (!dst && !src)
 	{
 		return (0);
 	}
-	while (count < n)
+	while (n--)
 	{
-		ptrdst[count] = ptrsrc[count];
-		count++;
+		ptrdst[n] = ptrsrc[n];
 	}
 	return (dst);
 }

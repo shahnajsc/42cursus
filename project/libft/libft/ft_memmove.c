@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:37:49 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 16:35:24 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:45:20 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,32 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	size_t	count;
 	char	*ptrdst;
 	char	*ptrsrc;
 
-	count = 0;
 	ptrdst = (char *)dst;
 	ptrsrc = (char *)src;
-	if (!ptrdst && !ptrsrc)
+	if (!dst && !src)
 		return (dst);
-	if (ptrdst == ptrsrc)
+	if (dst == src)
 		return (dst);
 	if (ptrdst > ptrsrc)
 	{
-		while (count < n)
+		while (n--)
 		{
-			ptrdst[count] = ptrsrc[count];
+			ptrdst[n] = ptrsrc[n];
 		}
 	}
 	else
 	{
-		while (count < n)
-			*(char *)dst++ = *(char *)src++;
+		while (n--)
+		{
+			*ptrdst++ = *ptrsrc++;
+		}
 	}
 	return (dst);
 }
-/*i
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -54,5 +53,11 @@ int main (void)
 	printf("src: %s\n", src);
 	printf("after ft memmove: %s\n", ft_memmove(dst, src, n));
 	printf("after lib memmove: %s\n", memmove(dst, src, n));
-}
+} */
+/*
+	- It copies 'len' bytes from string 'src' to 'dst'.
+	- Two string may overlap.
+	- Copy is always done in a non-destructive manner. 
+	- It returns original values of 'dst'. 
+	-- It starts from base location and copies untill 'len'
 */
