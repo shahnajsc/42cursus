@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:35:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/29 13:09:28 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 22:39:12 by shahnaj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@
 /* Returns NULL if memory allocation is failed. */
 
 #include "libft.h"
-
-int	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (s[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
-}
 
 static size_t	check_set(char const *str, char const c)
 {
