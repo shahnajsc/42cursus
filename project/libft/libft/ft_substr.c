@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:21:31 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/29 09:37:08 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:16:15 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		count++;
 	}
 	i = 0;
-	while (i < len)
+	while (count >= start && i < len)
 	{
 		ptr[i] = s[count];
 		i++;
@@ -44,8 +44,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 #include<stdio.h>
 int main()
 {
-	char	s1[] = "abcdefghijklmn";
+	char	s1[] = "hola";
 
-	printf("%s\n", ft_substr(s1, 15, 20));
+	printf("%s\n", ft_substr(s1, 0, 18446744073709551615));
 }
 */
