@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:12:03 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/07 16:33:09 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:10:24 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@ char	*ft_strchr(const char *s, int c)
 	char	*str;
 
 	str = (char *)s;
-	while (*str != c)
+	while (*str != '\0')
 	{
-		if (*str == '\0')
+		if (*str == (char)c)
 		{
-			return (NULL);
+			return (str);
 		}
 		str++;
 	}
-	return (str);
+	if (*str == (char)c)
+	{
+		return (str);
+	}
+	return (NULL);
 }
 /*
 #include <stdio.h>
@@ -33,9 +37,16 @@ char	*ft_strchr(const char *s, int c)
 
 int main(void)
 {
-	char s[] = "teste";
+	//char s[] = "teste";
 
-	printf("from lib function: %s\n", strchr(s, 'e'));
-	printf("from ft function: %s\n", ft_strchr(s, 'e'));
+	printf("from lib function: %s\n", strchr("", '\0'));
+	printf("from ft function: %s\n", ft_strchr("", '\0'));
 }
+*/
+/*
+	-It locates the first occurence of 'c' in the string.
+	- 'c' converted to a char.
+	- '\0' NULL terminator is also considered as character of string 's'
+		and locates.
+	- Returns pointer to the located character or NULL if no occurence.
 */
