@@ -6,15 +6,15 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:19:42 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/08 15:20:01 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:05:28 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-    t_list		*new;
+	t_list		*new;
 	t_list		*head;
 	t_list		*tail;
 

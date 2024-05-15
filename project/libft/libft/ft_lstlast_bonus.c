@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:20:37 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/08 15:20:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:03:13 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-    if (lst == NULL)
-        return (NULL);
+	if (lst == NULL)
+	{
+		return (NULL);
+	}
 	while (lst != NULL)
 	{
-        if (lst->next == NULL)
-            return (lst);
-        else
-		    lst = lst->next;
+		if (lst->next == NULL)
+			return (lst);
+		else
+			lst = lst->next;
 	}
 	return (lst);
 }

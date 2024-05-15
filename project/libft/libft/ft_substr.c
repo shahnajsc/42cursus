@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:21:31 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 11:56:10 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:00:21 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	count;
 	unsigned int	i;
 	char			*ptr;
-	
+
 	if (!s)
 		return (NULL);
 	if (start > str_len(s))
@@ -45,9 +45,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	count = 0;
 	while (s[count] != '\0' && count < start)
-	{
 		count++;
-	}
 	i = 0;
 	while ((count < str_len(s)) && i < len)
 	{
@@ -56,7 +54,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		count++;
 	}
 	ptr[i] = '\0';
-	return (ptr); 
+	return (ptr);
 }
 /*
 #include<stdio.h>
