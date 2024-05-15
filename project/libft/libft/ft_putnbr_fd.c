@@ -6,18 +6,12 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:19:34 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/29 15:29:04 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:29:50 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-*/
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:01:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/29 09:44:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:32:18 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@
 
 #include "libft.h"
 
-/*int	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (s[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
-}
-*/
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	unsigned int	s1len;

@@ -6,11 +6,9 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:30:23 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/30 13:53:19 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:25:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_atoi(const char *str)
 {

@@ -6,24 +6,12 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:40:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/25 13:24:09 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:33:58 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-int	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (s[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
-}*/
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	haycount;

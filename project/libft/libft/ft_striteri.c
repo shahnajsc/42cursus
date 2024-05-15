@@ -6,11 +6,9 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:36:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/02 13:34:18 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:31:51 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {

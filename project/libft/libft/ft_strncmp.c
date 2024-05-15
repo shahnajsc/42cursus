@@ -6,11 +6,9 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:18:48 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/24 15:31:02 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:33:39 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {

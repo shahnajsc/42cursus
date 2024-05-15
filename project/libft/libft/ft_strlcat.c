@@ -6,26 +6,12 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 16:15:31 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/24 10:07:44 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:32:34 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-int	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (s[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
-}
-
-*/
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dstcount;

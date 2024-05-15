@@ -6,11 +6,9 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:50:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/24 11:00:39 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:35:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_tolower(int c)
 {

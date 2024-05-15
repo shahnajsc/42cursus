@@ -6,11 +6,9 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:08:11 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/24 10:49:44 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 12:35:15 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_toupper(int c)
 {
