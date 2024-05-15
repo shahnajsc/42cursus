@@ -6,16 +6,101 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:02:38 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/02 17:17:20 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:42:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int words;
-	int i;
+	size_t	count;
+	size_t	i;
+
+	count = 0;
+	i = 0;
+	while (*(s + i))
+	{
+		if (*(s + i) != c)
+		{
+			count++;
+			while (*(s + i) && *(s + i) != c)
+				i++;
+		}
+		else if (*(s + i) == c)
+			i++;
+	}
+	return (count);
+}
+
+static size_t	count_words2(char const *s, char c)
+{
+	size_t	count;
+	size_t	i;
+
+	count = 0;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			count++;
+			while (s[i] != '\0' && s[i] != c)
+				i++;
+		}
+		else if (s[i] == c)
+			i++;
+	}
+	return (count);
+}
+
+static size_t	get_word_len(char const *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (*(s + i) && *(s + i) != c)
+		i++;
+	return (i);
+}
+
+/*static char	**split(char const *s, char c, char **array, size_t words_count)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (i < words_count)
+	{
+		while (*(s + j) && *(s + j) == c)
+			j++;
+		*(array + i) = ft_substr(s, j, get_word_len(&*(s + j), c));
+		if (!*(array + i))
+		{
+			free_array(i, array);
+			return (NULL);
+		}
+		while (*(s + j) && *(s + j) != c)
+			j++;
+		i++;
+	}
+	*(array + i) = NULL;
+	return (array);
+}*/
+
+#include <stdio.h>
+int main(void)
+{
+	printf("word count 1: %ld\n", count_words("a123a456a789a012a12a", 'x'));
+	printf("word count 2: %ld\n", count_words2("a123a456a789a012a12a", 'x'));
+
+	printf("%ld\n", get_word_len("a123a456a7894a012a12a", 'x'));
+}
+/*static int	count_words(char const *s, char c)
+{
+	int	words;
+	int	i;
 
 	i = 0;
 	while (s[i] && s[i] == c)
@@ -98,7 +183,7 @@ char		**ft_split(char const *s, char c)
 		array[arr_i] = NULL;
 	}
 	return (array);
-}
+}*/
 
 /*
 char **ft_split(char const *s, char c)
