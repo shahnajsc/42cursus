@@ -3,17 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
+/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:35:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/14 22:39:12 by shahnaj          ###   ########.fr       */
+/*   Updated: 2024/05/16 12:26:32 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* Allocates memory with malloc() for trimmed string. */
-/* Trimmed string obtained from s1 by removing a specified 'set' of 
- chararcters from begining and ending of s1. */
-/* Returns NULL if memory allocation is failed. */
 
 #include "libft.h"
 
@@ -70,4 +65,11 @@ int main(void)
 	
 	printf("trimmed string: %s", ft_strtrim(s, set));
 }
+*/
+
+/* 
+ - Allocates memory with malloc() for trimmed string.
+- Trimmed string obtained from s1 by removing a specified 'set' of 
+ 	chararcters from begining and ending of s1.
+- Returns NULL if memory allocation is failed. 
 */

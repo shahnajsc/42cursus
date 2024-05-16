@@ -6,13 +6,9 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:21:31 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 12:00:21 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:26:18 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* allocate memory with malloc() for a substring. */
-/*This substring is obtained from main string s staring from 'start' index. */
-/*maximum length of the substring is 'len'. */
 
 #include "libft.h"
 
@@ -65,3 +61,8 @@ int main()
 	printf("%s\n", ft_substr(s1, 0, 18446744073709551615));
 }
 */
+
+/* 
+- allocate memory with malloc() for a substring.
+- This substring is obtained from main string s staring from 'start' index.
+- maximum length of the substring is 'len'. */

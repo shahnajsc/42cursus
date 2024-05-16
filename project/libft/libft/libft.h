@@ -6,14 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/08 15:00:14 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:15:24 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 
