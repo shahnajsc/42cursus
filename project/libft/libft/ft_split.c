@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:02:38 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 12:26:41 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:41:06 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,26 @@ static char	**split_str(char const *s, char c, char **array, size_t str_count)
 {
 	size_t	i;
 	size_t	j;
+	char	*str;
 
 	i = 0;
 	j = 0;
+	str = (char *)s;
 	while (i < str_count)
 	{
-		while (*(s + j) && *(s + j) == c)
+		while (str[j] != '\0' && str[j] == c)
 			j++;
-		*(array + i) = ft_substr(s, j, get_substr_len(&*(s + j), c));
-		if (!*(array + i))
+		array[i] = ft_substr(str, j, get_substr_len(&str[j], c));
+		if (!array[i])
 		{
 			free_array(i, array);
 			return (NULL);
 		}
-		while (*(s + j) && *(s + j) != c)
+		while (str[j] != '\0' && str[j] != c)
 			j++;
 		i++;
 	}
-	*(array + i) = NULL;
+	array[i] = NULL;
 	return (array);
 }
 
