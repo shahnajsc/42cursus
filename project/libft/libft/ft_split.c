@@ -6,34 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:02:38 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 15:42:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:06:13 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
-{
-	size_t	count;
-	size_t	i;
-
-	count = 0;
-	i = 0;
-	while (*(s + i))
-	{
-		if (*(s + i) != c)
-		{
-			count++;
-			while (*(s + i) && *(s + i) != c)
-				i++;
-		}
-		else if (*(s + i) == c)
-			i++;
-	}
-	return (count);
-}
-
-static size_t	count_words2(char const *s, char c)
+static size_t	count_substr(char const *s, char c)
 {
 	size_t	count;
 	size_t	i;
@@ -54,28 +33,38 @@ static size_t	count_words2(char const *s, char c)
 	return (count);
 }
 
-static size_t	get_word_len(char const *s, char c)
+static size_t	get_substr_len(char const *s, char c)
 {
 	size_t	i;
 
 	i = 0;
-	while (*(s + i) && *(s + i) != c)
+	while (s[i] != '\0' && s[i] != c)
 		i++;
 	return (i);
 }
 
-/*static char	**split(char const *s, char c, char **array, size_t words_count)
+static void	free_array(size_t i, char **array)
+{
+	while (i > 0)
+	{
+		i--;
+		free(array[i]);
+	}
+	free(array);
+}
+
+static char	**split_str(char const *s, char c, char **array, size_t str_count)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	while (i < words_count)
+	while (i < str_count)
 	{
 		while (*(s + j) && *(s + j) == c)
 			j++;
-		*(array + i) = ft_substr(s, j, get_word_len(&*(s + j), c));
+		*(array + i) = ft_substr(s, j, get_substr_len(&*(s + j), c));
 		if (!*(array + i))
 		{
 			free_array(i, array);
@@ -87,107 +76,35 @@ static size_t	get_word_len(char const *s, char c)
 	}
 	*(array + i) = NULL;
 	return (array);
-}*/
-
-#include <stdio.h>
-int main(void)
-{
-	printf("word count 1: %ld\n", count_words("a123a456a789a012a12a", 'x'));
-	printf("word count 2: %ld\n", count_words2("a123a456a789a012a12a", 'x'));
-
-	printf("%ld\n", get_word_len("a123a456a7894a012a12a", 'x'));
-}
-/*static int	count_words(char const *s, char c)
-{
-	int	words;
-	int	i;
-
-	i = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	words = ft_strlen(s + i) ? 1 : 0;
-	while (s[i])
-	{
-		if (s[i] == c && s[i + 1] && s[i + 1] != c)
-			words++;
-		i++;
-	}
-	return (words);
 }
 
-static int	len_first_word(char const *s, char c)
-{
-	int i;
-	int chars;
-
-	chars = 0;
-	i = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i] && s[i] != c)
-	{
-		chars++;
-		i++;
-	}
-	return (chars);
-}
-
-static int	fill_word(char *word, char const *s, char c)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	j = 0;
-	while (s[i] && s[i] != c)
-		word[j++] = s[i++];
-	word[j] = '\0';
-	while (s[i] && s[i] == c)
-		i++;
-	return (i);
-}
-
-void		emergency_clean(char **array, int arr_i)
-{
-	while (--arr_i >= 0)
-		free(array[arr_i]);
-	free(array);
-}
-
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	int		arr_i;
-	int		word_len;
+	size_t	words;
 
-	array = NULL;
-	if (s && (array = malloc(sizeof(char*) * (count_words(s, c) + 1))))
-	{
-		arr_i = 0;
-		if (count_words(s, c))
-		{
-			while (*s)
-			{
-				word_len = len_first_word(s, c) + 1;
-				if ((array[arr_i] = malloc(word_len)))
-					s += fill_word(array[arr_i++], s, c);
-				else
-				{
-					emergency_clean(array, arr_i);
-					return (NULL);
-				}
-			}
-		}
-		array[arr_i] = NULL;
-	}
+	if (!s)
+		return (NULL);
+	words = count_substr(s, c);
+	array = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!array)
+		return (NULL);
+	array = split_str(s, c, array, words);
 	return (array);
-}*/
-
+}
 /*
-char **ft_split(char const *s, char c)
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
 {
+	char **array = ft_split("a123a456a789a012a12a", '1');
+	for (int i = 0; i < 5; i++)
+	{
+		printf("%s\n", array[i]);
+	}
+
+	//printf("%ld\n", get_word_len("a123a456a7894a012a12a", 'x'));
 }
 */
 /*
@@ -198,4 +115,11 @@ char **ft_split(char const *s, char c)
  	-Given array must end with a 'NULL pointer'. 
 	-External function malloc and free.
 	-Return Null if memory allocation fails.
-*/	
+	-*It split main string into sub-string using delimeter
+	-*first count the total substring 
+	-*Thn conut the length if substring
+	-*Thn copy the substring using finction ft_substr(string, start, length)
+	-*It also free the substring memory if it fails.
+	-* Thn allocates memory for array for the total substring +1
+	-* Finally subsrings are copies to main array using split_str function.
+*/
