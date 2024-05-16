@@ -19,7 +19,7 @@ OBJS	=	${SRCS:.c=.o}
 OBJS_BN	=	${SRCS_BN:.c=.o}
 
 # Header file
-HEAD	=	./libft.h
+HEAD	=	.
 
 # Library name
 NAME	=	libft.a
