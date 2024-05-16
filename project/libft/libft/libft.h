@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 15:18:05 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:53:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ char				*ft_strnstr(const char *haystack,
 int					ft_atoi(char const *str);
 void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *src);
-
 
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_substr(char const *s, unsigned int start,
