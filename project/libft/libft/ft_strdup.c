@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:07:13 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 12:31:29 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:52:34 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,3 @@ char	*ft_strdup(const char *src)
 	ptr[count] = '\0';
 	return (ptr);
 }
-/*
-
-#include <stdio.h>
-
-int main(void)
-{
-	char *s1 = "eretert";
-
-	printf("%s\n", ft_strdup(s1));
-}
-*/

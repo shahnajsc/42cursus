@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:21:31 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 12:26:18 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:42:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr[i] = '\0';
 	return (ptr);
 }
-/*
-#include<stdio.h>
-int main()
-{
-	char	s1[] = "hola";
-
-	printf("%s\n", ft_substr(s1, 0, 18446744073709551615));
-}
-*/
-
 /* 
 - allocate memory with malloc() for a substring.
 - This substring is obtained from main string s staring from 'start' index.
-- maximum length of the substring is 'len'. */
+- maximum length of the substring is 'len'.
+*/

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:40:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 12:33:58 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:53:16 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char *haystack = "abcdefghijkl";
-	char *needle = "def";
-	//size_t c = 0;
-
-	printf("from lib function : %s\n", strnstr(haystack, needle, 5));
-	printf("from ft function: %s", ft_strnstr(haystack, needle, 5));
-	
-}
-*/

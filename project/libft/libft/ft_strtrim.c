@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:35:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 12:26:32 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:41:36 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ptr[count] = '\0';
 	return (ptr);
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-	char	*s = "abcdefaeghaeb";
-	char	*set = "aeb";
-	
-	printf("trimmed string: %s", ft_strtrim(s, set));
-}
-*/
-
 /* 
  - Allocates memory with malloc() for trimmed string.
 - Trimmed string obtained from s1 by removing a specified 'set' of 

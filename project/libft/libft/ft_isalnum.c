@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:12:47 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/23 10:46:23 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:48:42 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,3 @@ int	ft_isalnum(int c)
 		return (0);
 	}
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	//is alnum
-	printf("is alnum: %d\n", ft_isalnum(67));
-
-}
-*/

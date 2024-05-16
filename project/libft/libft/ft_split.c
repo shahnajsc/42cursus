@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:02:38 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 13:41:06 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:24:29 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,21 +94,6 @@ char	**ft_split(char const *s, char c)
 	array = split_str(s, c, array, words);
 	return (array);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char **array = ft_split("a123a456a789a012a12a", '1');
-	for (int i = 0; i < 5; i++)
-	{
-		printf("%s\n", array[i]);
-	}
-
-	//printf("%ld\n", get_word_len("a123a456a7894a012a12a", 'x'));
-}
-*/
 /*
 	-This function allocates memory with function malloc()
   	 	and returns an array of strings.

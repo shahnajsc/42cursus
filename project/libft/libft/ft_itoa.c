@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
+/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:18:32 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/14 21:21:45 by shahnaj          ###   ########.fr       */
+/*   Updated: 2024/05/16 16:49:08 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,3 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 	return (str);
 }
-/*
-int main(void)
-{
-    char *res = ft_itoa(9); 
-	
-    ft_print_result(res);
-    free(res);
-}
-*/
-/* check for :0, 9, -9, 10, -10,
-	  8124, -9874, 543000, -2147483648LL, 2147483647
-	  */

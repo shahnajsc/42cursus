@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:12:15 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/23 10:40:03 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:48:57 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,3 @@ int	ft_isdigit(int c)
 		return (0);
 	}
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	// is digit
-	printf("is digit: %d\n", ft_isdigit('0'));
-}
-*/

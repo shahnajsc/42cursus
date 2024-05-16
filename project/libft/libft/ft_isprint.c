@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:13:31 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/23 10:49:56 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:49:02 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,3 @@ int	ft_isprint(int c)
 		return (0);
 	}
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	// is printable
-	printf("is printable:%d\n" , ft_isprint(20));
-
-}
-*/

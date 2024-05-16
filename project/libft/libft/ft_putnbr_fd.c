@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:19:34 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 12:29:50 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:52:07 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n + '0', fd);
 	}
 }
-/*
-//ft_putnbr(-2147483648);
-
-#include <fcntl.h>
-int main(void)
-{
-	int	n = 1232423;
-	int file;
-
-	file = open("putnbr_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	ft_putnbr_fd(n, file);
-	close(file);
-    
-    n = 0253411;
-    ft_putnbr_fd(n, 2);
-
-    return (0);
-}
-
-*/

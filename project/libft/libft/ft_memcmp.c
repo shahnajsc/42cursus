@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:05:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/24 16:39:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:50:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-    char *dst = "18123458";
-	char *src = "18\\23448";
-	int n = 9;
-	printf("dst: %s\n", dst);
-	printf("src: %s\n", src);
-    printf("after ft strncmp: %d\n", ft_memcmp(dst, src, n));
-	printf("after lib strncmp: %d\n", memcmp(dst, src, n));
-}
-*/

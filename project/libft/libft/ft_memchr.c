@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:31:36 by shachowd          #+#    #+#             */
-/*   Updated: 2024/04/24 16:04:49 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:50:05 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char *str = "1294567r";
-	int c = 114;
-	
-	printf("from lib function: %s\n", memchr(str, c, 15));
-	printf("from ft function: %s\n", ft_memchr(str, c, 15));
-}
-*/

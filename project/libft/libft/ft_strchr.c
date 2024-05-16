@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:12:03 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 12:30:57 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:25:20 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,6 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	//char s[] = "teste";
-
-	printf("from lib function: %s\n", strchr("", '\0'));
-	printf("from ft function: %s\n", ft_strchr("", '\0'));
-}
-*/
 /*
 	-It locates the FIRST occurence of 'c' in the string.
 	- 'c' converted to a char.

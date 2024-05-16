@@ -6,14 +6,9 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:01:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/15 12:32:18 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:28:58 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* Allocates memory with function malloc() for a new string 
- * and return a pointer to that new string. */
-/* New string is concatenation of string s1 and s2. s1 is prefix. */
-/* Returns NULL if memory allocation fails. */
 
 #include "libft.h"
 
@@ -41,13 +36,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	*ptr++ = '\0';
 	return (ptrcat);
 }
-/*
-#include<stdio.h>
-int main()
-{
-	char	s1[] = "abcdef";
-	char s2[] = "ghigklm";
-
-	printf("%s\n", ft_strjoin(s1, s2));
-}
-*/
+/* 
+ - Allocates memory with function malloc() for a new string 
+ 	and return a pointer to that new string.
+ - New string is concatenation of string s1 and s2. s1 is prefix.
+ - Returns NULL if memory allocation fails.
+  */

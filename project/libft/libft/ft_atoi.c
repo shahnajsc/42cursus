@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:30:23 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 15:47:38 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:48:26 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,3 @@ int	ft_atoi(const char *str)
 	}
 	return (number * signcount);
 }
-/*
-int main(void)
-{
-	char *str;
-
-	str = "++--+-+-54321ad656";
-	printf("from the ft function: %d\n", ft_atoi("   ---47a"));
-	printf("from the lib function: %d\n", atoi("   ---47a")); 
-		// while (str[count])
-	// {
-	// 	if (str[count] < 48 || str[count] > 57)
-	// 		break ;
-	// 	else
-	// 		number = (number * 10) + str[count] - 48;
-	// 	count++;
-	// }
-}
-*/
