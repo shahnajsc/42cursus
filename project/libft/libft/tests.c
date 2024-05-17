@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lemercie <lemercie@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:27:17 by lemercie          #+#    #+#             */
-/*   Updated: 2024/05/17 12:44:10 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:42:20 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -516,6 +516,7 @@ int	main(void)
 	printf("\n");
 	printf("1000\n");
 	ft_putnbr_fd(1000, 1);
+	printf("\n");
 	printf("\n");
 
 	printf("%s\n", "=== ft_lstnew ===");
