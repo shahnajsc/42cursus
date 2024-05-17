@@ -2,6 +2,6 @@
 /.vscode
 /subject
 /test
-/eval
+eval/leon-libft
 project/libft/libft_git
 project/libft/libft_check
