@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:40:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 16:53:16 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/19 23:34:23 by shahnaj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,37 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	haycount;
-	size_t	nedcount;
+	size_t	hcount;
+	size_t	ncount;
 	size_t	s_len;
 	char	*hay;
 
 	hay = (char *)haystack;
-	s_len = ft_strlen(needle);
+	if (!haystack && !len)
+		return (NULL);
 	if (needle[0] == '\0')
 		return (hay);
-	haycount = 0;
-	while (hay[haycount] != '\0' && haycount < len)
+	s_len = ft_strlen(needle);
+	hcount = 0;
+	while (hay[hcount] != '\0' && hcount < len)
 	{
-		nedcount = 0;
-		while (hay[haycount + nedcount] != '\0' && needle[nedcount] != '\0'
-			&& hay[haycount + nedcount] == needle[nedcount]
-			&& haycount + nedcount < len)
+		ncount = 0;
+		while (hay[hcount + ncount] != '\0' && needle[ncount] != '\0'
+			&& hay[hcount + ncount] == needle[ncount] && hcount + ncount < len)
 		{
-			nedcount++;
+			ncount++;
 		}
-		if (nedcount == s_len)
-			return (hay + haycount);
-		haycount++;
+		if (ncount == s_len)
+			return (hay + hcount);
+		hcount++;
 	}
 	return (0);
+}
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	printf("%s\n", strnstr(NULL, "lo", 0));
+	printf("%s\n", ft_strnstr(NULL, "lo", 0));
 }
