@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:01:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 16:28:58 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:08:18 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char			*ptr;
 	char			*ptrcat;
 
+	if (!s1 || !s2)
+		return (NULL);
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
 	ptr = (char *)malloc(sizeof(char) * (s1len + s2len + 1));

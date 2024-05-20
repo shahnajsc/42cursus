@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:18:48 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 16:53:10 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:31:48 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,11 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 		return ((unsigned char)(s1[count]) - (unsigned char)(s2[count]));
 	}
 }
+/*
+ - The strcmp() and strncmp() functions lexicographically compare 
+ 	the null terminated strings s1 and s2.
+ - The strncmp() function compares not more than n characters
+ - strncmp() is designed for comparing strings rather 
+ 	than binary data
+ - characters that appear after a `\0' character are not compared
+*/

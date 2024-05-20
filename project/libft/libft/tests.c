@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 10:27:17 by lemercie          #+#    #+#             */
-/*   Updated: 2024/05/17 16:42:20 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:24:42 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(void)
 	printf("%s\n", "=== memmove ===");
 	ft_memmove(abc_a, xyz, 3);
 	memmove(abc_b, xyz, 3);
-//	memmove(NULL, xyz, 3);
+//	memmove(NULL, xyz, 3);   
 	printf("Xyz->abc: %s - %s\n", abc_a, abc_b);
 	ft_memmove(&abc_a[2], abc_a, 4);
 	memmove(&abc_b[2], abc_b, 4);

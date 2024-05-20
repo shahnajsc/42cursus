@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:35:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 16:41:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:01:54 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end;
 	int		count;
 
+	if (!s1 || !set)
+		return (NULL);
 	start = 0;
 	while (s1[start] != '\0' && check_set(set, s1[start]))
 		start++;
@@ -43,9 +45,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		end--;
 	ptr = (char *)malloc(sizeof(char) * ((end - start) + 1));
 	if (!ptr)
-	{
 		return (NULL);
-	}
 	count = 0;
 	while (count < (end - start))
 	{

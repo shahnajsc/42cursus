@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
+/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:40:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/19 23:34:23 by shahnaj          ###   ########.fr       */
+/*   Updated: 2024/05/20 13:05:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,4 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		hcount++;
 	}
 	return (0);
-}
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	printf("%s\n", strnstr(NULL, "lo", 0));
-	printf("%s\n", ft_strnstr(NULL, "lo", 0));
 }

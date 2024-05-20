@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:13:08 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 16:48:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:21:01 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,7 @@ int	ft_isascii(int c)
 		return (0);
 	}
 }
+/*
+ - he isascii() function tests for an ASCII character, which 
+ 	is any character between 0 and octal 0177 inclusive.
+*/
