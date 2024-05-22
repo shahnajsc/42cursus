@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 13:46:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/20 15:00:54 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/05/22 08:32:29 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	count;
-
 	if (!s)
 		return ;
-	count = 0;
-	while (s[count] != '\0')
+	while (*s)
 	{
 		write(fd, s++, 1);
 	}

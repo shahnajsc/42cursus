@@ -2,7 +2,7 @@
 /.vscode
 /subject
 /test
-eval/leon-libft
-eval/klukiano-libft
+/eval
 project/libft/libft_git
 project/libft/libft_check
+project/Born2beRoot
