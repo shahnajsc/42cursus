@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:31:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/05 10:35:33 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/05 12:00:11 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 
 
