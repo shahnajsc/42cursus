@@ -6,13 +6,8 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/05 11:49:38 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/05 12:00:50 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-
-ttttt
-xvxvb
-ygu
