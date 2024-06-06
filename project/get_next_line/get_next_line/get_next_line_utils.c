@@ -6,129 +6,128 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/06 13:21:01 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:38:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    if (!str)
-    {
-        return (0);
-    }
-    while (str[count] != '\0')
-    {
-        count++;
-    }
-    return (count);
+	count = 0;
+	if (!str)
+	{
+		return (0);
+	}
+	while (str[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
 }
 
-char *ft_strdup(const char *str)
+char	*ft_strdup(const char *str)
 {
-    int     len;
-    char    *ptr;
-    int     count;
+	int		len;
+	char	*ptr;
+	int		count;
 
-    if (!str)
-    {
-        return (0);
-    }
-    count = 0;
-    len = ft_strlen(str);
-    ptr = (char *)malloc(sizeof(char) * (len + 1));
-    if (!ptr)
-    {
-        return (NULL);
-    }
-    while (str[count] != '\0' && count < len)
-    {
-        ptr[count] = str[count];
-        count++;
-    }
-    ptr[count] = '\0';
-    return (ptr);
+	if (!str)
+	{
+		return (0);
+	}
+	count = 0;
+	len = ft_strlen(str);
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+	{
+		return (NULL);
+	}
+	while (str[count] != '\0' && count < len)
+	{
+		ptr[count] = str[count];
+		count++;
+	}
+	ptr[count] = '\0';
+	return (ptr);
 }
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-    char *str;
+	char	*str;
 
-    str = (char *)s;
-    while (*str != '\0')
-    {
-        if (*str == (char)c)
-        {
-            return (str);
-        }
-        str++;
-    }
-    if (*str == (char)c)
-    {
-        return (str);
-    }
-    return (NULL);
+	str = (char *)s;
+	while (*str != '\0')
+	{
+		if (*str == (char)c)
+		{
+			return (str);
+		}
+		str++;
+	}
+	if (*str == (char)c)
+	{
+		return (str);
+	}
+	return (NULL);
 }
 
-char *ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-    char    *ptr;
-    char    *ptrjoin;
+	char	*ptr;
+	char	*ptrjoin;
 
-    if (!s1 || !s2)
-    {
-        return (NULL);
-    }
-    ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-    if (!ptr)
-    {
-        return (NULL);
-    }
-    ptrjoin = ptr;
-    while (*s1 != '\0')
-    {
-        *ptr++ = *s1++;
-    }
-    while (*s2 != '\0')
-    {
-        *ptr++ = *s2++;
-    }
-    *ptr++ = '\0';
-    return (ptrjoin);
-
+	if (!s1 || !s2)
+	{
+		return (NULL);
+	}
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!ptr)
+	{
+		return (NULL);
+	}
+	ptrjoin = ptr;
+	while (*s1 != '\0')
+	{
+		*ptr++ = *s1++;
+	}
+	while (*s2 != '\0')
+	{
+		*ptr++ = *s2++;
+	}
+	*ptr++ = '\0';
+	return (ptrjoin);
 }
 
-char *ft_substr(const char *str, unsigned int start, size_t len)
+char	*ft_substr(const char *str, unsigned int start, size_t len)
 {
-    char            *ptr;
-    unsigned int    count;
-    unsigned int    i;
-    
-    count = 0;
-    if (!str)
-        return (NULL);
-    if (start > ft_strlen(str))
+	char			*ptr;
+	unsigned int	count;
+	unsigned int	i;
+
+	count = 0;
+	if (!str)
+		return (NULL);
+	if (start > ft_strlen(str))
 		len = 0;
 	else if (len > (ft_strlen(str) - start))
 		len = ft_strlen(str) - start;
-    ptr = (char *)malloc(sizeof(char) * (len + 1));
-    if (!ptr)
-        return (NULL);
-    while (str[count] != '\0' && count < start)
-        count++;
-    i = 0;
-    while ((count < ft_strlen(str)) && i < len)
-    {
-        ptr[i] = str[count];
-        i++;
-        count++;
-    }
-    ptr[i] = '\0';
-    return (ptr); 
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+		return (NULL);
+	while (str[count] != '\0' && count < start)
+		count++;
+	i = 0;
+	while ((count < ft_strlen(str)) && i < len)
+	{
+		ptr[i] = str[count];
+		i++;
+		count++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }
 /*
 
