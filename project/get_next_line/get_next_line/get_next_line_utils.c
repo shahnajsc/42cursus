@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/06 11:57:03 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:14:27 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,31 @@ char *ft_strjoin(const char *s1, const char *s2)
 
 char *ft_substr(const char *str, unsigned int start, size_t len)
 {
-    char    *ptr;
-    char    *substr;
+    char            *ptr;
+    unsigned int    count;
+    unsigned int    i;
+    
+    count = 0;
+    if (!str)
+        return (NULL);
+    if (start > ft_strlen(str))
+		len = 0;
+	else if (len > (ft_strlen(str) - start))
+		len = ft_strlen(str) - start;
+    ptr = (char *)malloc(sizeof(char) * (len + 1));
+    if (!ptr)
+        return (NULL);
+    while (str[count] != '\0' && count < start)
+        count++;
+    i = 0;
+    while ((count < ft_strlen(str)) && i < len)
+    {
+        ptr[i] = str[count];
+        i++;
+        count++;
+    }
+    ptr[i] = '\0';
+    return (ptr); 
 }
 
 
@@ -134,5 +157,18 @@ int	main(void)
 
     printf("\n\n%s\n", "=== strjoi ===");
 	printf("%s\n", ft_strjoin("Good ", "Day"));
+
+
+    printf("\n\n%s\n", "=== substr ===");
+	printf("%s\n", ft_substr("Hello", 1, 3));
+	printf("%s\n", ft_substr("Hello", 3, 3));
+	printf("%s\n", ft_substr("Hello", 6, 3));
+	printf("%s\n", ft_substr("Hello", 1, 0));
+	printf("return empty string: %s\n", ft_substr("", 0, 0));
+	printf("return empty string: %s\n", ft_substr("", 0, 1));
+	printf("return empty string: %s\n", ft_substr("", 1, 1));
+	printf("return empty string: %s\n", ft_substr("ARGH", 4, 0));
+	printf("return empty string: %s\n", ft_substr("ARGH", 4, 20));
+	printf("return empty string: %s\n", ft_substr("ARGH", 5, 20));
 
 }
