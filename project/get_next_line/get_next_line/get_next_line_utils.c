@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/06 11:29:39 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:57:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,12 @@ char *ft_strjoin(const char *s1, const char *s2)
     *ptr++ = '\0';
     return (ptrjoin);
 
+}
+
+char *ft_substr(const char *str, unsigned int start, size_t len)
+{
+    char    *ptr;
+    char    *substr;
 }
 
 
