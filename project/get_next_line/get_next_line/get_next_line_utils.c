@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/06 13:14:27 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:21:01 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ char *ft_substr(const char *str, unsigned int start, size_t len)
     ptr[i] = '\0';
     return (ptr); 
 }
-
+/*
 
 #include <string.h>
 #include <stdio.h>
@@ -171,4 +171,4 @@ int	main(void)
 	printf("return empty string: %s\n", ft_substr("ARGH", 4, 20));
 	printf("return empty string: %s\n", ft_substr("ARGH", 5, 20));
 
-}
+}*/
