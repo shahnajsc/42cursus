@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/06 13:38:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:05:00 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,22 @@ char	*ft_substr(const char *str, unsigned int start, size_t len)
 	ptr[i] = '\0';
 	return (ptr);
 }
+
+
+void	fill_str(char *res, char *s1, char *s2)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	while (s1[j])
+		res[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		res[i++] = s2[j++];
+	res[i] = '\0';
+}
 /*
 
 #include <string.h>
@@ -149,7 +165,7 @@ int	main(void)
 	free(str_strdup);
 
     printf("\n\n%s\n", "=== strchr ===");
-    char	xyz[] = {""};
+    char	xyz[] = {""};s
 	
 	printf("Z: %s - %s\n", ft_strchr(xyz, 'Z' ), strchr(xyz, 'Z'));
 
