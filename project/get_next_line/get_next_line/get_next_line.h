@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:31:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/10 15:03:29 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:13:00 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-size_t      ft_strlen(const char *str);
-//char        *ft_strdup(const char *str);
-//char        *ft_strchr(const char *s, int c);
-char        *ft_strjoin(const char *s1, const char *s2);
-//char        *ft_substr(const char *str, unsigned int start, size_t len);
-//void        ill_str(char *res, char *s1, char *s2);
-//static char *_set_line(char *line_buffer);
-//static char *_fill_line_buffer(int fd, char *left_c, char *buffer);
+size_t      ft_strlen(char *str);
+char        *ft_strdup(char *str);
+char        *ft_strchr(char *s, int c);
+char        *ft_strjoin(char *s1, char *s2);
+char        *ft_substr(char *str, unsigned int start, size_t len);
 char        *get_next_line(int fd);
 
 #endif

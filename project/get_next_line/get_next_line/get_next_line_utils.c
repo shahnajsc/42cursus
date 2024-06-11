@@ -6,13 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/10 15:05:00 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:47:08 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(char *str)
 {
 	int	count;
 
@@ -28,11 +28,11 @@ size_t	ft_strlen(const char *str)
 	return (count);
 }
 
-char	*ft_strdup(const char *str)
+char	*ft_strdup(char *str)
 {
 	int		len;
-	char	*ptr;
-	int		count;
+	char				*ptr;
+	int					count;
 
 	if (!str)
 	{
@@ -54,7 +54,7 @@ char	*ft_strdup(const char *str)
 	return (ptr);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	char	*str;
 
@@ -74,7 +74,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ptr;
 	char	*ptrjoin;
@@ -101,7 +101,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (ptrjoin);
 }
 
-char	*ft_substr(const char *str, unsigned int start, size_t len)
+char	*ft_substr(char *str, unsigned int start, size_t len)
 {
 	char			*ptr;
 	unsigned int	count;
@@ -130,21 +130,6 @@ char	*ft_substr(const char *str, unsigned int start, size_t len)
 	return (ptr);
 }
 
-
-void	fill_str(char *res, char *s1, char *s2)
-{
-	unsigned int	i;
-	unsigned int	j;
-
-	i = 0;
-	j = 0;
-	while (s1[j])
-		res[i++] = s1[j++];
-	j = 0;
-	while (s2[j])
-		res[i++] = s2[j++];
-	res[i] = '\0';
-}
 /*
 
 #include <string.h>
