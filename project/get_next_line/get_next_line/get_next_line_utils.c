@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/11 12:47:08 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/12 22:50:12 by shahnaj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ size_t	ft_strlen(char *str)
 char	*ft_strdup(char *str)
 {
 	int		len;
-	char				*ptr;
-	int					count;
+	char	*ptr;
+	int		count;
 
 	if (!str)
 	{
 		return (0);
 	}
-	count = 0;
 	len = ft_strlen(str);
 	ptr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!ptr)
 	{
 		return (NULL);
 	}
+	count = 0;
 	while (str[count] != '\0' && count < len)
 	{
 		ptr[count] = str[count];
@@ -56,20 +56,19 @@ char	*ft_strdup(char *str)
 
 char	*ft_strchr(char *s, int c)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str != '\0')
+	if (!s || !c)
+		return (NULL);
+	while (*s != '\0')
 	{
-		if (*str == (char)c)
+		if (*s == (char)c)
 		{
-			return (str);
+			return (s);
 		}
-		str++;
+		s++;
 	}
-	if (*str == (char)c)
+	if (*s == (char)c)
 	{
-		return (str);
+		return (s);
 	}
 	return (NULL);
 }
@@ -108,7 +107,7 @@ char	*ft_substr(char *str, unsigned int start, size_t len)
 	unsigned int	i;
 
 	count = 0;
-	if (!str)
+	if (!*str)
 		return (NULL);
 	if (start > ft_strlen(str))
 		len = 0;
@@ -140,22 +139,22 @@ int	main(void)
 	printf("\n\n%s\n", "=== strlen ===");
 	printf("c == Hello: %zu - %zu\n", ft_strlen("Hello\0rr"), strlen("Hello\0rr"));	
 	printf("c == "": %zu - %zu\n\n", ft_strlen(" "), strlen(" "));
-//	printf("null pointer: %zu - %zu\n", ft_strlen(NULL), strlen(NULL));
+	printf("null pointer: %zu - %zu\n", ft_strlen(NULL), strlen(NULL));
 
-    printf("\n\n%s\n", "=== strdup ===");
+    	printf("\n\n%s\n", "=== strdup ===");
 	char	*str_ft_strdup = ft_strdup("..12www");
 	char	*str_strdup = strdup("..12www");
 	printf("Hello: %s - %s\n", str_ft_strdup, str_strdup);
 	free(str_ft_strdup);
 	free(str_strdup);
 
-    printf("\n\n%s\n", "=== strchr ===");
-    char	xyz[] = {""};s
+    	printf("\n\n%s\n", "=== strchr ===");
+    	char	xyz[] = {""};s
 	
 	printf("Z: %s - %s\n", ft_strchr(xyz, 'Z' ), strchr(xyz, 'Z'));
 
 
-    printf("\n\n%s\n", "=== strjoi ===");
+    	printf("\n\n%s\n", "=== strjoi ===");
 	printf("%s\n", ft_strjoin("Good ", "Day"));
 
 
