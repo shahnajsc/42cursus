@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:07:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/11 12:47:08 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/17 21:03:57 by shahnaj          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strdup(char *str)
 	}
 	count = 0;
 	len = ft_strlen(str);
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	ptr = malloc(sizeof(char) * (len + 1));
 	if (!ptr)
 	{
 		return (NULL);
@@ -74,9 +74,35 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *string, char *buffer)
 {
-	char	*ptr;
+	size_t    i;
+    size_t    j;
+    char    *words;
+
+    i = ft_strlen(string) + ft_strlen(buffer);
+    j = 0;
+    words = malloc((i + 1) * sizeof(char));
+    if (words == NULL)
+        return (NULL);
+    i = 0;
+    if (string)
+    {
+        while (string[i] != '\0')
+        {
+            words[i] = string[i];
+            i++;
+        }
+    }
+    while (buffer[j] != '\0')
+    {
+        words[i + j] = buffer[j];
+        j++;
+    }
+    words[i + j] = '\0';
+    return (words);
+	
+	/*char	*ptr;
 	char	*ptrjoin;
 
 	if (!s1 || !s2)
@@ -98,7 +124,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		*ptr++ = *s2++;
 	}
 	*ptr++ = '\0';
-	return (ptrjoin);
+	return (ptrjoin); */
 }
 
 char	*ft_substr(char *str, unsigned int start, size_t len)
@@ -114,7 +140,7 @@ char	*ft_substr(char *str, unsigned int start, size_t len)
 		len = 0;
 	else if (len > (ft_strlen(str) - start))
 		len = ft_strlen(str) - start;
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	ptr = malloc(sizeof(char) * (len + 1));
 	if (!ptr)
 		return (NULL);
 	while (str[count] != '\0' && count < start)
@@ -129,8 +155,22 @@ char	*ft_substr(char *str, unsigned int start, size_t len)
 	ptr[i] = '\0';
 	return (ptr);
 }
-
 /*
+size_t    ft_strlen_newline(const char *str)
+{
+    size_t    i;
+
+    i = 0;
+    if (!str)
+        return (0);
+    while (str[i] != '\0' && str[i] != '\n')
+    {
+        i++;
+    }
+    if (str[i] == '\n')
+        i++;
+    return (i);
+}
 
 #include <string.h>
 #include <stdio.h>
@@ -138,7 +178,8 @@ int	main(void)
 {
 		
 	printf("\n\n%s\n", "=== strlen ===");
-	printf("c == Hello: %zu - %zu\n", ft_strlen("Hello\0rr"), strlen("Hello\0rr"));	
+	printf("c == Hello: %zu - %zu\n", ft_strlen("Hello\nrr"), strlen("Hello\nrr"));	
+	printf("c == Hello: %zu - %zu\n", ft_strlen_newline("Hello\nrr"), strlen("Hello\nrr"));	
 	printf("c == "": %zu - %zu\n\n", ft_strlen(" "), strlen(" "));
 //	printf("null pointer: %zu - %zu\n", ft_strlen(NULL), strlen(NULL));
 
@@ -150,7 +191,7 @@ int	main(void)
 	free(str_strdup);
 
     printf("\n\n%s\n", "=== strchr ===");
-    char	xyz[] = {""};s
+    char	xyz[] = {""};
 	
 	printf("Z: %s - %s\n", ft_strchr(xyz, 'Z' ), strchr(xyz, 'Z'));
 
@@ -171,4 +212,5 @@ int	main(void)
 	printf("return empty string: %s\n", ft_substr("ARGH", 4, 20));
 	printf("return empty string: %s\n", ft_substr("ARGH", 5, 20));
 
-}*/
+}
+*/
