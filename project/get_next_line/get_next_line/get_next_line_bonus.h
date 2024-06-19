@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shahnaj <shahnaj@student.42.fr>            +#+  +:+       +#+        */
+/*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 10:31:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/18 15:13:45 by shahnaj          ###   ########.fr       */
+/*   Created: 2024/06/19 08:50:29 by shachowd          #+#    #+#             */
+/*   Updated: 2024/06/19 09:51:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
+# define MAX_FD 1024
 # ifndef BUFFER_SIZE
 
 #  define BUFFER_SIZE 6

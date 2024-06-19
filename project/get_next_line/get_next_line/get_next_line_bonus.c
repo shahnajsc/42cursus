@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 13:53:13 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/18 22:23:45 by shachowd         ###   ########.fr       */
+/*   Created: 2024/06/19 09:07:25 by shachowd          #+#    #+#             */
+/*   Updated: 2024/06/19 09:51:34 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*get_buffer(int fd, char *read_buf, char *left_buf)
 {
@@ -91,40 +91,34 @@ static char	*get_left(char *string)
 	return (left_buf);
 }
 
-/*static void	free_null(char **string)
+static void	free_null(char **string)
 {
 	free(*string);
 	*string = NULL;
-}*/
+}
 
 char	*get_next_line(int fd)
 {
 	char		*read_buf;
-	static char	*left_buf[4096];
+	static char	*left_buf[MAX_FD];
 	char		*line;
 
-	if (fd < 0 || fd > 4096 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		//free_null(&left_buf[fd]);
-		free(left_buf[fd]);
-		left_buf[fd] = NULL;
+		free_null(&left_buf[fd]);
 		return (NULL);
 	}
 	read_buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!read_buf)
 	{
-		//free_null(&left_buf[fd]);
-		free(left_buf[fd]);
-		left_buf[fd] = NULL;
+		free_null(&left_buf[fd]);
 		return (NULL);
 	}
 	left_buf[fd] = get_buffer(fd, read_buf, *(left_buf + fd));
 	line = get_line(left_buf[fd]);
 	if (!line)
 	{
-		//free_null(&left_buf[fd]);
-		free(left_buf[fd]);
-		left_buf[fd] = NULL;
+		free_null(&left_buf[fd]);
 		return (NULL);
 	}
 	left_buf[fd] = get_left(left_buf[fd]);
