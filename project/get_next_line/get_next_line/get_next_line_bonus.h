@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 08:50:29 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/19 09:51:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:09:51 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include <fcntl.h>
 
 size_t	ft_strlen(char *str);
-char	*ft_strdup(char *str);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char *str, unsigned int start, size_t len);
