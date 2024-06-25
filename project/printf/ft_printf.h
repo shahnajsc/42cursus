@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testprint.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 16:33:08 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/21 00:01:46 by shachowd         ###   ########.fr       */
+/*   Created: 2024/06/22 17:44:53 by shachowd          #+#    #+#             */
+/*   Updated: 2024/06/22 17:45:16 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int main()
-{   
-    char    *p;
+# include <stdarg.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <string.h>
+# include <limits.h>
+# include "./libft/includes/libft.h"
 
-    p = "pointer value";
-    printf("%c\n", 'a');
-    printf("%s\n", "abcdef123");
-    printf("%p\n", p);
-    printf("%s\n", p);
-    printf("%d\n", 12345);
-    printf("%i\n", 12345);
-    printf("%u\n", 12345);
-    printf("%x\n", 1234567890);
-    printf("%X\n", 1234567890);
-    printf("%%\n");
-    //printf("%c", 'a');
+int	ft_printf(const char *str, ...);
 
-
-}
+#endif
