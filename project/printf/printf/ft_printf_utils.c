@@ -6,25 +6,43 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:41:26 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/24 15:26:31 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/25 22:06:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
-ft_putchar;
-ft_putchar_fd;
-ft_putstr;
-ft_putnbr;
-ft_putnbr_fd;
-
-void	ft_putchar_fd(char c, int fd)
+static void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 
-int	ft_putchar(char c)
+int	ft_printchar(char c)
 {
 	ft_putchar_fd(c, 1);
+	return (1);
+}
+
+int	ft_printstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+	{
+		write(1, "(NULL)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_printpercent(void)
+{
+	write(1, "%", 1);
 	return (1);
 }

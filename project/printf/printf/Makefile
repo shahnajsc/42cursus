@@ -8,7 +8,7 @@ OBJS	=	${SRCS:.c=.o}
 HEAD	=	.
 
 # Library name
-NAME	=	libft.a
+NAME	=	libftprintf.a
 
 # Default target
 all	:	${NAME}

@@ -1,5 +1,17 @@
-/.DS_Store
+# System files
+/.DS_Store 
+# vs files
 /.vscode
+# Executables files
+/.out
+# Lib files
+/.a
+# Temp files
+/.swp
+# Objrect files
+/.o
+
+# Folders
 /subject
 /eval
 project/libft/libft_git
