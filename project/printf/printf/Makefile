@@ -1,5 +1,5 @@
 # Source files
-SRCS	=	./ft_printf_utils.c		./ft_printf.c	\
+SRCS	=	./ft_printf_utils.c		./ft_printf.c		ft_print_num.c	\
 
 # Object files
 OBJS	=	${SRCS:.c=.o}

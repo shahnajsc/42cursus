@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/26 16:40:00 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:38:35 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,15 @@ void	test_c(void)
 	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
      lib_pf = 0;
 	ft_pf = 0;
-    printf("Testing: (\"\\t%%c %%c %%c \\n\", 1, 'A', '3')\n");
-	lib_pf += printf(" Lib\t:\t%c %c %c \n", 1, 'A', '3');
-	ft_pf += ft_printf("  Ft\t:\t%c %c %c \n", 1, 'A', '3');
+    printf("Testing: (\"\\t%%c %%c %%c \\n\", '1', '2', '3')\n");
+	lib_pf += printf(" Lib\t:\t%c %c %c \n", '1', '2', '3');
+	ft_pf += ft_printf("  Ft\t:\t%c %c %c \n", '1', '2', '3');
+	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
+	 lib_pf = 0;
+	ft_pf = 0;
+    printf("Testing: (\"\\t%%c %%c %%c \\n\", '2', '1', 0)\n");
+	lib_pf += printf(" Lib\t:\t%c %c %c \n", '2', '1', 0);
+	ft_pf += ft_printf("  Ft\t:\t%c %c %c \n", '2', '1', 0);
 	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
 }
 
@@ -77,8 +83,8 @@ int main()
 {
 	//test_simple_text();
     //test_percent();
-    //test_c();
+    test_c();
 
-	printf(" Lib %d\n", "a123456"); // undefined
-	ft_printf(" Ft %d\n", "a123456");
+	//printf(" Lib %d\n", "a123456"); // undefined
+	//ft_printf(" Ft %d\n", "a123456");
 }
