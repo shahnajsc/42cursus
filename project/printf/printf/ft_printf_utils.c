@@ -6,20 +6,15 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:41:26 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/25 22:06:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:07:36 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 
-static void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
 int	ft_printchar(char c)
 {
-	ft_putchar_fd(c, 1);
+	write(1, &c, 1);
 	return (1);
 }
 
