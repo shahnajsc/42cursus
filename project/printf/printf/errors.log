@@ -1,14 +1,14 @@
 For /Users/shahnaj/francinette/tests/printf/printfTester/tests/c_test.cpp:
-29: 	TEST(5, print(" %c %c %c ", '0', 0, '1'));
-31: 	TEST(7, print(" %c %c %c ", '1', '2', '3'));
-32: 	TEST(8, print(" %c %c %c ", '2', '1', 0));
+29: 	TEST(5, print(" %c %c %c ", '0', 0, '1')); // done
+31: 	TEST(7, print(" %c %c %c ", '1', '2', '3')); // done
+32: 	TEST(8, print(" %c %c %c ", '2', '1', 0)); // done
 
 For /Users/shahnaj/francinette/tests/printf/printfTester/tests/s_test.cpp:
-32: 	TEST(6, print(" %s %s ", "", "-"));
-33: 	TEST(7, print(" %s %s ", " - ", ""));
-34: 	TEST(8, print(" %s %s %s %s %s", " - ", "", "4", "", s2));
-35: 	TEST(9, print(" %s %s %s %s %s ", " - ", "", "4", "", "2 "));
-36: 	TEST(10, print(" NULL %s NULL ", NULL));
+32: 	TEST(6, print(" %s %s ", "", "-")); // done
+33: 	TEST(7, print(" %s %s ", " - ", "")); // done
+34: 	TEST(8, print(" %s %s %s %s %s", " - ", "", "4", "", s2)); // done
+35: 	TEST(9, print(" %s %s %s %s %s ", " - ", "", "4", "", "2 ")); // done
+36: 	TEST(10, print(" NULL %s NULL ", NULL)); // done
 
 For /Users/shahnaj/francinette/tests/printf/printfTester/tests/p_test.cpp:
 25: 	TEST(1, print(" %p ", -1));
@@ -22,7 +22,7 @@ For /Users/shahnaj/francinette/tests/printf/printfTester/tests/p_test.cpp:
 33: 	TEST(9, print(" %p %p ", 0, 0));
 
 For /Users/shahnaj/francinette/tests/printf/printfTester/tests/d_test.cpp:
-53: 	TEST(29, print(" %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+53: 	TEST(29, print(" %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42)); // done
 
 For /Users/shahnaj/francinette/tests/printf/printfTester/tests/i_test.cpp:
 25: 	TEST(1, print(" %i ", 0));
