@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/27 11:34:20 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:04:01 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,8 +151,8 @@ void test_d(void)
 	lib_pf = 0;
 	ft_pf = 0;
 	printf("Testing: (\"\\tThe number %%d is visible.\\n\", 5671)\n");
-	lib_pf += printf(" Lib\t:\tThe number %d is visible.\n", 5671);
-	ft_pf += ft_printf("  Ft\t:\tThe number %d is visible.\n", 5671);
+	lib_pf += printf(" Lib\t:\tThe number %d is visible.\n", 5671.345);
+	ft_pf += ft_printf("  Ft\t:\tThe number %d is visible.\n", 5671.345);
 	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
 	lib_pf = 0;
 	ft_pf = 0;
@@ -189,14 +189,8 @@ int main()
     //test_percent();
     //test_c();
 	//test_s();
-	//test_d();
-	int lib_pf, ft_pf;
-	lib_pf = 0;
-	ft_pf = 0;
-	printf("Testing: (\"\\t%%i\\n\", INT_MIN - INT_MIN)\n");
-	lib_pf += printf(" Lib\t:\t%i\n", INT_MIN - INT_MIN);
-	ft_pf += ft_printf("  Ft\t:\t%i\n", INT_MIN - INT_MIN);
-	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf); // d works fine i doesn't work
+	test_d();
+	
 	//printf(" Lib %d\n", "a123456"); // undefined
 	//ft_printf(" Ft %d\n", "a123456");
 	//printf("INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42\n");
