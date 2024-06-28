@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/27 15:04:01 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:41:02 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	test_simple_text(void)
 	lib_pf += printf(" Lib\t:\tHello!\n");
 	ft_pf += ft_printf(" Ft \t:\tHello!\n");
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
+	printf("\n_________________________________________\n");
 }
 
 void test_percent(void)
@@ -36,11 +37,12 @@ void test_percent(void)
 
 	lib_pf = 0;
 	ft_pf = 0;
-    printf("\n***********    TEST: percent%%   ***********\n\n");
+    printf("\n***********   TEST: percent(%%)  ***********\n\n");
 	printf("Testing: (\"\\t%%%%\\n\")\n");
 	lib_pf += printf(" Lib\t:\t%%\n");
 	ft_pf += ft_printf(" Ft \t:\t%%\n");
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
+	printf("\n_________________________________________\n");
 }
 
 void	test_c(void)
@@ -50,7 +52,7 @@ void	test_c(void)
 
 	lib_pf = 0;
 	ft_pf = 0;
-	printf("\n**************   TEST: 'C'  **************\n\n");
+	printf("\n**************   TEST: 'c'  **************\n\n");
 	printf("Testing: (\"\\t%%c\\n\", 'a')\n");
 	lib_pf += printf(" Lib\t:\t%c\n", 'a');
 	ft_pf += ft_printf("  Ft\t:\t%c\n", 'a');
@@ -79,6 +81,7 @@ void	test_c(void)
 	lib_pf += printf(" Lib\t:\t%c %c %c \n", '2', '1', 0);
 	ft_pf += ft_printf("  Ft\t:\t%c %c %c \n", '2', '1', 0);
 	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
+	printf("\n_________________________________________\n");
 }
 
 void test_s(void)
@@ -88,7 +91,7 @@ void test_s(void)
 
 	lib_pf = 0;
 	ft_pf = 0;
-	printf("\n**************   TEST: 'S'  **************\n\n");
+	printf("\n**************   TEST: 's'  **************\n\n");
 	printf("Testing: (\"\\t%%s\\n\", \"coucou, ca va?\")\n");
 	lib_pf += printf(" Lib\t:\t%s\n", "coucou, ca va?");
 	ft_pf += ft_printf("  Ft\t:\t%s\n", "coucou, ca va?");
@@ -136,6 +139,7 @@ void test_s(void)
 	lib_pf += printf(" Lib\t:\tNULL %s NULL\n", NULL);
 	ft_pf += ft_printf("  Ft\t:\tNULL %s NULL\n", NULL);
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
+	printf("\n_________________________________________\n");
 }
 
 void test_d(void)
@@ -143,7 +147,7 @@ void test_d(void)
 	int lib_pf, ft_pf;
 	lib_pf = 0;
 	ft_pf = 0;
-	printf("\n----------- TEST: 'd' -----------\n\n");
+	printf("\n**************   TEST: 'd'  **************\n\n");
 	printf("Testing: (\"\\t%%d\\n\", 42)\n");
 	lib_pf += printf(" Lib\t:\t%d\n", 42);
 	ft_pf += ft_printf("  Ft\t:\t%d\n", 42);
@@ -178,6 +182,7 @@ void test_d(void)
 	lib_pf += printf(" Lib\t:\t%d %d %d %d %d %d %d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 	ft_pf += ft_printf("  Ft\t:\t%d %d %d %d %d %d %d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
+	printf("\n_________________________________________\n");
 
 }
 
@@ -188,12 +193,22 @@ int main()
 	//test_simple_text();
     //test_percent();
     //test_c();
-	//test_s();
-	test_d();
-	
-	//printf(" Lib %d\n", "a123456"); // undefined
-	//ft_printf(" Ft %d\n", "a123456");
-	//printf("INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42\n");
-	//printf(" %d %d %d %d %d %d %d\n", 2147483647, -2147483648, 2147483647, -2147483648, 4294967295, 0, -42);
-	//ft_printf(" %d %d %d %d %d %d %d\n", 2147483647, -2147483648, 2147483647, -2147483648, 4294967295, 0, -42);
+	test_s();
+	//test_d();
+	/*int	len;
+	unsigned int n = 12345;
+
+	printf("%d\n", len);
+	len = 0;
+	printf("%d\n", len);
+	if (n <= 0) 
+		len++;
+	while (n)
+	{
+		n = n / 16;
+		len++;
+	}
+	printf("%d\n", len);
+	printf("sdfsdfsdg\n");
+	*/
 }
