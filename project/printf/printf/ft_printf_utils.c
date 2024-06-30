@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:41:26 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/26 11:07:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/29 23:36:21 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 
 int	ft_printchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	if (write(1, &c, 1) == -1)
+	{
+		return (-1);
+	}
+	else
+	{
+		return (1);
+	}
 }
 
 int	ft_printstr(char *str)
@@ -25,12 +31,18 @@ int	ft_printstr(char *str)
 	i = 0;
 	if (!str)
 	{
-		write(1, "(NULL)", 6);
+		if (write(1, "(null)", 6) == -1)
+		{
+			return (-1);
+		}
 		return (6);
 	}
 	while (str[i])
 	{
-		write(1, &str[i], 1);
+		if (write(1, &str[i], 1) == -1)
+		{
+			return (-1);
+		}
 		i++;
 	}
 	return (i);
@@ -38,6 +50,12 @@ int	ft_printstr(char *str)
 
 int	ft_printpercent(void)
 {
-	write(1, "%", 1);
-	return (1);
+	//write(1, "%", 1);
+	//return (1);
+	if (write(1, "%", 1) == -1)
+	{
+		return (-1);
+	}
+	else
+		return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:14 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/26 21:32:43 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/29 15:34:09 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int	ft_printnum(int n)
 	len = 0;
 	num = ft_itoa(n);
 	len = ft_printstr(num);
+	if (!num)
+	{
+		return (-1);
+		free(num);
+	}
 	free(num);
 	return (len);
 }

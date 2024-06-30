@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/28 12:41:02 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/06/30 10:46:37 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,12 @@ void test_s(void)
 	lib_pf = 0;
 	ft_pf = 0;
 	printf("Testing: (\"\\tNULL %%s NULL\", NULL)\n");
-	lib_pf += printf(" Lib\t:\tNULL %s NULL\n", NULL);
-	ft_pf += ft_printf("  Ft\t:\tNULL %s NULL\n", NULL);
+	//lib_pf += printf(" Lib\t:\tNULL %s NULL\n", NULL);
+	//ft_pf += ft_printf("  Ft\t:\tNULL %s NULL\n", NULL);
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
 	printf("\n_________________________________________\n");
 }
-
+/*
 void test_d(void)
 {
 	int lib_pf, ft_pf;
@@ -185,30 +185,12 @@ void test_d(void)
 	printf("\n_________________________________________\n");
 
 }
+*/
 
 
 int main()
 {
+	//int lib_pf, ft_pf;
 
-	//test_simple_text();
-    //test_percent();
-    //test_c();
-	test_s();
-	//test_d();
-	/*int	len;
-	unsigned int n = 12345;
-
-	printf("%d\n", len);
-	len = 0;
-	printf("%d\n", len);
-	if (n <= 0) 
-		len++;
-	while (n)
-	{
-		n = n / 16;
-		len++;
-	}
-	printf("%d\n", len);
-	printf("sdfsdfsdg\n");
-	*/
+	test_c();
 }
