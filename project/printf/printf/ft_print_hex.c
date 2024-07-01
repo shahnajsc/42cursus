@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:24:35 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/01 19:36:27 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:44:40 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,16 @@ int ft_print_hex(unsigned int n, const char format)
 {
     int print_len;
 
-    ft_get_hex(n, format);
-    print_len = ft_len_hex(n);
-    if (print_len == -1)
-        return (-1);
-    return (print_len);
+    print_len = 0;
+    if (n == 0)
+       return (ft_printchar('0'));
+    else
+    {
+        ft_get_hex(n, format);
+        print_len = ft_len_hex(n);
+        if (print_len == -1)
+            return (-1);
+        return (print_len);
+    }
+   
 }

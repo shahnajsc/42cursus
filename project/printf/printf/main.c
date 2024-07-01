@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/01 11:58:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:51:13 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,11 @@ int main()
 	printf("Test case: (\"\\t%%x\\n\", 101)\n");
 	lib_pf += printf(" Lib\t:\t%x\n", -10);
 	ft_pf += ft_printf("  Ft\t:\t%x\n", -10);
+	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
+	lib_pf = 0;
+	ft_pf = 0;
+	lib_pf += printf("%x%xx%x\n", 1, 2, -3);
+	ft_pf += ft_printf("%x%xx%x\n", 1, 2, -3);
 	printf("Printf = %d, ft_printf = %d\n\n", lib_pf, ft_pf);
 	printf("\n_________________________________________\n");
 
