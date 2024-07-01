@@ -6,29 +6,36 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:24:35 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/28 15:06:23 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:09:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int hex_len(unsigned int n)
+int ft_print_hex(unsigned int n, const char format)
 {
-    int len;
+    int print_len;
 
-    len = 0;
-    while (n)
+    print_len = 0;
+    if (n >= 16)
     {
-        len++;
+        print_len = ft_print_hex(n / 16, format);
+        if (print_len == -1)
+            return (-1);
+        print_len = ft_print_hex(n % 16, format);
+        if (print_len == -1)
+            return (-1);
     }
-    return (len);
-}
-
-
-
-int ft_print_hex(char *str)
-{
-    int hex;
-
-    hex = 0;
+    else
+    {
+        if (n <=9)
+            return (ft_printchar(n + '0'));
+        else
+        {
+            if (format == 'x')
+                return ((n - 10 + 'a'));
+            else if (format == 'X')
+                return ((n -10 + 'A'));
+        }
+    }
 }

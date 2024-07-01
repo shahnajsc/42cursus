@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:36:40 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/30 10:48:55 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:03:49 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ static	int ft_formats(va_list args, const char format)
 			print_len =  ft_printpercent();
 		else if (format == 'd' || format == 'i')
 			print_len = ft_printnum(va_arg(args, int));
+		else if (format == 'x')
+			print_len = ft_print_hex(va_arg(args, int), 'x');
+		else if (format == 'X')
+			print_len = ft_print_hex(va_arg(args, int), 'X');
 		if (print_len == -1)
 		{
 			return (-1);
@@ -34,30 +38,27 @@ static	int ft_formats(va_list args, const char format)
 
 int	ft_printf(const char *str, ...)
 {
-	int		i;
 	va_list	args;
-	int		print_length;
+	int		print_len;
 
-	i = 0;
-	print_length = 0;
+	print_len = 0;
 	va_start(args, str);
-	while (str[i])
+	while (*str)
 	{
-		if (str[i] == '%')
+		if (*str == '%')
 		{
-			print_length += ft_formats(args, str[i + 1]);
-			if (print_length == -1)
+			print_len += ft_formats(args, (*(++str)));
+			if (print_len == -1)
 				return (-1);
-			i++;
 		}
 		else
 		{
-			print_length += ft_printchar(str[i]);
-			if (print_length == -1)
+			print_len += ft_printchar(*str);
+			if (print_len == -1)
 				return (-1);
 		}
-		i++;
+		str++;
 	}
 	va_end(args);
-	return (print_length);
+	return (print_len);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:14 by shachowd          #+#    #+#             */
-/*   Updated: 2024/06/29 15:34:09 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:10:42 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	n_len(int n)
 	if (n <= 0) 
 		len++;
 	while (n)
-	{
+	{ 
 		n = n / 10;
 		len++;
 	}
