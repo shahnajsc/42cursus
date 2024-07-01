@@ -6,86 +6,59 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:24:35 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/01 12:47:34 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:36:27 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int	ft_putchar_fd(char c)
+
+int	ft_len_hex(unsigned	int num)
 {
-	return (write(1, &c, 1));
+	int	len;
+
+	len = 0;
+	while (num != 0)
+	{
+		len++;
+		num = num / 16;
+	}
+	return (len);
 }
 
-int	ft_error_w(int print_count, int write_return)
+void ft_get_hex(unsigned int n, const char format)
 {
-	if (print_count < 0 || write_return < 0)
-		return (-1);
-	else
-		return (print_count + write_return);
-}
-
-int ft_print_hex(unsigned int n, const char format)
-{
-  
-    int print_len;
-
-    print_len = 0;
     if (n >= 16)
     {
-        print_len = ft_print_hex(n / 16, format);
-        if (print_len == -1)
-            return (-1);
-        print_len = ft_print_hex(n % 16, format);
-        if (print_len == -1)
-            return (-1);
-        return (print_len);
+        ft_get_hex(n / 16, format);
+        ft_get_hex(n % 16, format);
     }
     else
     {
         if (n < 10)
         {
-            print_len = ft_printchar(n + '0');
-            return (print_len);
+            ft_printchar(n + '0');
         }
         else
         {
             if (format == 'x')
             {
-                print_len = ft_printchar(n - 10 + 'a');
-                return (print_len);
+                ft_printchar(n - 10 + 'a');
             }
-            else if (format == 'X')
+            if (format == 'X')
             {
-                print_len  = ft_printchar(n - 10 + 'A');
-                return (print_len);
+                ft_printchar(n - 10 + 'A');
             }
         }
-    } 
+    }
+}
 
-     /* int	p;
+int ft_print_hex(unsigned int n, const char format)
+{
+    int print_len;
 
-	p = 0;
-	if (n >= 16)
-	{
-		p = ft_error_w(p, ft_print_hex(n / 16, format));
-		if (p == -1)
-			return (-1);
-		p = ft_error_w(p, ft_print_hex(n % 16, format));
-		if (p == -1)
-			return (-1);
-		return (p);
-	}
-	else
-	{
-		if (n < 10)
-			return (ft_error_w(p, ft_putchar_fd(n + '0')));
-		else
-		{
-			if (format == 'X')
-				return (ft_error_w(p, ft_putchar_fd(n - 10 + 'A')));
-			else
-				return (ft_error_w(p, ft_putchar_fd(n - 10 + 'a')));
-		}
-	}
-   */
+    ft_get_hex(n, format);
+    print_len = ft_len_hex(n);
+    if (print_len == -1)
+        return (-1);
+    return (print_len);
 }
