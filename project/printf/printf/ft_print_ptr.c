@@ -6,13 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:24:33 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/03 15:14:04 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:46:32 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int  ft_len_ptr(uintptr_t ptr)
+static int  ft_len_ptr(unsigned int ptr)
 {
     int     len;
 
@@ -25,7 +25,7 @@ static int  ft_len_ptr(uintptr_t ptr)
     return (len);
 }
 
-static void  ft_get_ptr(uintptr_t ptr)
+static void  ft_get_ptr(unsigned int ptr)
 {
     if (ptr >= 16)
     {
@@ -45,24 +45,22 @@ static void  ft_get_ptr(uintptr_t ptr)
     }
 }
 
-int ft_print_ptr(unsigned long long ptr)
+int ft_print_ptr(unsigned long ptr)
 {
     int print_len;
 
     print_len = 0;
-    print_len += ft_printstr("0x");
     if (ptr == 0)
     {
-        print_len += ft_printchar('0');
-    }
-    else
-    {
-        ft_get_ptr(ptr);
-        print_len += ft_len_ptr(ptr);
+        print_len += ft_printstr(NULLPTR);
         if (print_len == -1)
             return (-1);
+        return (print_len);
     }
+    print_len += ft_printstr("0x");
+    ft_get_ptr(ptr);
+    print_len += ft_len_ptr(ptr);
+    if (print_len == -1)
+        return (-1);
     return (print_len);
-
-
 }
