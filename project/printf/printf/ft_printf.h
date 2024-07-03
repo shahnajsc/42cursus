@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:38:21 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/01 21:03:30 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:02:26 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_printpercent(void);
 int	ft_printstr(char *str);
 int	ft_printnum(int n);
 int	ft_print_unsigned(int nbr);
+int ft_print_ptr(unsigned long long ptr);
 int ft_print_hex(unsigned int n, const char format);
 int	ft_printf(const char *str, ...);
 

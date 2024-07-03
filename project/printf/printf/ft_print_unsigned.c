@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 20:56:18 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/03 10:40:39 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:30:37 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,18 @@ int	ft_print_unsigned(int nbr)
 	len = 0;
 	if (nbr == 0)
 	{
-		len += ft_printchar('0');
-		 if (len == -1)
-        	return (-1);
+		len = ft_printchar('0');
+		//len += ft_printchar('0');
 	}
 	num = ft_uitoa(nbr);
-    if (!num)
+	/*if (!num)
 	{
 		return (-1);
 		free(num);
-	}
+	}*/
 	len += ft_printstr(num);
-    if (len == -1)
-        return (-1);
+    /*if (len == -1)
+        return (-1);*/
 	free(num);
 	return (len);
 }
