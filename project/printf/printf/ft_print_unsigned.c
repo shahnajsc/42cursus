@@ -6,18 +6,18 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 20:56:18 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/01 21:06:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:40:39 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_num_len(int nbr)
+static int	ft_num_len(unsigned int nbr)
 {
 	int	len;
 
 	len = 0;
-	while (nbr)
+	while (nbr != 0)
 	{ 
 		nbr = nbr / 10;
 		len++;
@@ -34,7 +34,7 @@ static char	*ft_uitoa(unsigned int nbr)
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 	{
-		return (NULL);
+		return (0);
 	}
 	str[len--] = '\0';
 	while (len >= 0)
@@ -52,13 +52,21 @@ int	ft_print_unsigned(int nbr)
 	char	*num;
 
 	len = 0;
+	if (nbr == 0)
+	{
+		len += ft_printchar('0');
+		 if (len == -1)
+        	return (-1);
+	}
 	num = ft_uitoa(nbr);
-	len = ft_printstr(num);
-	if (!num)
+    if (!num)
 	{
 		return (-1);
 		free(num);
 	}
+	len += ft_printstr(num);
+    if (len == -1)
+        return (-1);
 	free(num);
 	return (len);
 }
