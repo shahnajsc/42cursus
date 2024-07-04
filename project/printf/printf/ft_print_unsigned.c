@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 20:56:18 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/03 11:30:37 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/04 07:38:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*ft_uitoa(unsigned int nbr)
 	return (str);
 }
 
-int	ft_print_unsigned(int nbr)
+int	ft_print_unsigned(unsigned int nbr)
 {
 	int		len;
 	char	*num;

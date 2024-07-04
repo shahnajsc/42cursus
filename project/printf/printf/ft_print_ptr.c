@@ -6,13 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:24:33 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/03 20:46:32 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/03 21:11:51 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int  ft_len_ptr(unsigned int ptr)
+static int  ft_len_ptr(uintptr_t ptr)
 {
     int     len;
 
@@ -25,7 +25,7 @@ static int  ft_len_ptr(unsigned int ptr)
     return (len);
 }
 
-static void  ft_get_ptr(unsigned int ptr)
+static void  ft_get_ptr(uintptr_t ptr)
 {
     if (ptr >= 16)
     {
@@ -45,7 +45,7 @@ static void  ft_get_ptr(unsigned int ptr)
     }
 }
 
-int ft_print_ptr(unsigned long ptr)
+int ft_print_ptr(unsigned long long ptr)
 {
     int print_len;
 

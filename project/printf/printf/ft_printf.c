@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:36:40 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/03 14:04:05 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/04 07:38:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static	int ft_formats(va_list args, const char format)
 		else if (format == 'd' || format == 'i')
 			print_len = ft_printnum(va_arg(args, int));
 		else if (format == 'p')
-			print_len = ft_print_ptr(va_arg(args, int));
+			print_len = ft_print_ptr(va_arg(args, unsigned long long));
 		else if (format == 'u')
-			print_len = ft_print_unsigned(va_arg(args, int));
+			print_len = ft_print_unsigned(va_arg(args, unsigned int));
 		else if (format == 'x')
-			print_len = ft_print_hex(va_arg(args, int), 'x');
+			print_len = ft_print_hex(va_arg(args, unsigned int), 'x');
 		else if (format == 'X')
-			print_len = ft_print_hex(va_arg(args, int), 'X');
+			print_len = ft_print_hex(va_arg(args, unsigned int), 'X');
 		if (print_len == -1)
 		{
 			return (-1);
