@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:36:40 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/04 07:38:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:37:40 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static	int ft_formats(va_list args, const char format)
 		else if (format == 's')
 			print_len = ft_printstr(va_arg(args, char *));
 		else if (format == '%')
-			print_len =  ft_printpercent();
+			print_len = write(1, "%", 1);
+			//print_len =  ft_printpercent();
 		else if (format == 'd' || format == 'i')
 			print_len = ft_printnum(va_arg(args, int));
 		else if (format == 'p')

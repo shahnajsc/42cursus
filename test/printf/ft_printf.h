@@ -5,34 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 09:38:21 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/04 15:08:15 by shachowd         ###   ########.fr       */
+/*   Created: 2024/07/04 15:49:13 by shachowd          #+#    #+#             */
+/*   Updated: 2024/07/04 15:49:36 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# include <stdarg.h>
 # include <unistd.h>
-# include <stdlib.h>
-# include <stddef.h>
+# include <stdarg.h>
 
-# if defined(__linux__)
-#  define NULLPTR "(nil)"
-# elif defined(__APPLE__)
-#  define NULLPTR "0x0"
-# else
-#  define NULLPTR "Unknown"
-# endif
+# define HEXBASEL "0123456789abcdef"
+# define HEXBASEH "0123456789ABCDEF"
 
-int	ft_printchar(char c);
-int	ft_printpercent(void);
-int	ft_printstr(char *str);
-int	ft_printnum(int n);
-int	ft_print_unsigned(unsigned int nbr);
-int ft_print_ptr(unsigned long long ptr);
-int ft_print_hex(unsigned int n, const char format);
-int	ft_printf(const char *str, ...);
+int		ft_putchar(int c);
+int		ft_printf(const char *str, ...);
+int		ft_putstr(char *str);
+size_t	str_length(char *str);
+int		ft_putpoint(void *str);
+int		ft_putnbr(int n);
+int		ft_putnum_unsign(unsigned int n);
+int		ft_puthex(int nbr, char *str);
 
 #endif
