@@ -19,6 +19,7 @@ project/libft/libft_check
 project/Born2beRoot
 /project/get_next_line/test
 /project/get_next_line/get_next_line/.DS_Store
-/project/printf/printf/printfTester
-/project/printf/ft_printf_test
-/project/printf/printf-unit-test
+/project/printf/tester/printfTester
+/project/printf/tester/ft_printf_test
+/project/printf/tester/printf-unit-test
+/project/printf/tester/ft_printfTest
