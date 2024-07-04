@@ -6,14 +6,14 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/04 15:27:51 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:41:17 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
-
+/*
 
 void	test_simple_text(void)
 {
@@ -141,7 +141,7 @@ void test_s(void)
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
 	printf("\n_________________________________________\n");
 }
-/*
+
 void test_d(void)
 {
 	int lib_pf, ft_pf;
@@ -220,6 +220,17 @@ int main()
 	printf("\n_________________________________________\n");
 
 	printf("\n_________________________________________\n"); */
+
+	ft_printf("\n------------------------------------------------------------\n");
+	ft_printf("For %%: \n");
+	ft_printf("Return len when only one percent sign(ft): %d\n", ft_printf("%"));
+	printf("Return len when only one percent sign: %d\n", printf("%"));
+	ft_printf(". Return len when have two percent sign(ft): %d\n", ft_printf("%%"));
+	printf(". Return len when have two percent sign: %d\n", printf("%%"));
+	ft_printf(". Return len when have three percent sign(ft): %d\n", ft_printf("%%%"));
+	printf(". Return len when have three percent sign: %d\n", printf("%%%"));
+	ft_printf(". Return len when have four percent sign(ft): %d\n", ft_printf("%%%%"));
+	printf(". Return len when have four percent sign: %d\n", printf("%%%%"));
 
 	ft_printf("ft: %\n");
     printf("ori: %\n");
