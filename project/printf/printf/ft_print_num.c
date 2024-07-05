@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:56:14 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/01 11:10:42 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/05 10:22:32 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static char	*ft_itoa(int n)
 	return (str);
 }
 
-int	ft_printnum(int n)
+int	ft_print_num(int n)
 {
 	int		len;
 	char	*num;

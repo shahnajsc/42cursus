@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:38:21 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/04 09:41:29 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:32:40 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 #  define NULLPTR "Unknown"
 # endif
 
-int	ft_printchar(char c);
-int	ft_printpercent(void);
-int	ft_printstr(char *str);
-int	ft_printnum(int n);
-int	ft_print_unsigned(unsigned int nbr);
+int	ft_print_char(char c);
+int	ft_print_percent(void);
+int	ft_print_str(char *str);
+int	ft_print_nbr(int n);
+int	ft_print_unsign(unsigned int nbr);
 int ft_print_ptr(unsigned long long ptr);
 int ft_print_hex(unsigned int n, const char format);
 int	ft_printf(const char *str, ...);

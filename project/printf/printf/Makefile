@@ -1,5 +1,7 @@
 # Source files
-SRCS	=	./ft_printf.c	./ft_printf_utils.c		./ft_print_hex.c	./ft_print_unsigned.c 	./ft_print_ptr.c 	./ft_print_num.c	\
+SRCS	=	./ft_printf.c	./ft_print_utils.c 	./ft_print_str.c \
+			./ft_print_ptr.c	./ft_print_nbr.c	./ft_print_unsign.c \
+			./ft_print_hex.c \
 
 # Object files
 OBJS	=	${SRCS:.c=.o}

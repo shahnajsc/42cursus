@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:24:35 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/01 19:44:40 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:45:12 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ void ft_get_hex(unsigned int n, const char format)
     {
         if (n < 10)
         {
-            ft_printchar(n + '0');
+            ft_print_char(n + '0');
         }
         else
         {
             if (format == 'x')
             {
-                ft_printchar(n - 10 + 'a');
+                ft_print_char(n - 10 + 'a');
             }
             if (format == 'X')
             {
-                ft_printchar(n - 10 + 'A');
+                ft_print_char(n - 10 + 'A');
             }
         }
     }
@@ -58,7 +58,7 @@ int ft_print_hex(unsigned int n, const char format)
 
     print_len = 0;
     if (n == 0)
-       return (ft_printchar('0'));
+       return (ft_print_char('0'));
     else
     {
         ft_get_hex(n, format);
