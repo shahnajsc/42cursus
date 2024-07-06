@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/04 11:41:28 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/06 11:12:38 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include <string.h>
 #include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "ft_printf.h"
 
 
 void	test_simple_text(void)
@@ -141,7 +144,7 @@ void test_s(void)
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
 	printf("\n_________________________________________\n");
 }
-/*
+
 void test_d(void)
 {
 	int lib_pf, ft_pf;
@@ -185,11 +188,12 @@ void test_d(void)
 	printf("\n_________________________________________\n");
 
 }
-*/
 
 
-int main()
-{
+
+//int main()
+//{
+	//test_d();
 	/*int lib_pf, ft_pf;
 
 	lib_pf = 0;
@@ -220,7 +224,7 @@ int main()
 
 	printf("\n_________________________________________\n");
 	*/
-	ft_printf("%5%\nttt");
-	printf("%5%\n");
+	//ft_printf("%5%\nttt");
+	//printf("%5%\n");
 
-}
+

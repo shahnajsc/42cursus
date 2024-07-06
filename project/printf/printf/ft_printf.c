@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:36:40 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/05 12:43:13 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/06 12:03:41 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static	int ft_check_format(va_list args, const char format)
 
 int	ft_printf(const char *str, ...)
 {
+	
 	va_list	args;
 	int		p_len;
 
