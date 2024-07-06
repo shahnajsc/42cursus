@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:18:53 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/05 12:29:55 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:38:19 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ int ft_print_unsign(unsigned int nbr)
 		p_len = ft_print_unsign(nbr / 10);
         if (p_len == -1)
             return (-1);
+        nbr = nbr % 10;
 	}
     if (nbr <= 9)
     {
-        if (ft_print_char((nbr % 10 + '0')) == -1)
+        if (ft_print_char((nbr + '0')) == -1)
             return (-1);
         p_len++;
     }

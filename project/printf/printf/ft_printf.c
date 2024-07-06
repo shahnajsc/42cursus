@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:36:40 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/06 12:03:41 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/06 22:50:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ static	int ft_check_format(va_list args, const char format)
 			p_len = ft_print_nbr(va_arg(args, int));
 		else if (format == 'u')
 			p_len = ft_print_unsign(va_arg(args, unsigned int));
-		else if (format == 'x' || format == 'X')
-			p_len = ft_print_hex(va_arg(args, unsigned int), format);
+		else if (format == 'x')
+			p_len = ft_print_hex(va_arg(args, unsigned int), HEX_LOWER);
+		else if (format == 'X')
+			p_len = ft_print_hex(va_arg(args, unsigned int), HEX_UPPER);
 		else if (format == '%')
 			p_len =  ft_print_percent();
 		if (p_len == -1)

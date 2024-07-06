@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:32:39 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/06 12:08:40 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/06 22:42:17 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int ft_print_nbr(int nbr)
         nbr = nbr * -1;
         if (ft_print_char('-') == -1)
             return (-1);
-        //p_len++;
+        p_len++;
 	}
 	if (nbr >= 10)
 	{
