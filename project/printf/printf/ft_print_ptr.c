@@ -67,24 +67,23 @@ int ft_print_ptr(unsigned long long ptr)
 }
 */
 
-int ft_print_ptr(unsigned long long ptr)
+int	ft_print_ptr(unsigned long long ptr)
 {
-    int p_len;
+	int	p_len;
 
-    p_len = 0;
-
-    if (ptr == 0)
-    {
-        p_len = ft_print_str(PTR_NULL);
-        if (p_len == -1)
-            return (-1);
-        return (p_len);
-    }
-    p_len += ft_print_str("0x");
-    if (p_len == -1)
-        return (-1);
-    p_len += ft_print_hex(ptr, HEX_LOWER);
-    if (p_len == -1)
-        return (-1);
-    return (p_len);
+	p_len = 0;
+	if (ptr == 0)
+	{
+		p_len = ft_print_str(PTR_NULL);
+		if (p_len == -1)
+			return (-1);
+		return (p_len);
+	}
+	p_len += ft_print_str("0x");
+	if (p_len == -1)
+		return (-1);
+	p_len += ft_print_hex(ptr, HEX_LOWER);
+	if (p_len == -1)
+		return (-1);
+	return (p_len);
 }

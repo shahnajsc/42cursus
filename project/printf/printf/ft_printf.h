@@ -35,8 +35,8 @@ int	ft_print_percent(void);
 int	ft_print_str(char *str);
 int	ft_print_nbr(int n);
 int	ft_print_unsign(unsigned int nbr);
-int ft_print_ptr(unsigned long long ptr);
-int ft_print_hex(unsigned long n, char *strhex);
+int	ft_print_ptr(unsigned long long ptr);
+int	ft_print_hex(unsigned long n, char *strhex);
 int	ft_printf(const char *str, ...);
 
 #endif
