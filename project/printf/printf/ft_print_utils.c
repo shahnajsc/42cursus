@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:20:51 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/05 10:25:06 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/07 16:00:12 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,13 @@ int	ft_print_percent(void)
 		return (-1);
 	}
 	return (1);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s && *s != (char)c)
+		s++;
+	if (*s == (char )c)
+		return ((char *)s);
+	return (0);
 }

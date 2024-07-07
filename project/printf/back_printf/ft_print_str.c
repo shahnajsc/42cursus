@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 13:24:33 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/07 15:36:04 by shachowd         ###   ########.fr       */
+/*   Created: 2024/07/05 10:17:00 by shachowd          #+#    #+#             */
+/*   Updated: 2024/07/05 10:21:25 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(unsigned long long ptr)
+int	ft_print_str(char *str)
 {
-	int	p_len;
+	int	count;
 
-	p_len = 0;
-	if (ptr == 0)
+	count = 0;
+	if (!str)
 	{
-		p_len = ft_print_str(PTR_NULL);
-		if (p_len == -1)
+		if (write(1, "(null)", 6) != 6)
+		{
 			return (-1);
-		return (p_len);
+		}
+		return (6);
 	}
-	p_len += ft_print_str("0x");
-	if (p_len == -1)
-		return (-1);
-	p_len += ft_print_hex(ptr, HEX_LOWER);
-	if (p_len == -1)
-		return (-1);
-	return (p_len);
+	while (str[count])
+	{
+		if (write(1, &str[count], 1) != 1)
+		{
+			return (-1);
+		}
+		count++;
+	}
+	return (count);
 }

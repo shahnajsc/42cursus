@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:38:21 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/07 16:25:35 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/07 15:03:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@
 # define HEX_LOWER "0123456789abcdef"
 # define HEX_UPPER "0123456789ABCDEF"
 
-int		ft_print_char(char c);
-int		ft_print_percent(void);
-int		ft_print_str(char *str);
-int		ft_print_nbr(int n);
-int		ft_print_unsign(unsigned int nbr);
-int		ft_print_ptr(unsigned long long ptr);
-char	*ft_strchr(const char *s, int c);
-int		ft_print_hex(unsigned long n, char *strhex);
-int		ft_printf(const char *str, ...);
+char    *ft_strchr(const char *s, int c);
+int     ft_print_char(char c);
+int	    ft_print_percent(void);
+int	    ft_print_str(char *str);
+int	    ft_print_nbr(int n);
+int	    ft_print_unsign(unsigned int nbr);
+int	    ft_print_ptr(unsigned long long ptr);
+int	    ft_print_hex(unsigned long n, char *strhex);
+int	    ft_printf(const char *str, ...);
 
 #endif

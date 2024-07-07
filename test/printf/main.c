@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/04 16:41:17 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/07 12:56:30 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,13 +232,13 @@ int main()
 	ft_printf(". Return len when have four percent sign(ft): %d\n", ft_printf("%%%%"));
 	printf(". Return len when have four percent sign: %d\n", printf("%%%%"));
 
-	ft_printf("ft: %\n");
-    printf("ori: %\n");
-    ft_printf("ft: %%\n");
-    printf("ori: %%\n");
-    ft_printf("ft: %%%\n");
-    printf("ori: %%%\n");
-    ft_printf("ft: %%%%\n");
-    printf("ori: %%%%\n");
+	ft_printf("\nft: %\n");
+    printf("\nori: %\n");
+    ft_printf("\nft: %%\n");
+    printf("\nori: %%\n");
+    ft_printf("\nft: %%%\n");
+    printf("\nori: %%%\n");
+    ft_printf("\nft: %%%%\n");
+    printf("\nori: %%%%\n");
 
 }

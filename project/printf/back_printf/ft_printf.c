@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:36:40 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/07 15:57:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/07 15:31:12 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_check_format(va_list args, const char format)
 {
 	if (format == 'c')
-		return (ft_print_char(va_arg(args, int)));
+		return(ft_print_char(va_arg(args, int)));
 	else if (format == 's')
 		return (ft_print_str(va_arg(args, char *)));
 	else if (format == 'p')
@@ -29,7 +29,7 @@ static int	ft_check_format(va_list args, const char format)
 	else if (format == 'X')
 		return (ft_print_hex(va_arg(args, unsigned int), HEX_UPPER));
 	else if (format == '%')
-		return (ft_print_percent());
+		return (ft_print_char('%'));
 	else
 		return (-1);
 }
