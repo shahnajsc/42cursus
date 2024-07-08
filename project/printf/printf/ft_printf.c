@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:36:40 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/07 15:57:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:43:07 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_check_format(va_list args, const char format)
 	else if (format == 's')
 		return (ft_print_str(va_arg(args, char *)));
 	else if (format == 'p')
-		return (ft_print_ptr(va_arg(args, unsigned long long)));
+		return (ft_print_ptr(va_arg(args, unsigned long)));
 	else if (format == 'd' || format == 'i')
 		return (ft_print_nbr(va_arg(args, int)));
 	else if (format == 'u')
@@ -42,6 +42,10 @@ int	ft_printf(const char *str, ...)
 
 	p_len = 0;
 	va_start(args, str);
+	if (!str)
+	{
+		return (-1);
+	}
 	while (*str)
 	{
 		if (*str == '%' && ft_strchr("cspdiuxX%", *(str + 1)))
@@ -56,3 +60,26 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (p_len);
 }
+
+
+
+
+
+
+
+
+// #include <stdio.h>
+// #include <unistd.h>
+// #include "ft_printf.h"
+
+// int main()
+// {
+//     //printf("write: %d\n", write(1, "%", 1));
+//     //printf("\nprintf: %d\n", printf("%"));
+//    // printf("\nprintf: %d\n", printf("%%"));
+//    // printf("\nprintf: %d\n", printf("%%%"));
+//    // printf("abcd \n");
+//     //printf(NULL);
+//     //ft_printf("abcd \n");
+//     //ft_printf(NULL);
+// }

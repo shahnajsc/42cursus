@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/07 12:35:30 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:28:12 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,8 @@ void test_s(void)
 	lib_pf = 0;
 	ft_pf = 0;
 	printf("Test case: (\"\\tNULL %%s NULL\", NULL)\n");
-	//lib_pf += printf(" Lib\t:\tNULL %s NULL\n", NULL);
-	//ft_pf += ft_printf("  Ft\t:\tNULL %s NULL\n", NULL);
+	lib_pf += printf(" Lib\t:\tNULL %s NULL\n", NULL);
+	ft_pf += ft_printf("  Ft\t:\tNULL %s NULL\n", NULL);
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
 	printf("\n_________________________________________\n");
 }

@@ -6,13 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:24:33 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/07 15:36:04 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:05:29 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(unsigned long long ptr)
+int	ft_print_ptr(unsigned long ptr)
 {
 	int	p_len;
 
