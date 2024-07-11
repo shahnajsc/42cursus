@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:38:21 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/08 16:34:12 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/08 17:40:41 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-
 
 # if defined(__linux__)
 #  define PTR_NULL "(nil)"

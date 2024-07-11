@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c                                            :+:      :+:    :+:   */
+/*   test_case.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:30:10 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/08 15:40:20 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/08 19:45:11 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void	test_simple_text(void)
 	printf("Test case: (\"\\tHello!\\n\")\n");
 	lib_pf += printf(" Lib\t:\tHello!\n");
 	ft_pf += ft_printf(" Ft \t:\tHello!\n");
+	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
+
+	lib_pf = 0;
+	ft_pf = 0;
+	printf("Test case: (NULL)\n");
+	lib_pf += printf(NULL);
+	ft_pf += ft_printf(NULL);
 	printf("Lib count:  %d, FT count:  %d\n\n", lib_pf, ft_pf);
 	printf("\n_________________________________________\n");
 }
@@ -470,5 +477,6 @@ int main()
 	test_x();
 	test_X();
 	test_random();
+	
 	
 }
