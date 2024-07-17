@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:37:49 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/20 11:10:03 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:09:43 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,29 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	char	*ptrdst;
 	char	*ptrsrc;
+	int		count;
 
 	if (!dst && !src)
-		return (dst);
+		return (NULL);
 	if (dst == src)
 		return (dst);
 	ptrdst = (char *)dst;
 	ptrsrc = (char *)src;
+	count = 0;
 	if (ptrdst > ptrsrc)
 	{
 		while (n--)
-		{
 			ptrdst[n] = ptrsrc[n];
-		}
 	}
 	else
 	{
 		while (n--)
 		{
-			*ptrdst++ = *ptrsrc++;
+			ptrdst[count] = ptrsrc[count];
+			count++;
 		}
 	}
-	return (dst);
+	return (dst); 
 }
 /*
 	- It copies 'len' bytes from string 'src' to 'dst'.

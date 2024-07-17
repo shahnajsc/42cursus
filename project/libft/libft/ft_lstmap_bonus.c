@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 15:19:42 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/16 16:49:49 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:59:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&new_list, (*del));
 			return (new_list);
 		}
-		ft_lstadd_back(&new_list, new_node);
 		lst = lst->next;
+		ft_lstadd_back(&new_list, new_node);
 	}
 	return (new_list);
 }
