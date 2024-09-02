@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/08/22 17:53:00 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/08/29 09:51:31 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ int pipex()
 
 int main(int argc, char **argv, char **envp)
 {
-	int status;
+	int pip_stat;
 	
 	if (argc != 5)
 	{
 		printf("Wrong command format\nCorrect format: \"infile cmd1 cmd2 outfile\"\n");
-		return (1);
+		return (1); // need to return actual error number ****
 	}
 	else
 	{
-		status = pipex();
-		printf("\nstatus print: %d\n", status);
+		pip_stat = pipex();
+		printf("\nstatus print: %d\n", pip_stat); // remove before submission 
 	}
     return 0;
 	
