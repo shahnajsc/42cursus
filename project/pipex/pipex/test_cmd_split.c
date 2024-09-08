@@ -13,28 +13,15 @@ int ft_is_all_white_spaces(char *s)
     i = 0;
     while (s[i] != '\0')
     {
-        if (*s != 32 && (*s < 9 || *s > 13))
-            return (0);
+        //if (*s != 32 && (*s < 9 || *s > 13))
+       if (s[i] != 32 && (s[i] < 9 || s[i] > 13))
+		    return (0);
         i++;
     }
     return (1);
 }
 
-int	skip_quotes(char *str, int i)
-{
-	char	quote;
 
-	quote = str[i];
-	i++;
-	while (str[i] && str[i] != quote)
-		i++;
-	if (str[i] != quote)
-	{
-		printf("pipex: Missing %c\n", quote);
-		exit (1);
-	}
-	return (i);
-}
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	count;
@@ -74,6 +61,21 @@ int	skip_word(char *str, int i)
 			i += 2;
 		else
 			i++;
+	}
+	return (i);
+}
+int	skip_quotes(char *str, int i)
+{
+	char	quote;
+
+	quote = str[i];
+	i++;
+	while (str[i] && str[i] != quote)
+		i++;
+	if (str[i] != quote)
+	{
+		printf("pipex: Missing %c\n", quote);
+		exit (1);
 	}
 	return (i);
 }
@@ -128,6 +130,13 @@ static char	*extract_word(char *command, int len)
 		}
 	}
 	word[j] = '\0';
+	int c;
+	c = 0;
+	while (word[c] != '\0')
+	{
+		c++;
+	}
+	printf("from subsub %d\n", c);
 	return (word);
 }
 
@@ -144,8 +153,13 @@ static char	**split_word(char *command, char **array, int words, int order)
 		i = 0;
 		quote_char = *command;
 		if (*command == 39 || *command == 34)
-			while (command[++i] != quote_char)
-				;
+		// {
+        //     i = skip_quotes(command, 0) + 1;
+        // }
+		{
+			//while (command[++i] != quote_char)
+			i = skip_quotes(command, 0) + 1;
+		}		
 		else
 			i = skip_word(command, 0);
 		array[order] = extract_word(command, i);
@@ -196,3 +210,6 @@ int main(int argc, char **argv)
     }
     printf("\n");
 }
+
+// ./a.out '"""" lsaa """" aa bbbb''''bb  ' worked fine
+// ./a.out """"" lsaa """" aa bbbb''''bb  " segfault 
