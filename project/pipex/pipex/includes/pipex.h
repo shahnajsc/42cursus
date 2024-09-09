@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:54:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/05 10:57:27 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/09 09:51:49 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int     redirect_fd(int infd, int outfd);
 int     pipex(t_pipex *data);
 
 // error handle function
+int     error_return(char *type, char *msg, int ret_value);
 
 #endif
