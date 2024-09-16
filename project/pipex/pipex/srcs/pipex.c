@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/03 19:48:46 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/16 19:09:31 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,27 @@
 #include <string.h>
 #include <sys/wait.h>
 
-void first_process(t_pipex *data, int infd, int outfd)
+static void first_process(t_pipex *data, int infd, int outfd)
 {
 		close(data->fd[0]);
 		redirect_fd(infd, outfd);
+		close(data->fd[1]);
 		execve_init(data, data->argv[2]);
 		//error handle
 }
 
 //int middle_process()
 
-void last_process(t_pipex *data, int infd, int outfd)
+static void last_process(t_pipex *data, int infd, int outfd)
 {
 		close(data->fd[1]);
 		redirect_fd(infd, outfd);
+		close(data->fd[0]);
 		execve_init(data, data->argv[4]);
 		// error handle
 }
 
-void handle_proces(t_pipex *data, int i)
+static void handle_proces(t_pipex *data, int i)
 {
 	int infd;
 	int outfd;
@@ -51,15 +53,14 @@ void handle_proces(t_pipex *data, int i)
 		outfd = get_file_fd(1, data->argv[4]);	
 		last_process(data, infd, outfd);	
 	}
-	//exit(EXIT_SUCCESS);
+	close_fds(data->fd);
+	exit(EXIT_SUCCESS);
 }
 
 int pipex(t_pipex *data)
 {
-	
-	//int fd[2];
 	pid_t p_id[2];
-	int pip_stat;
+	int pipe_status;
 	int i;
 
 	pipe_init(data->fd);
@@ -68,16 +69,17 @@ int pipex(t_pipex *data)
 	{
 		p_id[i] = fork();
 		if (p_id[i] == -1)
-			return (1); // set error id for 'fork' error
+			error_return(NULL, 1); // set error id for 'fork' error
 		if (p_id[i] == 0)
 			handle_proces(data, i);
 		i++;
 	}
+	close_fds(data->fd);
 	i = 0;
-	while((++i) < 2)
+	while(i < 2)
 	{
-		pip_stat = 0; //pid_wait(p_id[i]);
+		pipe_status = wait_process(p_id[i]);
 		i++;
 	}
-	return(pip_stat);
+	return(pipe_status);
 }

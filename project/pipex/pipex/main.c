@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:19:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/03 17:32:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:48:08 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 
 void data_init(t_pipex *data, int argc, char **argv, char **envp)
 {
-    data->argc = argc;
-    data->argv = argv;
-    data->envp = envp;
+    data->argc         = argc;
+    data->argv         = argv;
+    data->envp         = envp;
+    data->envp_paths   = NULL;
+    data->splitted_cmd = NULL;
 }
 
 int main(int argc, char **argv, char **envp)
@@ -36,5 +38,5 @@ int main(int argc, char **argv, char **envp)
     data_init(&data, argc, argv, envp);
 	pip_status = pipex(&data);
     //fd or pipe close?? ***
-    return(pip_status);
+    return(pip_status); // exit
 }

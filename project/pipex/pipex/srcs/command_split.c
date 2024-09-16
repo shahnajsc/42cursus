@@ -6,11 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:25:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/09 17:26:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:59:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "pipex.h"
+#include "pipex.h"
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <stdio.h>
@@ -18,58 +18,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
-
-char *quoted_word(char *cmd)
-{
-	char value;
-
-	value = *(cmd - 1);
-	printf("begin frm q_qord %s\n", cmd);
-	while (*cmd && *cmd != 34)
-		cmd++;
-	printf("frm q_qord after increase %s\n", cmd);
-	if (*cmd != value || *cmd == '\0') // ((cmd[i] && cmd[i] != value) || cmd[i] == '\0')
-	{
-					//error_return("cmd_split", "cmd", 1);
-		printf("\nquootes missing\n");
-		exit(1);
-	}
-	//char value;
-
-	// while (cmd[index] != '\0')
-	// {
-	// 	while (cmd[index] && cmd[index] != value)
-	// 		index++;
-	// 	if (cmd[index] != value || cmd[index] == '\0') // ((cmd[i] && cmd[i] != value) || cmd[i] == '\0')
-	// 	{
-	// 		//error_return("cmd_split", "cmd", 1);
-	// 		printf("\nquootes missing\n");
-	// 		exit(1);
-	// 	}
-	// 	else
-	// 		index++;				
-	// }
-	return (cmd);
-}
-
-char *normal_word(char *cmd)
-{
-	printf("begin n_word %s\n", cmd);
-	if (*cmd && *cmd != 34 && *cmd != 39 && *cmd == 92 )
-		cmd = cmd+2;
-	printf("n_word %s\n", cmd);
-	while (*cmd && *cmd != 34 && *cmd != 39 && *cmd != 32)
-		cmd++;
-	// while (cmd[index] && cmd[index] != 34 && cmd[index] != 39 && cmd[index] != 32)
-	// {
-	// 	if (cmd[index] && cmd[index] != 34 && cmd[index] != 39 && cmd[index] == 92 )
-	// 		index = index+2;
-	// 	else
-	// 		index++;
-	// }
-	return (cmd);
-}
-
+	
 static int count_words(char *cmd)
 {
 	int count;
@@ -79,19 +28,14 @@ static int count_words(char *cmd)
 	{
 		while (*cmd && *cmd == 32)
 			cmd++;
-		printf("after sp %s\n", cmd);
 		if (*cmd && (*cmd == 34 || *cmd == 39 ))
 		{
-	 		printf("after first q increase %s\n", cmd);
-			if (*cmd && *cmd == *(cmd - 1))
-			{
-				cmd++;
-				printf("after second q increase %s\n", cmd);
-			}
-			else if ((*cmd == 34 || *cmd == 39) && *cmd != *(cmd - 1))
+			if (*cmd && *(cmd + 1) && *(cmd + 1) == *cmd)
+				cmd = cmd + 2;
+			else if (*cmd && *(cmd + 1) != *cmd)
 			{
 				count++;
-				cmd = quoted_word(cmd);			
+				cmd = quoted_word(cmd);
 			}
 		}
 		else if (*cmd && *cmd != 32)
@@ -103,44 +47,100 @@ static int count_words(char *cmd)
 	return (count);
 } 
 
-int main(int argc, char **argv)
+static int get_cmd_len(char *start, char *end)
 {
-    
-    if (argc == 2)
-    {
-        printf("\nfrom main argv1: %s\n", argv[1]);
-		printf("counts from main: %d\n",  count_words(argv[1]));
-    }
-	else
-    	printf("\nmore arguments\n");
-	printf("\n");
-}
-// static int count_words(char *cmd)
-// {
-// 	int count;
-// 	int i;
+	int len;
+	char value;
 
-// 	count = 0;
-// 	i = 0;
-// 	while (cmd[i] != '\0')
-// 	{
-// 		while (cmd[i] && cmd[i] == 32)
-// 			i++;
-// 		if (cmd[i] && (cmd[i] == 34 || cmd[i] == 39 ))
-// 		{
-// 			if (cmd[i] && (cmd[i + 1] == cmd[i]))
-// 				i = i+2;
-// 			else if ((cmd[i + 1] == 34 || cmd[i - 1] == 39) && (cmd[i] != cmd[i - 1]))
-// 			{
-// 				count++;
-// 				i = quoted_word(cmd, i);			
-// 			}
-// 		}
-// 		else if (cmd[i] && cmd[i] != 32)
-// 		{
-// 			 count++;
-// 			 i = normal_word(cmd, i);		
-// 		}		
-// 	}
-// 	return (count);
-// } 
+	len = 0;
+	value = *start;
+	while (start < end)
+	{
+		if (*start == 34 || *start == 39)// && *start == value)
+			start++;
+		else if (value != 39 && value != 34 && *start == 32)
+			start++;
+		else
+		{
+			if (value != 39 && value != 34 && *start == '\\')
+				start++;
+			len++;
+			start++;
+		}
+	}
+	return (len);
+}
+
+static char *get_part_cmd(char *start, char *end, int len)
+{
+	char *part_cmd;
+	char value;
+	int i;
+
+	part_cmd = (char *)malloc(sizeof(char) * len + 1);
+	if (!part_cmd)
+		return (NULL);
+	value = *start;
+	i = 0;
+	while (start < end)
+	{
+		if (*start == 34 || *start == 39) //&& *start == value)
+			start++;
+		else if (value != 39 && value != 34 && *start == 32)
+			start++;
+		else
+		{
+			if (value != 39 && value != 34 && *start == '\\')
+				start++;
+			part_cmd[i++] = *start;
+			start++;
+		}
+	}
+	part_cmd[i] = '\0';
+	return (part_cmd);	
+}
+
+static char **get_splitted_command(char *cmd, char **splitted_cmd, int word_count, int index)
+{
+	char *start;
+	char *end;
+	int len;
+	
+	while (++index < word_count)
+	{
+		while (*cmd && *cmd == 32)
+			cmd++;
+		start = cmd;
+		if (*cmd && (*cmd == 34 || *cmd == 39 ))
+			end = cmd = quoted_word(cmd);
+		else if (*cmd && *cmd != 32)
+			end = cmd = normal_word(cmd);
+		len = get_cmd_len(start, end);
+		splitted_cmd[index] = get_part_cmd(start, end, len);
+		if (!splitted_cmd[index])
+		{
+			free_grid(splitted_cmd);
+			return (NULL);
+		}	
+	}
+	splitted_cmd[index] = NULL;
+	return (splitted_cmd);
+}
+
+void split_command(t_pipex *data, char *cmd)
+{
+	int word_count;
+	char *cleaned_cmd;
+	
+	if (!cmd || cmd[0] == '\0' || check_white_spaces(cmd))
+		error_return(cmd, 127);
+	cleaned_cmd = skip_empty_str(cmd);
+	word_count = count_words(cleaned_cmd);
+	data->splitted_cmd = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!data->splitted_cmd)
+		error_return("malloc()", 1); // malloc or  split_command()?
+	data->splitted_cmd = get_splitted_command(cleaned_cmd, data->splitted_cmd, word_count, -1);
+	if (!data->splitted_cmd)
+		error_return("split_command()", 1);
+	//return (data->splitted_cmd);	
+}

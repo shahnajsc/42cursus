@@ -1,0 +1,25 @@
+
+
+TEST NUMBER 1: ./pipex '' '' '' '' and < '' '' | '' > ''
+TEST NUMBER 2: ./pipex '' 'cat' 'cat' '' and < '' cat | cat > ''
+TEST NUMBER 3: ./pipex 'infile' 'cat' 'cat' '' and < infile cat | cat > ''
+TEST NUMBER 4: ./pipex '' 'cat' 'cat' 'outfile2' and < '' cat | cat > outfile
+TEST NUMBER 5: ./pipex 'infile' '' '' 'outfile2' and < infile '' | '' > outfile
+TEST NUMBER 6: ./pipex '' 'sleep 5' '' '' and < '' sleep 5 | '' > ''
+TEST NUMBER 7: ./pipex '' '' 'sleep 5' '' and < '' '' | sleep 5 > ''
+TEST NUMBER 8: ./pipex 'infile' 'cat' 'cat' 'outfile2' and < infile cat | cat > outfile
+TEST NUMBER 9: ./pipex 'infile' '/bin/hello' '/bin/hello' 'outfile2' and < infile /bin/hello | /bin/hello > outfile
+TEST NUMBER 10: ./pipex 'infile' '/bin/echo hello world' '/bin/cat' outfile2 and < infile /bin/echo hello world | /bin/cat > outfile
+TEST NUMBER 11: ./pipex 'infile' 'sleep 5' 'echo hello world' 'outfile2' and < infile sleep 5 | echo hello world > outfile
+TEST NUMBER 12: ./pipex 'infile' './testsegv' './testsegv' 'outfile2' and < infile ./testsegv | ./testsegv > outfile
+TEST NUMBER 13: ./pipex 'infile' './myfolder' 'cat' 'outfile2' and < infile ./myfolder | cat > outfile
+TEST NUMBER 14: ./pipex 'infile' 'cat' './myfolder' 'outfile2' and < infile cat | ./myfolder > outfile
+TEST NUMBER 15: ./pipex 'testsegv.c' 'cat' 'grep str\ =\ NULL' 'outfile2' and < testsegv.c cat | grep str\ =\ NULL > outfile
+TEST NUMBER 16: ./pipex 'infile2' 'cat' 'awk -F ";" "{print $1}"' 'outfile2' and < infile2 cat | awk -F ";" '{print $1}' > outfile
+TEST NUMBER 17: ./pipex 'infile2' '"l""s"' '"normi""""nette" """-""R""" "CheckForbi""""ddenSo""urce""Header"' 'outfile2' and < infile2 "l""s" | "normi""""nette" """-""R""" "CheckForbi""""ddenSo""urce""Header" > outfile
+TEST NUMBER 18: ./pipex 'infile2' '\a\b\c' '"l""s"""\ """""-""l""a"' 'outfile2' and < infile2 \a\b\c | "l""s"""\ """""-""l""a" > outfile
+TEST NUMBER 19: ./pipex 'infile2' '\a\b\c\' '"l""s"""\ """""-""l""a"' 'outfile2' and < infile2 \a\b\c | "l""s"""\ """""-""l""a" > outfile
+TEST NUMBER 20: ./pipex 'infile2' 'myfolder' 'myfolder' 'outfile2' and < infile2 myfolder | myfolder > outfile
+TEST NUMBER 21: ./pipex 'infile2' 'copipex' 'copipex' 'outfile2' and < infile2 copipex | copipex > outfile
+TEST NUMBER 22 : ./pipex infile2 ls "wc -l" outfile2 and < infile2 ls | wc -l > outfile when PATH is not setted
+TEST NUMBER 23 : ./pipex infile2 /bin/ls "/usr/bin/wc -l" outfile2 and < infile2 /bin/ls | /usr/bin/wc -l > outfile when PATH is not setted

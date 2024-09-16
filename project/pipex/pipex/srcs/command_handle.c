@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:43:43 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/03 21:06:59 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/16 19:07:23 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 
 void execve_init(t_pipex *data, char *cmd)
 {
-    //int execv_status;
-    char *path;
-    char **split_cmd;
-
-    split_cmd = ft_split(cmd, ' ');
-
-    //execv_status = 0;
-    execve(path, split_cmd, data->envp);
-
+    char *cmd_path;
+    
+    split_command(data, cmd);
+    cmd_path = get_command_path(data);
+    if (!cmd_path)
+        error_return(data->splitted_cmd[0], 1);
+    execve(cmd_path, data->splitted_cmd, data->envp);  
+    error_return(cmd_path, 126);
 }

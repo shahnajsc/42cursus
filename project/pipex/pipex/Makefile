@@ -1,23 +1,28 @@
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror
-INCLUDES 		= -I./includes -I./libft
+CFLAGS 			= -Wall -Wextra -Werror  
+# LDFLAGS 		= -fsanitize=address -fsanitize=address -g
+INCLUDES 		= -I./includes -I./libft/includes
 RM 				= rm -f
 
 # Directories
 MAN_DIR 		= ./srcs
-MYLIB_DIR	 	= ./libft
+LIBFT_DIR	 	= ./libft
 
 # Source files by directory
-MAN_FILES 		= 	command_handle.c 									\
-					pipex.c			process_handle.c			\
+MAN_FILES 		= 	command_handle.c	command_path.c	command_split.c \
+					command_utils.c		error_handle.c	pipex.c			\
+					process_handle.c	\
 					
+# //ONUS_FILES 	= 	execute_pipex_bonus.c 		read_here_doc_bonus.c 	\
+			
 
 MAN_SRCS		= 	main.c $(addprefix $(MAN_DIR)/, $(MAN_FILES))
 
-				
+#// BONUS_SRCS		=	main_bonus.c $(addprefix $(BONUS_DIR)/, $(BONUS_FILES))
+					
 # Library
-MYLIB 			= $(MYLIB_DIR)/libft.a
+LIBFT 			= $(LIBFT_DIR)/libft.a
 
 # Executables
 NAME 			= pipex
@@ -26,20 +31,20 @@ NAME 			= pipex
 all : mandatory
 
 mandatory : .mandatory
-.mandatory: $(MYLIB) $(MAN_SRCS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_SRCS) $(MYLIB) -o $(NAME)
+.mandatory: $(LIBFT) $(MAN_SRCS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_SRCS) $(LIBFT) -o $(NAME)
 	@touch .mandatory
 
-$(MYLIB):
-	$(MAKE) -C $(MYLIB_DIR)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
-	$(MAKE) clean -C $(MYLIB_DIR)
+	$(MAKE) clean -C $(LIBFT_DIR)
 	$(RM) .mandatory
 
 
 fclean: clean
-	$(MAKE) fclean -C $(MYLIB_DIR)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME) .mandatory
 	
 re: fclean all
