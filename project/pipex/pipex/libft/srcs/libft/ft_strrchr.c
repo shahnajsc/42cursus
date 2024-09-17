@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:46:07 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/17 13:19:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:16:06 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,6 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	/*char	*str;
-
-	str = (char *)s;
-	 + ft_strlen(s);
-	while (str >= s)
-	{
-		if (*str == (char)c)
-		{
-			return (str);
-		}
-		str--;
-	}
-	return (NULL);*/
 	int		i;
 	char	*str;
 

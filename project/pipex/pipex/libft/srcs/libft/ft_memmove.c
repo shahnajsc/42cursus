@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:37:49 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/17 13:09:43 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:14:44 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 			count++;
 		}
 	}
-	return (dst); 
+	return (dst);
 }
 /*
 	- It copies 'len' bytes from string 'src' to 'dst'.

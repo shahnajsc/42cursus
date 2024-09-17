@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/16 19:09:31 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:04:08 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,29 @@
 #include <string.h>
 #include <sys/wait.h>
 
-static void first_process(t_pipex *data, int infd, int outfd)
+static void	first_process(t_pipex *data, int infd, int outfd)
 {
-		close(data->fd[0]);
-		redirect_fd(infd, outfd);
-		close(data->fd[1]);
-		execve_init(data, data->argv[2]);
-		//error handle
+	close(data->fd[0]);
+	redirect_fd(infd, outfd);
+	close(data->fd[1]);
+	execve_init(data, data->argv[2]);
+	//error handle
 }
 
-//int middle_process()
-
-static void last_process(t_pipex *data, int infd, int outfd)
+static void	last_process(t_pipex *data, int infd, int outfd)
 {
-		close(data->fd[1]);
-		redirect_fd(infd, outfd);
-		close(data->fd[0]);
-		execve_init(data, data->argv[4]);
-		// error handle
+	close(data->fd[1]);
+	redirect_fd(infd, outfd);
+	close(data->fd[0]);
+	execve_init(data, data->argv[4]);
+	// error handle
 }
 
-static void handle_proces(t_pipex *data, int i)
+static void	handle_proces(t_pipex *data, int i)
 {
-	int infd;
-	int outfd;
-	
+	int	infd;
+	int	outfd;
+
 	if (i == 0)
 	{
 		infd = get_file_fd(0, data->argv[1]);
@@ -50,22 +48,22 @@ static void handle_proces(t_pipex *data, int i)
 	else
 	{
 		infd = data->fd[0];
-		outfd = get_file_fd(1, data->argv[4]);	
-		last_process(data, infd, outfd);	
+		outfd = get_file_fd(1, data->argv[4]);
+		last_process(data, infd, outfd);
 	}
 	close_fds(data->fd);
 	exit(EXIT_SUCCESS);
 }
 
-int pipex(t_pipex *data)
+int	pipex(t_pipex *data)
 {
-	pid_t p_id[2];
-	int pipe_status;
-	int i;
+	pid_t	p_id[2];
+	int		pipe_status;
+	int		i;
 
 	pipe_init(data->fd);
 	i = 0;
-	while(i < data->argc - 3)
+	while (i < data->argc - 3)
 	{
 		p_id[i] = fork();
 		if (p_id[i] == -1)
@@ -76,10 +74,10 @@ int pipex(t_pipex *data)
 	}
 	close_fds(data->fd);
 	i = 0;
-	while(i < 2)
+	while (i < 2)
 	{
 		pipe_status = wait_process(p_id[i]);
 		i++;
 	}
-	return(pipe_status);
+	return (pipe_status);
 }
