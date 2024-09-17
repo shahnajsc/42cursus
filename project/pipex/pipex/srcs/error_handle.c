@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:27:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 15:06:10 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 22:30:38 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,16 @@ void	free_grid(char **ptr)
 		i++;
 	}
 	free(ptr);
+	ptr = NULL;
 }
 
 void	close_fds(int *fd)
 {
-	close(fd[0]);
-	close(fd[1]);
+	if (fd)
+	{
+		close(fd[0]);
+		close(fd[1]);
+	}
 }
 
 void	display_err_msg(char *msg_err)
@@ -78,6 +82,4 @@ void	error_return(char *err_in, char *msg_err, int ret_value)
 	else
 		ft_putstr_fd(msg_err, 2);
 	exit(ret_value);
-	//handle fd, array
-	//exit
 }
