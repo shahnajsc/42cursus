@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:54:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 11:15:29 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:54:49 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int		wait_process(pid_t pid);
 // error handle function
 void	free_grid(char **ptr);
 void	close_fds(int *fd);
-void	error_return(char *msg_err, int ret_value);
+void	error_return(char *err_in, char *msg_err, int ret_value);
 
 #endif

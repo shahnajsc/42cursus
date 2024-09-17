@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:20:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 11:45:40 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:57:31 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*quoted_word(char *cmd)
 		cmd++;
 	if (*cmd != value || *cmd == '\0') // ((cmd[i] && cmd[i] != value) || cmd[i] == '\0') ""
 	{
-		error_return(cmd, 1);
+		error_return(cmd, "", 1);
 	}
 	else if (*cmd)
 		cmd++;

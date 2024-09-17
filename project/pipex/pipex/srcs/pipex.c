@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 12:04:08 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:25:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	handle_proces(t_pipex *data, int i)
 		last_process(data, infd, outfd);
 	}
 	close_fds(data->fd);
+	//close infd amd outfd???
 	exit(EXIT_SUCCESS);
 }
 
@@ -67,7 +68,7 @@ int	pipex(t_pipex *data)
 	{
 		p_id[i] = fork();
 		if (p_id[i] == -1)
-			error_return(NULL, 1); // set error id for 'fork' error
+			error_return(NULL, "", 1); // set error id for 'fork' error
 		if (p_id[i] == 0)
 			handle_proces(data, i);
 		i++;

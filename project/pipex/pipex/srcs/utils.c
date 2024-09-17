@@ -6,10 +6,25 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:50:05 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/11 19:27:11 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:48:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <unistd.h>
+# include <fcntl.h>
+# include <sys/wait.h>
+# include <stdio.h>
+# include <errno.h>
+# include <string.h>
 
+
+int	main(int argc, char **argv)
+{
+	int i;
+	
+	i = 0;
+	while (argc > 0)
+	{
+		printf("argv[%d]: %s\n", i, argv[i]);
+	}
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:31:59 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 11:28:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:55:58 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	**get_envp_paths(t_pipex *data)
 		{
 			envp_path = ft_split(data->envp[i] + 5, ':'); // need to update main ft_split it is not skipping :
 			if (!envp_path)
-				error_return("ft_split()", 1);
+				error_return("ft_split()", "", 1);
 			return (envp_path);
 		}
 		i++;
@@ -81,7 +81,7 @@ char	*get_command_path(t_pipex *data)
 		if (access(data->splitted_cmd[0], F_OK) == 0)
 			return (data->splitted_cmd[0]);
 		else
-			error_return(data->splitted_cmd[0], 126); // error return 1 end error msg
+			error_return(data->splitted_cmd[0], "", 126); // error return 1 end error msg
 	}
 	data->envp_paths = get_envp_paths(data);
 	final_command = get_path_cmd(data->envp_paths, data->splitted_cmd[0]);

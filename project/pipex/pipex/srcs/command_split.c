@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:25:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 11:39:42 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:56:48 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,14 +133,14 @@ void	split_command(t_pipex *data, char *cmd)
 	char	*cleaned_cmd;
 
 	if (!cmd || cmd[0] == '\0' || check_white_spaces(cmd))
-		error_return(cmd, 127);
+		error_return(cmd, "", 127);
 	cleaned_cmd = skip_empty_str(cmd);
 	word_count = count_words(cleaned_cmd);
 	data->splitted_cmd = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!data->splitted_cmd)
-		error_return("malloc()", 1); // malloc or  split_command()?
+		error_return("malloc()", "", 1); // malloc or  split_command()?
 	data->splitted_cmd = get_splitted_command(cleaned_cmd, data->splitted_cmd, word_count, -1);
 	if (!data->splitted_cmd)
-		error_return("split_command()", 1);
+		error_return("split_command()", "", 1);
 	//return (data->splitted_cmd);	
 }

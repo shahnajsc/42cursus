@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:27:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 12:10:24 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:06:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,16 @@ void	display_err_msg(char *msg_err)
 	//     ft_putstr_fd(" No such file or directory", 2);
 }
 
-void	error_return(char *msg_err, int ret_value)
+void	error_return(char *err_in, char *msg_err, int ret_value)
 {
 	// display err msg
-	ft_putstr_fd("pipex: ", 2);
-	if (msg_err)
+	ft_putstr_fd("pipex:", 2);
+	if (err_in)
+		ft_putstr_fd(err_in, 2);
+	if (*msg_err == '\0' || !msg_err)
+		perror(" ");
+	else
 		ft_putstr_fd(msg_err, 2);
-	perror("");
 	exit(ret_value);
 	//handle fd, array
 	//exit
