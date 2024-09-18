@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:54:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 14:54:49 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/18 22:16:39 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PIPEX_H
 
 //required library
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <stdio.h>

@@ -6,19 +6,23 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:27:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 22:30:38 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/18 22:20:36 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	int i;
+
+	i = 0;
 	if (!s)
 		return ;
-	while (*s)
+	while (s[i] != '\0')
 	{
-		write(fd, s++, 1);
+		write(fd, &s[i], 1);
+		i++;
 	}
 }
 
@@ -74,12 +78,22 @@ void	display_err_msg(char *msg_err)
 void	error_return(char *err_in, char *msg_err, int ret_value)
 {
 	// display err msg
-	ft_putstr_fd("pipex:", 2);
-	if (err_in)
+	ft_putstr_fd("pipex: ", 2);
+	if (*err_in != '\0')
+	{
+		//ft_putstr_fd(" ", 2);
 		ft_putstr_fd(err_in, 2);
+	}
 	if (*msg_err == '\0' || !msg_err)
-		perror(" ");
+	{
+		ft_putstr_fd(": ", 2);
+		perror("");
+	}
 	else
+	{
+		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(msg_err, 2);
+		ft_putstr_fd("\n", 2);
+	}
 	exit(ret_value);
 }

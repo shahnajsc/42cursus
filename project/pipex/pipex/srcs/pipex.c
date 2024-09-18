@@ -6,11 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 22:36:51 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/18 22:20:40 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -30,7 +30,7 @@ static void	last_process(t_pipex *data, int infd, int outfd)
 	close(data->fd[1]);
 	redirect_fd(infd, outfd);
 	close(data->fd[0]);
-	execve_init(data, data->argv[4]);
+	execve_init(data, data->argv[3]);
 	// error handle
 }
 
@@ -54,7 +54,6 @@ static void	handle_proces(t_pipex *data, int i)
 	close_fds(data->fd);
 	close(infd);
 	close(outfd);
-	//close infd amd outfd???
 	exit(EXIT_SUCCESS);
 }
 

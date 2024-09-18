@@ -6,11 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:53:50 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 15:19:38 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/18 22:20:47 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pipex.h>
+#include "../includes/pipex.h"
 #include <unistd.h> //remove when libft added
 #include <stdlib.h> //remove when libft added
 #include <stdio.h> //remove when libft added

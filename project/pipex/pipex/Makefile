@@ -1,52 +1,51 @@
+# Name
+NAME 			= pipex
+
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror
-# LDFLAGS 		= -fsanitize=address   -fsanitize=address -g
+CFLAGS 			= -Wall -Wextra -Werror 
+# LDFLAGS 		= -fsanitize=address  -fsanitize=address -g
 INCLUDES 		= -I./includes -I./libft/includes
 RM 				= rm -f
 
-# Directories
-MAN_DIR 		= ./srcs
-LIBFT_DIR	 	= ./libft
+# LIBFT
+LIBFT	 		= -L./libft -lft
 
 # Source files by directory
-MAN_FILES 		= 	command_handle.c	command_path.c	command_split.c \
-					command_utils.c		error_handle.c	pipex.c			\
-					process_handle.c	\
+MAN_DIR 		= 	srcs/command_handle.c	srcs/command_path.c		srcs/command_split.c \
+					srcs/command_utils.c	srcs/error_handle.c		srcs/pipex.c	\
+					srcs/process_handle.c	\
 					
-# //ONUS_FILES 	= 	execute_pipex_bonus.c 		read_here_doc_bonus.c 	\
+#BON_DIR		=
+
+# Source path
+
+MAN_SRCS		=	main1.c $(MAN_DIR)
+#BON_SRCS		=	main_bonus.c $(BON_DIR)
 			
+# Object files by directory
 
-MAN_SRCS		= 	main.c $(addprefix $(MAN_DIR)/, $(MAN_FILES))
+MAN_OBJS = $(MAN_SRCS:.c=.o)
 
-#// BONUS_SRCS		=	main_bonus.c $(addprefix $(BONUS_DIR)/, $(BONUS_FILES))
-					
-# Library
-LIBFT 			= $(LIBFT_DIR)/libft.a
+#BON_OBJS = $(BON_SRCS:.c=.o)
 
-# Executables
-NAME 			= pipex
 
-# Targets
-all : mandatory
-
-mandatory : .mandatory
-.mandatory: $(LIBFT) $(MAN_SRCS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_SRCS) $(LIBFT) -o $(NAME)
-	@touch .mandatory
+all: $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C ./libft
+
+$(NAME): $(MAN_OBJS)
+	$(CC) $(CFLAGS) $(MAN_OBJS) $(LIBFT) -o $(NAME)
 
 clean:
-	$(MAKE) clean -C $(LIBFT_DIR)
-	$(RM) .mandatory
+	$(MAKE) -C ./libft clean
+	$(RM) $(MAN_OBJS)
 
+fclean:
+	$(MAKE) -C ./libft fclean
+	$(RM) $(NAME) $(MAN_OBJS) 
 
-fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR)
-	$(RM) $(NAME) .mandatory
-	
 re: fclean all
 
 .PHONY: all clean fclean re mandatory

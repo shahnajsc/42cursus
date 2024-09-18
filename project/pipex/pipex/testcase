@@ -23,3 +23,5 @@ TEST NUMBER 20: ./pipex 'infile2' 'myfolder' 'myfolder' 'outfile2' and < infile2
 TEST NUMBER 21: ./pipex 'infile2' 'copipex' 'copipex' 'outfile2' and < infile2 copipex | copipex > outfile
 TEST NUMBER 22 : ./pipex infile2 ls "wc -l" outfile2 and < infile2 ls | wc -l > outfile when PATH is not setted
 TEST NUMBER 23 : ./pipex infile2 /bin/ls "/usr/bin/wc -l" outfile2 and < infile2 /bin/ls | /usr/bin/wc -l > outfile when PATH is not setted
+
+check 12 with fsanitize

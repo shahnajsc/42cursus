@@ -6,11 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:43:43 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 14:53:55 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/18 22:20:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	execve_init(t_pipex *data, char *cmd)
 {
@@ -19,7 +19,7 @@ void	execve_init(t_pipex *data, char *cmd)
 	split_command(data, cmd);
 	cmd_path = get_command_path(data);
 	if (!cmd_path)
-		error_return(data->splitted_cmd[0], "", 1);
+		error_return(cmd, "command not found", 127); //data->splitted_cmd[0]
 	execve(cmd_path, data->splitted_cmd, data->envp);
-	error_return(cmd_path, "", 126);
+	error_return(cmd_path, "", 127); // before 126
 }
