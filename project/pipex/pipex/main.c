@@ -5,15 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 17:57:52 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/18 22:18:31 by shachowd         ###   ########.fr       */
+/*   Created: 2024/09/19 21:53:46 by shachowd          #+#    #+#             */
+/*   Updated: 2024/09/19 22:02:39 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/pipex.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
 
 void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 {
@@ -29,7 +26,6 @@ int	main(int argc, char **argv, char **envp)
 	t_pipex	data;
 	int		pipe_status;
 
-	//printf("ag1 %s \n ag2: %s\n  argv3: %s\n  argv4: %s\n", argv[1], argv[2], argv[3], argv[4]);
 	pipe_status = 0;
 	if (argc != 5)
 	{
@@ -38,6 +34,6 @@ int	main(int argc, char **argv, char **envp)
 	}
 	data_init(&data, argc, argv, envp);
 	pipe_status = pipex(&data);
-	//fd or pipe close?? ***
+    // free?? fd close??
 	return (pipe_status);
 }

@@ -6,18 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:25:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/18 22:20:27 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/19 22:04:54 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-#include <fcntl.h>
-#include <sys/wait.h>
-#include <stdio.h>
-#include <errno.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
 
 static int	count_words(char *cmd)
 {
@@ -56,7 +49,7 @@ static int	get_cmd_len(char *start, char *end)
 	value = *start;
 	while (start < end)
 	{
-		if (*start == 34 || *start == 39) // && *start == value)
+		if (*start == 34 || *start == 39)
 			start++;
 		else if (value != 39 && value != 34 && *start == 32)
 			start++;
@@ -84,7 +77,7 @@ static char	*get_part_cmd(char *start, char *end, int len)
 	i = 0;
 	while (start < end)
 	{
-		if (*start == 34 || *start == 39) //&& *start == value)
+		if (*start == 34 || *start == 39)
 			start++;
 		else if (value != 39 && value != 34 && *start == 32)
 			start++;
@@ -138,10 +131,9 @@ void	split_command(t_pipex *data, char *cmd)
 	word_count = count_words(cleaned_cmd);
 	data->splitted_cmd = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!data->splitted_cmd)
-		error_return("malloc()", "", 1); // malloc or  split_command()?
+		error_return("malloc()", "", 1);
 	data->splitted_cmd = get_splitted_command(cleaned_cmd, data->splitted_cmd, word_count, -1);
 	if (!data->splitted_cmd)
 		error_return("split_command()", "", 1);
 	free(cleaned_cmd);
-	//return (data->splitted_cmd);	
 }

@@ -9,7 +9,7 @@ INCLUDES 		= -I./includes -I./libft/includes
 RM 				= rm -f
 
 # LIBFT
-LIBFT	 		= -L./libft -lft
+LIBFT	 		= ./libft/libft.a
 
 # Source files by directory
 MAN_DIR 		= 	srcs/command_handle.c	srcs/command_path.c		srcs/command_split.c \
@@ -20,23 +20,21 @@ MAN_DIR 		= 	srcs/command_handle.c	srcs/command_path.c		srcs/command_split.c \
 
 # Source path
 
-MAN_SRCS		=	main1.c $(MAN_DIR)
+MAN_SRCS		=	main.c $(MAN_DIR)
 #BON_SRCS		=	main_bonus.c $(BON_DIR)
 			
 # Object files by directory
 
 MAN_OBJS = $(MAN_SRCS:.c=.o)
-
 #BON_OBJS = $(BON_SRCS:.c=.o)
-
 
 all: $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C ./libft
 
-$(NAME): $(MAN_OBJS)
-	$(CC) $(CFLAGS) $(MAN_OBJS) $(LIBFT) -o $(NAME)
+$(NAME): $(LIBFT) $(MAN_OBJS) $(MAN_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_OBJS) $(LIBFT) -o $(NAME)
 
 clean:
 	$(MAKE) -C ./libft clean

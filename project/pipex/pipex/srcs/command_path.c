@@ -6,15 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:31:59 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/18 22:20:24 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/19 22:03:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
 
 static char	**get_envp_paths(t_pipex *data)
 {
@@ -28,16 +24,13 @@ static char	**get_envp_paths(t_pipex *data)
 	{
 		if (ft_strncmp(data->envp[i], "PATH=", 5) == 0)
 		{
-			if (!(data->envp[i] + 5))
-				error_return("envp not", "No such file or directory", 127);
-			envp_path = ft_split(data->envp[i] + 5, ':'); // need to update main ft_split it is not skipping :
+			envp_path = ft_split(data->envp[i] + 5, ':');
 			if (!envp_path)
 				error_return("ft_split()", "", 1);
 			return (envp_path);
 		}
 		i++;
 	}
-	//error_return("envp not", "No such file or directory", 1);
 	return (NULL);
 }
 
@@ -67,7 +60,7 @@ static char	*get_path_cmd(char **envp_paths, char *cmd)
 	while (envp_paths[i] != NULL)
 	{
 		final_path = combine_path_cmd(envp_paths[i], cmd);
-		if (!final_path || access(final_path, F_OK) == 0) // !final_path
+		if (!final_path || access(final_path, F_OK) == 0)
 			return (final_path);
 		free(final_path);
 		i++;
@@ -84,13 +77,12 @@ char	*get_command_path(t_pipex *data)
 		if (access(data->splitted_cmd[0], F_OK) == 0)
 			return (data->splitted_cmd[0]);
 		else
-			error_return(data->splitted_cmd[0], "", 127); // 127 is ok for test 9: dont change 
-		//t6: NO EXEC PERMISSION CMD2 126
-		//error_return(data->splitted_cmd[0], "Is a directory", 0);
+			error_return(data->splitted_cmd[0], "", 127);
 	}
 	data->envp_paths = get_envp_paths(data);
+	if (!data->envp_paths)
+		error_return(data->splitted_cmd[0], "No such file or directory", 127);
 	final_command = get_path_cmd(data->envp_paths, data->splitted_cmd[0]);
 	free_grid(data->envp_paths);
-	//free_grid(data->splitted_cmd); error happening here maybe
 	return (final_command);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:20:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/18 22:20:30 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/19 22:06:11 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*skip_empty_str(char *cmd)
 	char	*temp;
 	int		len;
 
-	len = strlen(cmd); //ft_strlen(cmd);
+	len = ft_strlen(cmd);
 	cleaned_str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!cleaned_str)
 		return (NULL);
@@ -48,9 +48,9 @@ char	*quoted_word(char *cmd)
 	cmd++;
 	while (*cmd && *cmd != value)
 		cmd++;
-	if (*cmd != value || *cmd == '\0') // ((cmd[i] && cmd[i] != value) || cmd[i] == '\0') ""
+	if (*cmd != value || *cmd == '\0')
 	{
-		error_return(cmd, "", 1);
+		error_return(cmd, "", 1); // err msg????
 	}
 	else if (*cmd)
 		cmd++;
@@ -59,10 +59,13 @@ char	*quoted_word(char *cmd)
 
 char	*normal_word(char *cmd)
 {
-	if (*cmd && *cmd != 34 && *cmd != 39 && *cmd == 92)
-		cmd = cmd + 2;
 	while (*cmd && *cmd != 34 && *cmd != 39 && *cmd != 32)
-		cmd++;
+	{
+		if (*cmd && *cmd != 34 && *cmd != 39 && *cmd == 92 )
+			cmd = cmd+2;
+		else
+			cmd++;
+	}
 	return (cmd);
 }
 

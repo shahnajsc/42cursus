@@ -6,14 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:53:50 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/18 22:20:47 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/19 22:09:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-#include <unistd.h> //remove when libft added
-#include <stdlib.h> //remove when libft added
-#include <stdio.h> //remove when libft added
 
 void	pipe_init(int *fd)
 {
@@ -48,9 +45,9 @@ int	get_file_fd(int i, char *filename)
 void	redirect_fd(int infd, int outfd)
 {
 	if (dup2(infd, STDIN_FILENO) == -1)
-		error_return(NULL, "", 1);
+		error_return("dup2()", "", 1);
 	if (dup2(outfd, STDOUT_FILENO) == -1)
-		error_return(NULL, "", 1);
+		error_return("dup2", "", 1);
 	close(infd);
 	close(outfd);
 }

@@ -6,15 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/18 22:20:40 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/19 22:08:27 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/wait.h>
 
 static void	first_process(t_pipex *data, int infd, int outfd)
 {
@@ -22,7 +18,6 @@ static void	first_process(t_pipex *data, int infd, int outfd)
 	redirect_fd(infd, outfd);
 	close(data->fd[1]);
 	execve_init(data, data->argv[2]);
-	//error handle
 }
 
 static void	last_process(t_pipex *data, int infd, int outfd)
@@ -31,7 +26,6 @@ static void	last_process(t_pipex *data, int infd, int outfd)
 	redirect_fd(infd, outfd);
 	close(data->fd[0]);
 	execve_init(data, data->argv[3]);
-	// error handle
 }
 
 static void	handle_proces(t_pipex *data, int i)
@@ -69,7 +63,7 @@ int	pipex(t_pipex *data)
 	{
 		p_id[i] = fork();
 		if (p_id[i] == -1)
-			error_return(NULL, "", 1); // set error id for 'fork' error
+			error_return("fork()", "", 1); // set error id for 'fork' error
 		if (p_id[i] == 0)
 			handle_proces(data, i);
 		i++;

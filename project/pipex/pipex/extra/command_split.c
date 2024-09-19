@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:25:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/11 10:51:11 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:55:17 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void free_grid(char **ptr)
         i++;
     }
     free(ptr);
+	ptr = NULL;
 } 
 char *skip_empty_str(char *cmd)
 {
@@ -80,10 +81,13 @@ char *quoted_word(char *cmd)
 
 char *normal_word(char *cmd)
 {
-	if (*cmd && *cmd != 34 && *cmd != 39 && *cmd == 92 )
-		cmd = cmd+2;
 	while (*cmd && *cmd != 34 && *cmd != 39 && *cmd != 32)
-		cmd++;
+	{
+		if (*cmd && *cmd != 34 && *cmd != 39 && *cmd == 92 )
+			cmd = cmd+2;
+		else
+			cmd++;
+	}
 	return (cmd);
 }
 
@@ -202,6 +206,7 @@ char **split_command(char *cmd)
 		return (NULL);
 	cleaned_cmd = skip_empty_str(cmd);
 	word_count = count_words(cleaned_cmd);
+	printf("from word count %d\n", word_count);
 	splitted_cmd = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!splitted_cmd)
 		return (NULL); // error msg?
@@ -238,32 +243,3 @@ int main(int argc, char **argv)
 	printf("cleaned str: %s \n", skip_empty_str(argv[1]));
 	printf("\n");
 }
-// static int count_words(char *cmd)
-// {
-// 	int count;
-// 	int i;
-
-// 	count = 0;
-// 	i = 0;
-// 	while (cmd[i] != '\0')
-// 	{
-// 		while (cmd[i] && cmd[i] == 32)
-// 			i++;
-// 		if (cmd[i] && (cmd[i] == 34 || cmd[i] == 39 ))
-// 		{
-// 			if (cmd[i] && (cmd[i + 1] == cmd[i]))
-// 				i = i+2;
-// 			else if ((cmd[i + 1] == 34 || cmd[i - 1] == 39) && (cmd[i] != cmd[i - 1]))
-// 			{
-// 				count++;
-// 				i = quoted_word(cmd, i);			
-// 			}
-// 		}
-// 		else if (cmd[i] && cmd[i] != 32)
-// 		{
-// 			 count++;
-// 			 i = normal_word(cmd, i);		
-// 		}		
-// 	}
-// 	return (count);
-// } 
