@@ -4,7 +4,7 @@ NAME 			= pipex
 # Compiler and flags
 CC 				= cc
 CFLAGS 			= -Wall -Wextra -Werror 
-# LDFLAGS 		= -fsanitize=address  -fsanitize=address -g
+#LDFLAGS 		= -fsanitize=address -fsanitize=address -g
 INCLUDES 		= -I./includes -I./libft/includes
 RM 				= rm -f
 

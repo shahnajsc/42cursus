@@ -25,3 +25,31 @@ TEST NUMBER 22 : ./pipex infile2 ls "wc -l" outfile2 and < infile2 ls | wc -l > 
 TEST NUMBER 23 : ./pipex infile2 /bin/ls "/usr/bin/wc -l" outfile2 and < infile2 /bin/ls | /usr/bin/wc -l > outfile when PATH is not setted
 
 check 12 with fsanitize
+
+# 12: The program handles execve errors                                     [LK]
+The next tests will use the following command:
+../pipex/pipex "assets/deepthought.txt" "cat" "notexisting" "outs/test-xx.txt"
+(notexisting is a command that is not supposed to exist)
+
+# 26: The program exits with the right status code                          [LK]
+# 27: The output of the command contains 'command not found'                [LK]
+# 28: The output of the command is correct                                  [LK]
+
+
+-----------bash tester_pipex.sh----------
+
+Leaks via valgrind:
+Test 1 : valgrind ./pipex Makefile cat cat outf 			--> no leak cat - no leak cat - no leak main - no extra fd (main+child) - no extra fd on main
+Test 2 : valgrind ./pipex Makefile yes head outf 			--> 12,252 leaks yes (it's ok) - no leak head - no leak main - no extra fd (main+child) - no extra fd on main
+Test 3 : valgrind ./pipex Makefile /usr/bin/cat /usr/bin/head outf 	--> no leak cat - no leak head - no leak main - no extra fd (main+child) - no extra fd on main
+Test 4 : valgrind ./pipex infile_no_r cat "echo yo" outfile_no_w 	--> no leak cat - no leak echo - no leak main - 2 extra fd (main+child) - no extra fd on main
+----Test 5 : valgrind ./pipex Makefile catiop " " outf 			--> no leak catiop - 23 leaks empty cmd - no leak main - no extra fd (main+child) - no extra fd on main
+----Test 6 : valgrind ./pipex Makefile ./a.out (chmod u-x) "echo yo" outf 	--> 8 leaks a.out - no leak echo - no leak main - no extra fd (main+child) - no extra fd on main
+Zombies (children process not waited by pipex):
+gcc: error: popo.c: No such file or directory
+gcc: fatal error: no input files
+compilation terminated.
+-----Test 1 : ./pipex Makefile "sleep 3" "sleep 1" outf 			--> KO: 1 process became zombie before pipex returned (most probably sleep 1, please check 'zombie_test1')
+Test 2 : ./pipex Makefile "sleep 1" "sleep 3" outf 			--> OK (sleep 1 did not became a zombie)
+Test 3 : ./pipex bad_infile ls "sleep 2" outf 				--> OK (ls did not became a zombie)
+Test 4 : ./pipex Makefile bad_cmd "sleep 1" outf 			--> OK (bad_cmd did not became a zombie)
