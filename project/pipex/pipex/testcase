@@ -40,7 +40,7 @@ The next tests will use the following command:
 
 Leaks via valgrind:
 Test 1 : valgrind ./pipex Makefile cat cat outf 			--> no leak cat - no leak cat - no leak main - no extra fd (main+child) - no extra fd on main
-Test 2 : valgrind ./pipex Makefile yes head outf 			--> 12,252 leaks yes (it's ok) - no leak head - no leak main - no extra fd (main+child) - no extra fd on main
+Test 2 : valgrind ./pipex run  			--> 12,252 leaks yes (it's ok) - no leak head - no leak main - no extra fd (main+child) - no extra fd on main
 Test 3 : valgrind ./pipex Makefile /usr/bin/cat /usr/bin/head outf 	--> no leak cat - no leak head - no leak main - no extra fd (main+child) - no extra fd on main
 Test 4 : valgrind ./pipex infile_no_r cat "echo yo" outfile_no_w 	--> no leak cat - no leak echo - no leak main - 2 extra fd (main+child) - no extra fd on main
 ----Test 5 : valgrind ./pipex Makefile catiop " " outf 			--> no leak catiop - 23 leaks empty cmd - no leak main - no extra fd (main+child) - no extra fd on main

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:27:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/19 22:06:41 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:36:25 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_grid(char **ptr)
 {
 	int	i;
 
+	if (!ptr)
+		return;
 	i = 0;
 	while (ptr[i] != NULL)
 	{
