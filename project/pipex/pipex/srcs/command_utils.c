@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:20:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/19 22:06:11 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:56:53 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*skip_empty_str(char *cmd)
 	temp = cleaned_str;
 	while (*cmd)
 	{
-		if ((*cmd == 34 && *(cmd + 1) == 34) || (*cmd == 39 && *(cmd + 1) == 39))
+		if ((*cmd == 34 && *(cmd + 1) == 34)
+				|| (*cmd == 39 && *(cmd + 1) == 39))
 		{
 			cmd = cmd + 2;
 		}
@@ -50,7 +51,7 @@ char	*quoted_word(char *cmd)
 		cmd++;
 	if (*cmd != value || *cmd == '\0')
 	{
-		error_return(cmd, "", 1); // err msg????
+		error_return(cmd, "", 1);
 	}
 	else if (*cmd)
 		cmd++;
@@ -61,8 +62,8 @@ char	*normal_word(char *cmd)
 {
 	while (*cmd && *cmd != 34 && *cmd != 39 && *cmd != 32)
 	{
-		if (*cmd && *cmd != 34 && *cmd != 39 && *cmd == 92 )
-			cmd = cmd+2;
+		if (*cmd && *cmd != 34 && *cmd != 39 && *cmd == 92)
+			cmd = cmd + 2;
 		else
 			cmd++;
 	}

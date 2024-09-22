@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:43:43 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/20 17:17:04 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:51:06 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static void	error_handle_execv(char *cmd, char *cmd_path)
 {
-	// free(data->envp_paths);  ------------ those creates leaks for bash start.sha
-	// free(data->splitted_cmd);
-	// close_fds(data->fd);
 	if (ft_strchr(cmd, '/') && !access(cmd, X_OK))
 		error_return(cmd, "Is a directory", 126);
 	else if (!ft_strchr(cmd, '/') && !access(cmd, X_OK))
@@ -38,5 +35,5 @@ void	execve_init(t_pipex *data, char *cmd)
 	if (!cmd_path)
 		error_return(cmd, "command not found", 127);
 	execve(cmd_path, data->splitted_cmd, data->envp);
-	error_handle_execv(cmd, cmd_path);		
+	error_handle_execv(cmd, cmd_path);
 }

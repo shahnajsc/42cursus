@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/20 14:08:40 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:58:27 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	pipex(t_pipex *data)
 	{
 		p_id[i] = fork();
 		if (p_id[i] == -1)
-			error_return("fork()", "", 1); // set error id for 'fork' error
+			error_return("fork()", "", 1);
 		if (p_id[i] == 0)
 			handle_proces(data, i);
 		i++;
