@@ -6,14 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:10:37 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 17:50:34 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:54:38 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/pipex.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
 
 void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 {

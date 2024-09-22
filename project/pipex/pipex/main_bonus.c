@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                            :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 22:00:35 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/18 22:14:08 by shachowd         ###   ########.fr       */
+/*   Created: 2024/09/22 19:54:04 by shachowd          #+#    #+#             */
+/*   Updated: 2024/09/22 22:58:05 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/pipex.h"
+#include "./includes/pipex_bonus.h"
 
 void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 {
@@ -27,9 +27,9 @@ int	main(int argc, char **argv, char **envp)
 	int		pipe_status;
 
 	pipe_status = 0;
-	if (argc != 5)
+	if ((argv[1] == "here_doc" && argc < 6) || argc < 5)
 	{
-		ft_putstr_fd("Correct command format: infile cmd1 cmd2 outfile\n", 2);
+		ft_putstr_fd("Correct command format: infile cmd1 .... cmd2 outfile\n", 2);
 		return (1);
 	}
 	data_init(&data, argc, argv, envp);
