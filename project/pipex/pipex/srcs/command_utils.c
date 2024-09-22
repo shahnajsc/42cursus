@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:20:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 17:56:53 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:15:09 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*skip_empty_str(char *cmd)
 	while (*cmd)
 	{
 		if ((*cmd == 34 && *(cmd + 1) == 34)
-				|| (*cmd == 39 && *(cmd + 1) == 39))
+			|| (*cmd == 39 && *(cmd + 1) == 39))
 		{
 			cmd = cmd + 2;
 		}

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:27:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 17:57:54 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:05:54 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ void	error_return(char *err_in, char *msg_err, int ret_value)
 	}
 	exit(ret_value);
 }
-
