@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/17 12:12:46 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:58:36 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@
 #  define PTR_NULL "Unknown"
 # endif
 
+# define MAX_FD 1024
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 6
+# endif
+
 # define HEX_LOWER "0123456789abcdef"
 # define HEX_UPPER "0123456789ABCDEF"
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -94,5 +100,10 @@ int					ft_print_ptr(unsigned long ptr);
 char				*ft_strchr(const char *s, int c);
 int					ft_print_hex(unsigned long n, char *strhex);
 int					ft_printf(const char *str, ...);
+
+//GET_NEXT_LINE
+
+size_t				ft_len_line(char *str);
+char				*get_next_line(int fd);
 
 #endif

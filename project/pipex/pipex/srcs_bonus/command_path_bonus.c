@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 19:57:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 20:35:48 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:02:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ char	*get_command_path(t_pipex *data)
 	if (!data->envp_paths)
 		error_return(data->splitted_cmd[0], "No such file or directory", 127);
 	final_command = get_path_cmd(data->envp_paths, data->splitted_cmd[0]);
-	free_grid(data->envp_paths);
+	free_grid((void **)data->envp_paths);
 	return (final_command);
 }

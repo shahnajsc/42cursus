@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 19:58:16 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 20:35:55 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:02:19 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,15 @@ static char	**splitted_cmd(char *cmd, char **splitted_cmd, int words, int index)
 			cmd++;
 		start = cmd;
 		if (*cmd && (*cmd == 34 || *cmd == 39))
-			end = cmd = quoted_word(cmd);
+			cmd = quoted_word(cmd);
 		else if (*cmd && *cmd != 32)
-			end = cmd = normal_word(cmd);
+			cmd = normal_word(cmd);
+		end = cmd;
 		len = get_cmd_len(start, end);
 		splitted_cmd[index] = get_part_cmd(start, end, len);
 		if (!splitted_cmd[index])
 		{
-			free_grid(splitted_cmd);
+			free_grid((void **)splitted_cmd);
 			return (NULL);
 		}
 	}

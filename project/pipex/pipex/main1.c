@@ -12,7 +12,7 @@
 
 #include "./includes/pipex.h"
 
-void	data_init(t_pipex *data, int argc, char **argv, char **envp)
+static void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 {
 	data->argc = argc;
 	data->argv = argv;
@@ -30,9 +30,9 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 5)
 	{
 		ft_putstr_fd("Correct command format: infile cmd1 cmd2 outfile\n", 2);
-		return (1);
+		exit(1);
 	}
 	data_init(&data, argc, argv, envp);
 	pipe_status = pipex(&data);
-	return (pipe_status);
+	exit(pipe_status);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 17:10:37 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 19:54:38 by shachowd         ###   ########.fr       */
+/*   Created: 2024/09/18 22:00:35 by shachowd          #+#    #+#             */
+/*   Updated: 2024/09/18 22:14:08 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/pipex.h"
 
-void	data_init(t_pipex *data, int argc, char **argv, char **envp)
+static void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 {
 	data->argc = argc;
 	data->argv = argv;
@@ -30,9 +30,9 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 5)
 	{
 		ft_putstr_fd("Correct command format: infile cmd1 cmd2 outfile\n", 2);
-		return (1);
+		exit(1);
 	}
 	data_init(&data, argc, argv, envp);
 	pipe_status = pipex(&data);
-	return (pipe_status);
+	exit(pipe_status);
 }

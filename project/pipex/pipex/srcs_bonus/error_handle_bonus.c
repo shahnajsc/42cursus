@@ -6,13 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 19:59:09 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 20:36:15 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:00:23 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-void	free_grid(char **ptr)
+void	free_grid(void **ptr)
 {
 	int	i;
 
@@ -28,13 +28,24 @@ void	free_grid(char **ptr)
 	ptr = NULL;
 }
 
-void	close_fds(int *fd)
+void	close_fds(t_pipex *data)
 {
-	if (fd)
+	int	i;
+
+	i = 0;
+	if (!data->fd)
+		return ;
+	while (data->fd[i] != NULL)
 	{
-		close(fd[0]);
-		close(fd[1]);
+		if (data->fd[i][0] >= 0)
+			close(data->fd[i][0]);
+		if (data->fd[i][1] >= 0)
+			close(data->fd[i][1]);
+		free(data->fd[i]);
+		i++;
 	}
+	free(data->fd);
+	data->fd = NULL;
 }
 
 void	error_return(char *err_in, char *msg_err, int ret_value)
