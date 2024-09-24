@@ -3,8 +3,8 @@ NAME 			= pipex
 
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror   -fsanitize=address -g
-LDFLAGS 		= -fsanitize=address
+CFLAGS 			= -Wall -Wextra -Werror 
+#LDFLAGS 		= -fsanitize=address   -fsanitize=address -g
 INCLUDES 		= -I./includes -I./libft/includes
 RM 				= rm -f
 
@@ -28,28 +28,38 @@ BON_SRCS		=	main_bonus.c $(BON_DIR)
 
 # Object files by directory
 
-MAN_OBJS = $(MAN_SRCS:.c=.o)
-BON_OBJS = $(BON_SRCS:.c=.o)
+#MAN_OBJS = $(MAN_SRCS:.c=.o)
+#BON_OBJS = $(BON_SRCS:.c=.o)
 
-all: $(NAME)
+# Marker files to track which version is built
+#mandatory : .mandatory
+#bonus : .bonus
+
+all: mandatory
 
 $(LIBFT):
 	$(MAKE) -C ./libft
 
-$(NAME): $(LIBFT) $(MAN_OBJS) $(MAN_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_OBJS) $(LIBFT) -o $(NAME)
+mandatory : .mandatory
+.mandatory: $(LIBFT) $(MAN_SRCS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_SRCS) $(LIBFT) -o $(NAME)
+	@touch .mandatory
+	@$(RM) .bonus
 
-bonus: $(LIBFT) $(BON_OBJS) $(BON_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(BON_OBJS) $(LIBFT) -o $(NAME)
+bonus : .bonus
+.bonus: $(LIBFT) $(BON_SRCS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(BON_SRCS) $(LIBFT) -o $(NAME)
+	@touch .bonus
+	@$(RM) .mandatory
 
 clean:
 	$(MAKE) -C ./libft clean
-	$(RM) $(BON_OBJS) $(MAN_OBJS)
+	$(RM) .bonus .mandatory
 
-fclean:
+fclean: clean
 	$(MAKE) -C ./libft fclean
-	$(RM) $(NAME) $(BON_OBJS) $(MAN_OBJS)
+	$(RM) $(NAME) .bonus .mandatory
 
 re: fclean all
 
-.PHONY: all clean fclean re mandatory
+.PHONY: all clean fclean re bonus

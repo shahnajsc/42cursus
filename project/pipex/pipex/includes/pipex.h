@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:54:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/19 10:11:51 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:23:22 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ char	*get_command_path(t_pipex *data);
 void	split_command(t_pipex *data, char *cmd);
 
 // process functions
-void	pipe_init(int *fd);
-int		get_file_fd(int i, char *filen);
-void	redirect_fd(int infd, int outfd);
+void	pipe_init(t_pipex *data, int *fd);
+int		get_file_fd(t_pipex *data, int i, char *filen);
+void	redirect_fd(t_pipex *data, int infd, int outfd);
 int		pipex(t_pipex *data);
 int		wait_process(pid_t pid);
 
 // error handle function
 void	free_grid(char **ptr);
 void	close_fds(int *fd);
-void	error_return(char *err_in, char *msg_err, int ret_value);
+void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value);
 
 #endif

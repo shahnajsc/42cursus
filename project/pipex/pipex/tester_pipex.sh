@@ -678,7 +678,7 @@ rm -f t2_*
 echo -ne "Test 5 : ./${pipex_bonus} Makefile cat ls \"sleep 3\" date env ls outf \t\t\t--> "
 start_Z_nb=$(top -bn1 | head -n2 | egrep -o "[0-9]* zombie$" | egrep -o "[0-9]*")
 ./${pipex_bonus} Makefile cat ls "sleep 3" date env ls outf >/dev/null 2>&1 &
-sleep 1
+sleep 3
 exec_Z_nb=$(top -bn1 | head -n2 | egrep -o "[0-9]* zombie$" | egrep -o "[0-9]*")
 ps -aux | grep Z | grep -vi grep > zombie_test5
 kill -s SIGTERM $! > /dev/null 2>&1 || kill -s SIGKILL $! > /dev/null 2>&1

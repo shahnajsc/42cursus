@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:25:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/23 09:49:44 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:27:13 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ static char	**splitted_cmd(char *cmd, char **splitted_cmd, int words, int index)
 		if (!splitted_cmd[index])
 		{
 			free_grid(splitted_cmd);
+			free(cmd);
 			return (NULL);
 		}
 	}
@@ -127,20 +128,22 @@ void	split_command(t_pipex *data, char *cmd)
 	char	*clean_cmd;
 
 	if (!cmd || cmd[0] == '\0' || check_white_spaces(cmd))
-		error_return(cmd, "command not found", 127);
+		error_return(data, cmd, "command not found", 127);
 	clean_cmd = skip_empty_str(cmd);
+	if (!clean_cmd)
+		error_return(data, "malloc()", "", 1);
 	words = count_words(clean_cmd);
 	data->splitted_cmd = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!data->splitted_cmd)
 	{
 		free(clean_cmd);
-		error_return("malloc()", "", 1);
+		error_return(data, "malloc()", "", 1);
 	}
 	data->splitted_cmd = splitted_cmd(clean_cmd, data->splitted_cmd, words, -1);
 	if (!data->splitted_cmd)
 	{
 		free(clean_cmd);
-		error_return("split_command()", "", 1);
+		error_return(data, "split_command()", "", 1);
 	}
 	free(clean_cmd);
 }

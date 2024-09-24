@@ -53,3 +53,105 @@ compilation terminated.
 Test 2 : ./pipex Makefile "sleep 1" "sleep 3" outf 			--> OK (sleep 1 did not became a zombie)
 Test 3 : ./pipex bad_infile ls "sleep 2" outf 				--> OK (ls did not became a zombie)
 Test 4 : ./pipex Makefile bad_cmd "sleep 1" outf 			--> OK (bad_cmd did not became a zombie)
+
+
+42_pipex_tester:
+.........................
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ERRORS :(
+------------------------------------------------------------------------------------------------------------------------
+TEST 14:
+./pipex "infiles/basic.txt" "cat -e" "cat -e" "outfiles/outfile_without_permissions" 
+< infiles/basic.txt cat -e | cat -e > outfiles/outfile_without_permissions_tester
+
+Leaks:  
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "infiles/basic.txt" "cat -e" "cat -e" "outfiles/outfile_without_permissions" 
+------------------------------------------------------------------------------------------------------------------------
+TEST 15:
+./pipex "infiles/basic.txt" "sleep 3" "cat -e" "outfiles/outfile_without_permissions" 
+< infiles/basic.txt sleep 3 | cat -e > outfiles/outfile_without_permissions_tester
+
+Leaks:  
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "infiles/basic.txt" "sleep 3" "cat -e" "outfiles/outfile_without_permissions" 
+------------------------------------------------------------------------------------------------------------------------
+TEST 16:
+./pipex "nonexistingfile" "cat -e" "cat -e" "outfiles/outfile_without_permissions" 
+< nonexistingfile cat -e | cat -e > outfiles/outfile_without_permissions_tester
+
+Leaks:  
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "nonexistingfile" "cat -e" "cat -e" "outfiles/outfile_without_permissions" 
+------------------------------------------------------------------------------------------------------------------------
+TEST 18:
+./pipex "infiles/basic.txt" "cat -e" "nonexistingcommand" "outfiles/outfile" 
+< infiles/basic.txt cat -e | nonexistingcommand > outfiles/outfile_tester
+
+Leaks:  
+Valgrind found an error. To get valgrind output, you have 2 options
+a) run the tester like this: bash run.sh --show-valgrind
+b) run: valgrind --leak-check=full --errors-for-leak-kinds=all ./pipex "infiles/basic.txt" "cat -e" "nonexistingcommand" "outfiles/outfile" 
+------------------------------------------------------------------------------------------------------------------------
+TEST 28:
+./pipex "here_doc" "EOF" "cat -e" "cat -e" "outfiles/outfile" 
+cat -e << EOF | cat -e >> outfiles/outfile_tester
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+pipex-tester:  ../pipex
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+# 11: The program handles outfile's open error                              [LK]
+# 12: The program handles execve errors                                     [LK]
+The next tests will use the following command:
+../pipex/pipex "assets/deepthought.txt" "cat" "notexisting" "outs/test-xx.txt"
+(notexisting is a command that is not supposed to exist)
+
+# 26: The program exits with the right status code                          [LK]
+# 27: The output of the command contains 'command not found'                [LK]
+# 28: The output of the command is correct                                  [LK]
+
+
+
+..........42_pipex_tester..........
+./pipex "infiles/basic.txt" "cat -e" "cat -e" "outfiles/outfile_without_permissions"
+./pipex "infiles/basic.txt" "sleep 3" "cat -e" "outfiles/outfile_without_permissions"
+./pipex "nonexistingfile" "cat -e" "cat -e" "outfiles/outfile_without_permissions"
+./pipex "infiles/basic.txt" "cat -e" "nonexistingcommand" "outfiles/outfile" 
+...........tester-pipex.................
+./pipex infile_no_r cat "echo yo" outfile_no_w 
+./pipex Makefile catiop " " outf
+./pipex Makefile ./a.out (chmod u-x) "echo yo" outf
+...............pipex-tester.................
+./pipex "assets/deepthought.txt" "cat" "notexisting" "outs/test-xx.txt"
+
+
+==11547== 
+==11547== 8 bytes in 1 blocks are still reachable in loss record 1 of 2
+==11547==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11547==    by 0x109985: get_part_cmd (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x109B2A: splitted_cmd (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x109C94: split_command (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x1093EA: execve_init (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x10A0DF: first_process (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x10A192: handle_proces (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x10A28D: pipex (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x1092AF: main (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547== 
+==11547== 16 bytes in 1 blocks are still reachable in loss record 2 of 2
+==11547==    at 0x4843828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11547==    by 0x109C36: split_command (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x1093EA: execve_init (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x10A0DF: first_process (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x10A192: handle_proces (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x10A28D: pipex (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+==11547==    by 0x1092AF: main (in /home/shachowd/42cursus/project/pipex/pipex/pipex)

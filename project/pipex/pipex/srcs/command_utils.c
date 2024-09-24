@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:20:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/22 18:15:09 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:26:17 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ char	*quoted_word(char *cmd)
 		cmd++;
 	if (*cmd != value || *cmd == '\0')
 	{
-		error_return(cmd, "", 1);
+		ft_putstr_fd("closing quote is missing", 2);
+		exit(1);
 	}
 	else if (*cmd)
 		cmd++;
