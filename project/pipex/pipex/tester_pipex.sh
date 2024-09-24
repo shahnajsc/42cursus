@@ -2,7 +2,7 @@
 
 # bonus info config (CHANGE HERE if your bonus exec/rule is not 'pipex')
 pipex_bonus=pipex
-rule_bonus=pipex
+rule_bonus=bonus
 
 # const
 vlgppx='/usr/bin/valgrind --trace-children=yes --leak-check=full --track-fds=yes'
@@ -373,9 +373,9 @@ rm -f stderr.txt outf*
 # executable (+ pas les droits)
 echo -e "${BLU_BG}Custom exec:${END}"
 
-echo -e "#include <stdio.h>\nint main(void){printf(\"yo\");}" > main.c 
-mkdir -p dir1/dir2 ; gcc main.c ; gcc -o ls main.c ; gcc -o dir1/dir2/ls main.c
-rm main.c
+echo -e "#include <stdio.h>\nint main(void){printf(\"yo\");}" > mainx.c 
+mkdir -p dir1/dir2 ; gcc mainx.c ; gcc -o ls mainx.c ; gcc -o dir1/dir2/ls mainx.c
+rm mainx.c
 
 echo -ne "Test 1 : ./pipex Makefile ./a.out cat outf \t\t\t\t--> "
 ./pipex Makefile "./a.out" "cat" outf 2> stderr.txt
@@ -544,7 +544,7 @@ main_fd=$(( $main_fd_open - $main_fd_std ))
 rm -f outf vlg.txt
 
 echo -ne "Test 6 : valgrind ./pipex Makefile ./a.out (chmod u-x) \"echo yo\" outf \t--> "
-echo -e "#include <stdio.h>\nint main(void){printf(\"yo\");}" > main.c && gcc main.c && rm main.c
+echo -e "#include <stdio.h>\nint main(void){printf(\"yo\");}" > mainx.c && gcc mainx.c && rm mainx.c
 chmod u-x a.out
 $vlgppx ./pipex Makefile "./a.out" "echo yo" outf > vlg.txt 2>&1
 first_proc=$(cat vlg.txt | grep -m1 -A 1 "HEAP SUMMARY" | tail -n1 | egrep -o "[0-9]*,?[0-9]* bytes" | cut -d' ' -f1)
@@ -585,11 +585,11 @@ gcc -o popo popo.c
 echo -ne "Test 1 : ./pipex Makefile \"sleep 3\" \"sleep 1\" outf \t\t\t--> "
 start_Z_nb=$(top -bn1 | head -n2 | egrep -o "[0-9]* zombie$" | egrep -o "[0-9]*")
 ./pipex Makefile "sleep 3" "sleep 1" outf &
-sleep 1
+sleep 3
 exec_Z_nb=$(top -bn1 | head -n2 | egrep -o "[0-9]* zombie$" | egrep -o "[0-9]*")
 ps -aux | grep Z | grep -vi grep > zombie_test1
 kill -s SIGTERM $! > /dev/null 2>&1 || kill -s SIGKILL $! > /dev/null 2>&1
-[[ $(( $exec_Z_nb - $start_Z_nb )) -eq 0 ]] && echo -e "${GREEN}OK (sleep 1 did not became a zombie)${END}" && rm -f zombie_test1
+[[ $(( $exec_Z_nb - $start_Z_nb )) -eq 0 ]] && echo -e "${GREEN}OK (sleep 3 did not became a zombie)${END}" && rm -f zombie_test1
 [[ $(( $exec_Z_nb - $start_Z_nb )) -gt 0 ]] && echo -e "${YEL}KO: $(( $exec_Z_nb - $start_Z_nb )) process became zombie before pipex returned (most probably sleep 1, please check 'zombie_test1')${END}"
 rm -f outf
 
@@ -629,9 +629,10 @@ rm -f outf
 # -----------------------------------------------------------------------------------------------------------------------------------------
 # BONUS TESTS : 
 # -----------------------------------------------------------------------------------------------------------------------------------------
-if [[ ! $1 =~ -m$|-mandatory$ ]] ; then
+# if [[ ! $1 =~ -m$|-mandatory$ ]] ; then
 
-[[ $bonus -eq 1 ]] && make ${rule_bonus} >/dev/null 2>&1 
+# [[ $bonus -eq 1 ]] && 
+make ${rule_bonus} >/dev/null 2>&1 
 
 echo -e "${YEL_BG}Bonus tests${END}"
 

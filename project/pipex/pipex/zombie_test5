@@ -1,0 +1,6 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+shachowd  753842  0.0  0.0      0     0 ?        Z    08:26   0:00 [zypak-sandbox] <defunct>
+shachowd  754199  0.0  0.0      0     0 ?        Z    08:27   0:00 [zypak-sandbox] <defunct>
+shachowd  766422  0.0  0.0      0     0 pts/3    Z+   09:37   0:00 [date] <defunct>
+shachowd  766423  0.0  0.0      0     0 pts/3    Z+   09:37   0:00 [env] <defunct>
+shachowd  766424  0.0  0.0      0     0 pts/3    Z+   09:37   0:00 [ls] <defunct>
