@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/24 17:01:57 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/24 20:37:20 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	handle_proces(t_pipex *data, int i)
 	}
 	close_fds(data->fd);
 	close(infd);
-	close(outfd);
+	close(outfd); // free splitted?? paths???
 	exit(EXIT_SUCCESS);
 }
 
