@@ -19,7 +19,14 @@ static void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 	data->envp = envp;
 	data->envp_paths = NULL;
 	data->splitted_cmd = NULL;
+	data->cmd_path = NULL;
 }
+// static void free_at_success(t_pipex *data)
+// {
+// 	if (data->cmd_path)
+// 		free(data->cmd_path);
+// 	// close_fds(data->fd);
+// }
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -34,5 +41,5 @@ int	main(int argc, char **argv, char **envp)
 	}
 	data_init(&data, argc, argv, envp);
 	pipe_status = pipex(&data);
-	exit(pipe_status);
+	return (pipe_status);
 }

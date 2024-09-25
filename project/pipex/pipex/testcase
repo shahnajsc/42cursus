@@ -155,3 +155,9 @@ The next tests will use the following command:
 ==11547==    by 0x10A192: handle_proces (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
 ==11547==    by 0x10A28D: pipex (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
 ==11547==    by 0x1092AF: main (in /home/shachowd/42cursus/project/pipex/pipex/pipex)
+
+#14:          [OK]    [OK]    [OK]    [KO]    
+#15:         [OK]    [OK]    [OK]    [KO]    
+#16:            [OK]    [OK]    [OK]    [KO]    
+#17: "infiles/basic.txt" "nonexistingcommand" "cat -e" "outfiles/outfile"                 [OK]    [OK]    [OK]    [OK]    
+#18:                 [OK]    [OK]    [OK]    [KO] 

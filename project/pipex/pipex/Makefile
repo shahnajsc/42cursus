@@ -44,13 +44,13 @@ mandatory : .mandatory
 .mandatory: $(LIBFT) $(MAN_SRCS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(MAN_SRCS) $(LIBFT) -o $(NAME)
 	@touch .mandatory
-	@$(RM) .bonus
+# @$(RM) .bonus
 
-bonus : .bonus
-.bonus: $(LIBFT) $(BON_SRCS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(BON_SRCS) $(LIBFT) -o $(NAME)
-	@touch .bonus
-	@$(RM) .mandatory
+# bonus : .bonus
+# .bonus: $(LIBFT) $(BON_SRCS)
+# 	$(CC) $(CFLAGS) $(INCLUDES) $(BON_SRCS) $(LIBFT) -o $(NAME)
+# 	@touch .bonus
+# 	@$(RM) .mandatory
 
 clean:
 	$(MAKE) -C ./libft clean

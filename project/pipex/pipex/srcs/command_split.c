@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:25:12 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/24 15:27:13 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:13:12 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ static char	**splitted_cmd(char *cmd, char **splitted_cmd, int words, int index)
 		if (!splitted_cmd[index])
 		{
 			free_grid(splitted_cmd);
-			free(cmd);
 			return (NULL);
 		}
 	}

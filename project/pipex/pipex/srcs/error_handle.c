@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:27:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/24 17:34:25 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:13:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	close_fds(int *fd)
 	fd = NULL;
 }
 
-void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value) // t_pipex *data,
+void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value)
 {
 	ft_putstr_fd("pipex: ", 2);
 	if (*err_in != '\0')
@@ -59,11 +59,6 @@ void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value) // 
 	}
 	if (data->splitted_cmd)
 		free_grid(data->splitted_cmd);
-	// if (data->envp_paths)
-	//  	free_grid(data->envp_paths);
 	close_fds(data->fd);
 	exit(ret_value);
 }
-
-
-

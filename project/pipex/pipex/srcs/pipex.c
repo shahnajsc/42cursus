@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:54 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/24 20:37:20 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:57:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	handle_proces(t_pipex *data, int i)
 	}
 	close_fds(data->fd);
 	close(infd);
-	close(outfd); // free splitted?? paths???
+	close(outfd);
 	exit(EXIT_SUCCESS);
 }
 
@@ -75,5 +75,5 @@ int	pipex(t_pipex *data)
 		pipe_status = wait_process(p_id[i]);
 		i++;
 	}
-	return (pipe_status);
+	exit(pipe_status);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:54:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/24 15:23:22 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/25 10:16:01 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_pipex
 	int		fd[2];
 	char	**splitted_cmd;
 	char	**envp_paths;
+	char	*cmd_path;
 }	t_pipex;
 
 // utils functions
