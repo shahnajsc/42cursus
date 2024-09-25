@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 19:39:45 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 19:52:38 by shachowd         ###   ########.fr       */
+/*   Created: 2024/09/22 19:58:30 by shachowd          #+#    #+#             */
+/*   Updated: 2024/09/22 20:36:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/pipex_bonus.h"
 
@@ -51,8 +52,7 @@ char	*quoted_word(char *cmd)
 		cmd++;
 	if (*cmd != value || *cmd == '\0')
 	{
-		ft_putstr_fd("closing quote is missing", 2);
-		exit(1);
+		error_return(cmd, "", 1);
 	}
 	else if (*cmd)
 		cmd++;

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:54:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 10:16:01 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:58:00 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_pipex
 }	t_pipex;
 
 // utils functions
-char	**ft_split(char const *s, char c);
 void	free_grid(char **ptr);
 char	*skip_empty_str(char *cmd);
 char	*quoted_word(char *cmd);

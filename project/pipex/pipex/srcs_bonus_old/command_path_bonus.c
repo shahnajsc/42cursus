@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command_path.c                                     :+:      :+:    :+:   */
+/*   command_path_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/03 21:31:59 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 19:19:05 by shachowd         ###   ########.fr       */
+/*   Created: 2024/09/22 19:57:57 by shachowd          #+#    #+#             */
+/*   Updated: 2024/09/23 21:02:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../includes/pipex_bonus.h"
 
 static char	**get_envp_paths(t_pipex *data)
 {
@@ -26,7 +26,7 @@ static char	**get_envp_paths(t_pipex *data)
 		{
 			envp_path = ft_split(data->envp[i] + 5, ':');
 			if (!envp_path)
-				error_return(data, "ft_split()", "", 1);
+				error_return("ft_split()", "", 1);
 			return (envp_path);
 		}
 		i++;
@@ -77,13 +77,12 @@ char	*get_command_path(t_pipex *data)
 		if (access(data->splitted_cmd[0], F_OK) == 0)
 			return (data->splitted_cmd[0]);
 		else
-			error_return(data, data->splitted_cmd[0], "", 127);
+			error_return(data->splitted_cmd[0], "", 127);
 	}
 	data->envp_paths = get_envp_paths(data);
 	if (!data->envp_paths)
-		error_return(data, data->splitted_cmd[0], "", 127);
+		error_return(data->splitted_cmd[0], "No such file or directory", 127);
 	final_command = get_path_cmd(data->envp_paths, data->splitted_cmd[0]);
-	free_grid(data->envp_paths);
+	free_grid((void **)data->envp_paths);
 	return (final_command);
 }
-//No such file or directory

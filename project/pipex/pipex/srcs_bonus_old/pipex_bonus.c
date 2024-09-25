@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 19:40:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 21:46:45 by shachowd         ###   ########.fr       */
+/*   Created: 2024/09/22 19:59:22 by shachowd          #+#    #+#             */
+/*   Updated: 2024/09/23 21:42:02 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	first_process(t_pipex *data, int i)
 	// 	infd = data->fd[i][0];
 	// }
 	// else
-	infd = get_file_fd(data, 0, data->argv[1]);
+	infd = get_file_fd(0, data);
 	outfd = data->fd[i][1];
 	close(data->fd[i][0]);
-	redirect_fd(data, infd, outfd);
+	redirect_fd(infd, outfd);
 	close_fds(data);
 	execve_init(data, data->argv[i + 2 + data->here_doc]);
 }
@@ -39,7 +39,7 @@ static void	middle_process(t_pipex *data, int i)
 	infd = data->fd[i-1][0];
 	outfd = data->fd[i][1];
 	close(data->fd[i][0]);
-	redirect_fd(data, infd, outfd);
+	redirect_fd(infd, outfd);
 	close_fds(data);
 	execve_init(data, data->argv[i + 2 + data->here_doc]);
 }
@@ -50,9 +50,9 @@ static void	last_process(t_pipex *data, int i)
 	int outfd;
 
 	infd = data->fd[i - 1][0];
-	outfd = get_file_fd(data, 1, data->argv[data->argc - 1]);
+	outfd = get_file_fd(1, data);
 	close(data->fd[i][1]);
-	redirect_fd(data, infd, outfd);
+	redirect_fd(infd, outfd);
 	close_fds(data);
 	// close(infd); // now or later??
 	// close(outfd);
@@ -74,8 +74,6 @@ static void	handle_proces(t_pipex *data, int i)
 		middle_process(data, i);
 	}
 	close_fds(data);
-	// close(infd);
-	// close(outfd);
 	exit(EXIT_SUCCESS);
 }
 
@@ -91,7 +89,7 @@ int	pipex(t_pipex *data)
 	{
 		p_id[i] = fork();
 		if (p_id[i] == -1)
-			error_return(data, "fork()", "", 1);
+			error_return("fork()", "", 1);
 		if (p_id[i] == 0)
 			handle_proces(data, i);
 		i++;

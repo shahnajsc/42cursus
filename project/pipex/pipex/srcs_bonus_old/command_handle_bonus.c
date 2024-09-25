@@ -5,33 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 19:38:28 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 22:24:27 by shachowd         ###   ########.fr       */
+/*   Created: 2024/09/22 19:57:32 by shachowd          #+#    #+#             */
+/*   Updated: 2024/09/22 20:35:26 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-static void	error_handle_execv(t_pipex *data, char *cmd)
+static void	error_handle_execv(char *cmd, char *cmd_path)
 {
 	if (ft_strchr(cmd, '/') && !access(cmd, X_OK))
-		error_return(data, cmd, "Is a directory", 126);
+		error_return(cmd, "Is a directory", 126);
 	else if (!ft_strchr(cmd, '/') && !access(cmd, X_OK))
-		error_return(data, cmd, "command not found", 127);
+		error_return(cmd, "command not found", 127);
 	else if (access(cmd, X_OK) == -1 && !ft_strchr(cmd, '/'))
-		error_return(data, data->cmd_path, "", 126); // need in mandatory
+		error_return(cmd_path, "", 126);
 	else
-		error_return(data, cmd, "", 126);
+		error_return(cmd, "", 126);
 }
 
 void	execve_init(t_pipex *data, char *cmd)
 {
+	char	*cmd_path;
+
 	split_command(data, cmd);
 	if (!data->splitted_cmd)
-		error_return(data, cmd, "", 127);
-	data->cmd_path = get_command_path(data);
-	if (!data->cmd_path)
-		error_return(data, cmd, "command not found", 127);
-	execve(data->cmd_path, data->splitted_cmd, data->envp);
-	error_handle_execv(data, cmd); // need in mandatory
+		error_return(cmd, "", 127);
+	cmd_path = get_command_path(data);
+	if (!cmd_path)
+		error_return(cmd, "command not found", 127);
+	execve(cmd_path, data->splitted_cmd, data->envp);
+	error_handle_execv(cmd, cmd_path);
 }

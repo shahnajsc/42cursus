@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 19:54:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/23 21:05:53 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/25 21:45:05 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static void	data_init(t_pipex *data, int argc, char **argv, char **envp, int i)
 		data->here_doc = 0;
 	fds = (int **)malloc((data->argc - 3 - data->here_doc + 1) * sizeof(int *));
 	if (!fds)
-		error_return("", "malloc()", 1) ;
+		error_return(data, "", "malloc()", 1) ;
 	while (fds && ++i < (data->argc - 3 - data->here_doc))
 	{
 		fds[i] = (int *)malloc(2 * sizeof(int));
 		if (!fds[i])
 		{
 			free_grid((void **)fds);
-			error_return("pipe()", "", 1);
+			error_return(data, "pipe()", "", 1);
 		}
 	}
 	fds[i] = NULL;
