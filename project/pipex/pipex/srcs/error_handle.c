@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:27:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 17:13:59 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 08:57:19 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,12 @@ void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value)
 		ft_putstr_fd(msg_err, 2);
 		ft_putstr_fd("\n", 2);
 	}
-	if (data->splitted_cmd)
-		free_grid(data->splitted_cmd);
+	if (data->sp_cmd)
+		free_grid(data->sp_cmd);
+	if (data->envp_paths != NULL)
+		free(data->cmd_path);
+	if (data->envp_paths)
+		free_grid((void *)data->envp_paths);
 	close_fds(data->fd);
 	exit(ret_value);
 }

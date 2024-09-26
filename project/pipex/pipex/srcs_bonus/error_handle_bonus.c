@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:40:02 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 22:23:25 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 09:57:24 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,19 @@ void	close_fds(t_pipex *data)
 	data->fd = NULL;
 }
 
+void	clean_at_exit(t_pipex *data)
+{
+	if (data->sp_cmd)
+		free_grid((void *)data->sp_cmd);
+	if (data->envp_paths != NULL)
+		free(data->cmd_path);
+	if (data->envp_paths)
+		free_grid((void *)data->envp_paths);
+	if (data->p_id)
+		free(data->p_id);
+	close_fds(data);
+}
+
 void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value)
 {
 	ft_putstr_fd("pipex: ", 2);
@@ -66,12 +79,6 @@ void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value)
 		ft_putstr_fd(msg_err, 2);
 		ft_putstr_fd("\n", 2);
 	}
-	if (data->splitted_cmd)
-		free_grid((void *)data->splitted_cmd);
-	if (data->envp_paths != NULL)
-		free(data->cmd_path);
-	if (data->envp_paths)
-		free_grid((void *)data->envp_paths); // need for mandatory also
-	close_fds(data);
+	clean_at_exit(data);
 	exit(ret_value);
 }

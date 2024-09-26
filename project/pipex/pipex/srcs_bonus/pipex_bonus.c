@@ -6,23 +6,14 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:40:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 21:46:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:42:37 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-static void	first_process(t_pipex *data, int i)
+static void	first_process(t_pipex *data, int i, int infd, int outfd)
 {
-	int infd;
-	int outfd;
-
-	// if (data->here_doc)
-	// {
-	// 	read_here_doc(data, i);
-	// 	infd = data->fd[i][0];
-	// }
-	// else
 	infd = get_file_fd(data, 0, data->argv[1]);
 	outfd = data->fd[i][1];
 	close(data->fd[i][0]);
@@ -31,12 +22,9 @@ static void	first_process(t_pipex *data, int i)
 	execve_init(data, data->argv[i + 2 + data->here_doc]);
 }
 
-static void	middle_process(t_pipex *data, int i)
+static void	middle_process(t_pipex *data, int i, int infd, int outfd)
 {
-	int infd;
-	int outfd;
-
-	infd = data->fd[i-1][0];
+	infd = data->fd[i - 1][0];
 	outfd = data->fd[i][1];
 	close(data->fd[i][0]);
 	redirect_fd(data, infd, outfd);
@@ -44,63 +32,60 @@ static void	middle_process(t_pipex *data, int i)
 	execve_init(data, data->argv[i + 2 + data->here_doc]);
 }
 
-static void	last_process(t_pipex *data, int i)
+static void	last_process(t_pipex *data, int i, int infd, int outfd)
 {
-	int infd;
-	int outfd;
-
 	infd = data->fd[i - 1][0];
 	outfd = get_file_fd(data, 1, data->argv[data->argc - 1]);
 	close(data->fd[i][1]);
 	redirect_fd(data, infd, outfd);
 	close_fds(data);
-	// close(infd); // now or later??
-	// close(outfd);
 	execve_init(data, data->argv[i + 2 + data->here_doc]);
 }
 
 static void	handle_proces(t_pipex *data, int i)
 {
+	int	infd;
+	int	outfd;
+
+	infd = 0;
+	outfd = 0;
 	if (i == 0)
-	{
-		first_process(data, i);
-	}
+		first_process(data, i, infd, outfd);
 	else if (i == (data->argc - 3 - data->here_doc - 1))
-	{
-		last_process(data, i);
-	}
+		last_process(data, i, infd, outfd);
 	else
-	{
-		middle_process(data, i);
-	}
+		middle_process(data, i, infd, outfd);
+	close(infd);
+	close(outfd);
 	close_fds(data);
-	// close(infd);
-	// close(outfd);
 	exit(EXIT_SUCCESS);
 }
 
 int	pipex(t_pipex *data)
 {
-	pid_t	p_id[data->argc - 3 - data->here_doc];
-	int		pipe_status;
-	int		i;
+	int	pipe_status;
+	int	i;
 
+	data->p_id = (int *)malloc((data->argc - 3 - data->here_doc) * sizeof(int));
+	if (!data->p_id)
+		error_return(data, "malloc()", "", 1);
+	if (data->here_doc && data->argc >= 6)
+		read_here_doc(data);
 	pipe_init(data);
-	i = 0;
-	while (i < data->argc - 3 - data->here_doc)
-	{
-		p_id[i] = fork();
-		if (p_id[i] == -1)
-			error_return(data, "fork()", "", 1);
-		if (p_id[i] == 0)
-			handle_proces(data, i);
-		i++;
-	}
-	close_fds(data); // need to free
 	i = -1;
-	while (++i < data->argc - 3 - data->here_doc)
+	while (++i < (data->argc - 3 - data->here_doc))
 	{
-		pipe_status = wait_process(p_id[i]);
+		data->p_id[i] = fork();
+		if (data->p_id[i] == -1)
+			error_return(data, "fork()", "", 1);
+		if (data->p_id[i] == 0)
+			handle_proces(data, i);
+	}
+	close_fds(data);
+	i = -1;
+	while (++i < (data->argc - 3 - data->here_doc))
+	{
+		pipe_status = wait_process(data->p_id[i]);
 	}
 	return (pipe_status);
 }

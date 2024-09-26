@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:12:03 by shachowd          #+#    #+#             */
-/*   Updated: 2024/07/17 13:21:53 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:41:32 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str != '\0')
-	{
-		if (*str == (char)c)
-		{
-			return (str);
-		}
-		str++;
-	}
-	if (*str == (char)c)
-	{
-		return (str);
-	}
-	return (NULL);
+	if (!s)
+		return (NULL);
+	while (*s && *s != (char)c)
+		s++;
+	if (*s == (char )c)
+		return ((char *)s);
+	return (0);
 }
 /*
 	-It locates the FIRST occurence of 'c' in the string.

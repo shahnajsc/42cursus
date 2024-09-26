@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:39:29 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 21:50:33 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 08:58:35 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,14 +132,14 @@ void	split_command(t_pipex *data, char *cmd)
 	if (!clean_cmd)
 		error_return(data, "malloc()", "", 1);
 	words = count_words(clean_cmd);
-	data->splitted_cmd = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!data->splitted_cmd)
+	data->sp_cmd = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!data->sp_cmd)
 	{
 		free(clean_cmd);
 		error_return(data, "malloc()", "", 1);
 	}
-	data->splitted_cmd = splitted_cmd(clean_cmd, data->splitted_cmd, words, -1);
-	if (!data->splitted_cmd)
+	data->sp_cmd = splitted_cmd(clean_cmd, data->sp_cmd, words, -1);
+	if (!data->sp_cmd)
 	{
 		free(clean_cmd);
 		error_return(data, "split_command()", "", 1);

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:43:43 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 17:07:16 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 08:55:42 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	error_handle_execv(t_pipex *data, char *cmd)
 	else if (!ft_strchr(cmd, '/') && !access(cmd, X_OK))
 		error_return(data, cmd, "command not found", 127);
 	else if (access(cmd, X_OK) == -1 && !ft_strchr(cmd, '/'))
-		error_return(data, cmd, "", 126);
+		error_return(data, data->cmd_path, "", 126);
 	else
 		error_return(data, cmd, "", 126);
 }
@@ -27,13 +27,11 @@ static void	error_handle_execv(t_pipex *data, char *cmd)
 void	execve_init(t_pipex *data, char *cmd)
 {
 	split_command(data, cmd);
-	if (!data->splitted_cmd)
+	if (!data->sp_cmd)
 		error_return(data, cmd, "", 127);
 	data->cmd_path = get_command_path(data);
 	if (!data->cmd_path)
 		error_return(data, cmd, "command not found", 127);
-	execve(data->cmd_path, data->splitted_cmd, data->envp);
-	if (data->envp_paths != NULL)
-		free(data->cmd_path);
+	execve(data->cmd_path, data->sp_cmd, data->envp);
 	error_handle_execv(data, cmd);
 }

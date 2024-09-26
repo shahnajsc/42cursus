@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:53:13 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/23 22:10:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:42:11 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static char	*get_buffer(int fd, char *read_buf, char *left_buf)
 	char	*tmp_left_buffer;
 
 	read_bytes = 1;
+	if (!left_buf)
+		left_buf = ft_strjoin("", "");
 	while (read_bytes > 0 && !ft_strchr(left_buf, '\n'))
 	{
 		read_bytes = read(fd, read_buf, BUFFER_SIZE);

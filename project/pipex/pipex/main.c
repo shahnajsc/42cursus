@@ -18,7 +18,7 @@ static void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 	data->argv = argv;
 	data->envp = envp;
 	data->envp_paths = NULL;
-	data->splitted_cmd = NULL;
+	data->sp_cmd = NULL;
 	data->cmd_path = NULL;
 }
 // static void free_at_success(t_pipex *data)

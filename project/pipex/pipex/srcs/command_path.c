@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 21:31:59 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/25 19:19:05 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/26 08:56:18 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,17 @@ char	*get_command_path(t_pipex *data)
 {
 	char	*final_command;
 
-	if (ft_strchr(data->splitted_cmd[0], '/'))
+	if (ft_strchr(data->sp_cmd[0], '/'))
 	{
-		if (access(data->splitted_cmd[0], F_OK) == 0)
-			return (data->splitted_cmd[0]);
+		if (access(data->sp_cmd[0], F_OK) == 0)
+			return (data->sp_cmd[0]);
 		else
-			error_return(data, data->splitted_cmd[0], "", 127);
+			error_return(data, data->sp_cmd[0], "", 127);
 	}
 	data->envp_paths = get_envp_paths(data);
 	if (!data->envp_paths)
-		error_return(data, data->splitted_cmd[0], "", 127);
-	final_command = get_path_cmd(data->envp_paths, data->splitted_cmd[0]);
-	free_grid(data->envp_paths);
+		error_return(data, data->sp_cmd[0], "No such file or directory", 127);
+	final_command = get_path_cmd(data->envp_paths, data->sp_cmd[0]);
 	return (final_command);
 }
 //No such file or directory
