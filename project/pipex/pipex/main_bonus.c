@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 19:54:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/26 20:21:24 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:02:40 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	data_init(t_pipex *data, int argc, char **argv, char **envp)
 	data->argc = argc;
 	data->argv = argv;
 	data->envp = envp;
-	if (argc > 5 && ft_strncmp(argv[1], "here_doc", 8) == 0)
+	if (argc >= 6 && ft_strncmp(argv[1], "here_doc", 8) == 0)
 		data->here_doc = 1;
 	else
 		data->here_doc = 0;

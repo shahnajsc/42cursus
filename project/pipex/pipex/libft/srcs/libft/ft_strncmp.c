@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:18:48 by shachowd          #+#    #+#             */
-/*   Updated: 2024/05/20 12:31:48 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:44:12 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	{
 		return (0);
 	}
-	while ((s1[count] == s2[count]) && (s1[count] != '\0') && (count < n - 1))
+	while ((s1[count] == s2[count]) && s1[count] && (count < n - 1))
 	{
 		count++;
 	}
@@ -33,10 +33,10 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	}
 }
 /*
- - The strcmp() and strncmp() functions lexicographically compare 
+ - The strcmp() and strncmp() functions lexicographically compare
  	the null terminated strings s1 and s2.
  - The strncmp() function compares not more than n characters
- - strncmp() is designed for comparing strings rather 
+ - strncmp() is designed for comparing strings rather
  	than binary data
  - characters that appear after a `\0' character are not compared
 */

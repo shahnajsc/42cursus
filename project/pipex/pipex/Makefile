@@ -3,8 +3,8 @@ NAME 			= pipex
 
 # Compiler and flags
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror
-#LDFLAGS 		= -fsanitize=address -fsanitize=address -g
+CFLAGS 			= -Wall -Wextra -Werror -fsanitize=address -g
+LDFLAGS 		= -fsanitize=address
 INCLUDES 		= -I./includes -I./libft/includes
 RM 				= rm -f
 
@@ -19,7 +19,7 @@ MAN_DIR 		= 	srcs/command_handle.c	srcs/command_path.c		srcs/command_split.c \
 BON_DIR			=	srcs_bonus/command_handle_bonus.c	srcs_bonus/command_path_bonus.c	\
 					srcs_bonus/command_split_bonus.c	srcs_bonus/command_utils_bonus.c	\
 					srcs_bonus/error_handle_bonus.c		srcs_bonus/pipex_bonus.c	\
-					srcs_bonus/process_handle_bonus.c	\
+					srcs_bonus/process_handle_bonus.c	srcs_bonus/here_doc_handle.c	\
 
 # Source path
 

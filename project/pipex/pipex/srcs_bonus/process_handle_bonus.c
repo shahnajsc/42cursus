@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:40:55 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/26 22:25:00 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:05:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,50 +53,6 @@ int	get_file_fd(t_pipex *data, int i, char *filename)
 	if (file_fd == -1)
 		error_return(data, filename, "", 1);
 	return (file_fd);
-}
-
-void	read_here_doc(t_pipex *data)
-{
-	char	*line_text;
-	int		hd_fd;
-
-	hd_fd = open("here_doc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (hd_fd == 1)
-		error_return(data, "open()", "", 1);
-	while (1)
-	{
-		line_text = get_next_line(0);
-		if (!line_text)
-			break ;
-		if (ft_strncmp(line_text, data->argv[2], ft_strlen(data->argv[2])) == 0)
-		{
-			free(line_text);
-			break ;
-		}
-		write(hd_fd, line_text, ft_strlen(line_text));
-		free(line_text);
-	}
-	close(hd_fd);
-	if (!line_text)
-		error_return(data, "get_next_line()", "", 1);
-	// free(line_text);
-	// hd_fd = open("here_doc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	// if (hd_fd == 1)
-	// 	error_return(data, "open()", "", 1);
-	// while (1)
-	// {
-	// 	line_text = get_next_line(0);
-	// 	if (!line_text)
-	// 		break ;
-	// 	if (ft_strncmp(line_text, data->argv[2], ft_strlen(data->argv[2])) == 0)
-	// 		break ;
-	// 	write(hd_fd, line_text, ft_strlen(line_text));
-	// 	free(line_text);
-	// }
-	// close(hd_fd);
-	// if (!line_text)
-	// 	error_return(data, "get_next_line()", "", 1);
-	// free(line_text);
 }
 
 void	redirect_fd(t_pipex *data, int infd, int outfd)

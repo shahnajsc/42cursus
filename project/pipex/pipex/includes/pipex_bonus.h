@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 20:05:36 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/26 10:59:26 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:09:22 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <errno.h>
 # include <string.h>
 # include <stdlib.h>
+
+//#define BUFFER_SIZE 1024
 
 // Variable declaration
 
