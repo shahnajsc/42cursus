@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:40:02 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/26 09:57:24 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/09/28 13:07:41 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,20 @@ void	error_return(t_pipex *data, char *err_in, char *msg_err, int ret_value)
 		ft_putstr_fd(msg_err, 2);
 		ft_putstr_fd("\n", 2);
 	}
+	clean_at_exit(data);
+	exit(ret_value);
+}
+
+void	read_err_return(t_pipex *data, char *err_in, char *line, int ret_value)
+{
+	ft_putstr_fd("pipex: ", 2);
+	if (*err_in != '\0')
+	{
+		ft_putstr_fd(err_in, 2);
+	}
+	ft_putstr_fd(": ", 2);
+	perror("");
+	free(line);
 	clean_at_exit(data);
 	exit(ret_value);
 }
