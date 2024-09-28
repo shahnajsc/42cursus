@@ -2,12 +2,10 @@
 # Source files
 LIBFT			=	libft
 PRINTF			=	printf
-GNL				=	get_next_line
 
 SDIR			= 	./srcs
 LIBFT_DIR		=	$(SDIR)/$(LIBFT)
 PRINTF_DIR		=	$(SDIR)/$(PRINTF)
-GNL_DIR			=	$(SDIR)/$(GNL)
 
 # Source files
 LIBFT_FILES		=	./ft_isalpha.c		./ft_isdigit.c		./ft_isalnum.c		./ft_isascii.c	\
@@ -25,23 +23,17 @@ LIBFT_FILES		=	./ft_isalpha.c		./ft_isdigit.c		./ft_isalnum.c		./ft_isascii.c	\
 PRINTF_FILES	=	./ft_printf.c		./ft_print_utils.c	./ft_print_str.c	./ft_print_ptr.c \
 					./ft_print_nbr.c	./ft_print_unsign.c ./ft_print_hex.c \
 
-GNL_FILES		=	./get_next_line.c	./get_next_line_utils.c	\
-
-
 LIBFT_SRCS		=	$(addprefix $(LIBFT_DIR)/, $(LIBFT_FILES))
 PRINTF_SRCS		=	$(addprefix $(PRINTF_DIR)/, $(PRINTF_FILES))
-GNL_SRCS		=	$(addprefix $(GNL_DIR)/, $(GNL_FILES))
 
 # Object files
 ODIR 			= ./objs
 LIBFT_ODIR 		= $(ODIR)/$(LIBFT)
 PRINTF_ODIR 	= $(ODIR)/$(PRINTF)
-GNL_ODIR		= $(ODIR)/$(GNL)
 
 LIBFT_OBJS		= $(addprefix $(LIBFT_ODIR)/, $(notdir $(LIBFT_SRCS:.c=.o)))
 PRINTF_OBJS 	= $(addprefix $(PRINTF_ODIR)/, $(notdir $(PRINTF_SRCS:.c=.o)))
-GNL_OBJS		= $(addprefix $(GNL_ODIR)/, $(notdir $(GNL_SRCS:.c=.o)))
-OBJS			= $(LIBFT_OBJS) $(PRINTF_OBJS) $(GNL_OBJS)
+OBJS			= $(LIBFT_OBJS) $(PRINTF_OBJS)
 
 # Library name
 NAME			=	libft.a
@@ -55,7 +47,7 @@ MD				= 	mkdir -p
 all	:	${NAME}
 
 # make dir:
-$(LIBFT_ODIR) $(PRINTF_ODIR) $(GNL_ODIR):
+$(LIBFT_ODIR) $(PRINTF_ODIR):
 	@$(MD) $@
 
 # Rule to compile source files into object files
@@ -63,9 +55,6 @@ $(LIBFT_ODIR)%.o: $(LIBFT_DIR)%.c | $(LIBFT_ODIR)
 	@$(CC) -c $< -o $@
 
 $(PRINTF_ODIR)%.o: $(PRINTF_DIR)%.c | $(PRINTF_ODIR)
-	@$(CC) -c $< -o $@
-
-$(GNL_ODIR)%.o: $(GNL_DIR)%.c | $(GNL_ODIR)
 	@$(CC) -c $< -o $@
 
 # Target to create the library
