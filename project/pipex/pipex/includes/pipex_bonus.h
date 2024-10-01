@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 20:05:36 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/29 14:16:23 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:48:20 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define PIPEX_BONUS_H
 
 //required library
+// fcntl: file handle
+// sys/wait: process wait(waitpid)
+// stdio: perror
+// errno: strerrno
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <sys/wait.h>
@@ -21,8 +25,6 @@
 # include <errno.h>
 # include <string.h>
 # include <stdlib.h>
-
-//#define BUFFER_SIZE 1024
 
 // Variable declaration
 
