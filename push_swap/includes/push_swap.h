@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:36:00 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/03 16:23:46 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:33:18 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	display_stack(t_node *stack_a);
 
 // error handle
 void	free_stack(t_node *stack);
-void error_return(t_error *err_type);
+void	error_return(t_error err_type);
 
 #endif

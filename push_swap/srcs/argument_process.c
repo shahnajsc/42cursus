@@ -6,30 +6,41 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 08:42:11 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/03 16:29:58 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/03 22:47:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-// int	is_int(int nbr)
-// {
-// 	// is int
-// 	// is bigger than int
-// }
-int	check_duplicate(int *numbers)
+int	is_int(int *nbr)
+{
+	int i;
+
+	i = 0;
+	if (nbr[0] == '+' || nbr[0] == '-')
+		i++;
+	while (nbr[i])
+	{
+		if (!ft_isdigit(nbr[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+
+}
+int	check_duplicate(char **args_nbr)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (numbers[i] != NULL)
+	while (args_nbr[i])
 	{
 		j = 0;
-		while (numbers[j] != NULL)
+		while (args_nbr[j])
 		{
-			if (numbers[i] == numbers[j] && i != j)
+			if (args_nbr[i] == args_nbr[j] && i != j)
 				return (1);
 			j++;
 		}
@@ -39,36 +50,45 @@ int	check_duplicate(int *numbers)
 }
 
 
-int	*get_numbers(char **argv, int len)
+char	**parse_numbers(char **argv, int argc)
 {
-	int	*numbers;
-	int i;
+	char	**args_nbr;
+	int	i;
+	int	temp_nbr;
 
-	numbers = (int *)malloc(sizeof(int) * (len + 1));
-	if (!numbers)
-		return (NULL);
-	i = 0;
-	while (i < len )
+	if (argc == 2)
 	{
-		numbers[i] = ft_atoi(argv[i + 1]);
-		i++;
+		i = 0;
+		args_nbr = ft_split(argv[1], ' ');
 	}
-	numbers[i] = NULL;
-	if (check_duplicate(numbers))
+	else
+	{
+		i = 1;
+		args_nbr = argv;
+	}
+	while (args_nbr[i])
+	{
+		temp_nbr = ft_atoi(args_nbr[i]);
+		if (temp_nbr < -2147483648 || temp_nbr > 2147483647)
+			error_return(BIG_INT_E);
+		if (!is_int(temp_nbr))
+			error_return(IS_INT_E);
+	}
+	if (check_duplicate(args_nbr))
 		error_return(DUP_E);
-	return (numbers);
+	return (args_nbr);
 }
 
 t_node	*fill_stack_a(int argc, char **argv)
 {
-	int	*numbers;
+	char	**numbers;
 	t_node	*top;
 	t_node	*new_node;
 	int		i;
 
 	 // error_handle
 	i = argc - 1;
-	numbers = get_numbers(argv, i);
+	numbers = parse_numbers(argc, argv);
 	top = 0;
 	while (i > 0)
 	{
@@ -76,7 +96,7 @@ t_node	*fill_stack_a(int argc, char **argv)
 		if (!new_node)
 			return (NULL);
 		new_node->next = top;
-		new_node->nbr = numbers[i - 1]; // use get_number
+		new_node->nbr = ft_atoi(numbers[i - 1]); // use get_number
 		top = new_node;
 		i--;
 	}
