@@ -14,6 +14,7 @@ LIBFT		= ./libft/libft.a
 # Source
 MAN_DIR		= srcs/operations_a.c 	srcs/operations_b.c	\
 			srcs/operations_both.c	srcs/error_handle.c	\
+			srcs/argument_process.c	srcs/test_stages.c	\
 
 # Source path
 MAN_SRCS	= main.c $(MAN_DIR)

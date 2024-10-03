@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test_stages.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 15:07:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/03 16:02:41 by shachowd         ###   ########.fr       */
+/*   Created: 2024/10/03 11:52:30 by shachowd          #+#    #+#             */
+/*   Updated: 2024/10/03 15:50:43 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+
+
+#include "../includes/push_swap.h"
 #include <stdio.h>
 
-int main(int argc, char **argv)
+void display_stack(t_node *stack_a)
 {
-	t_node *a;
+	//t_node *top;
+	t_node *temp_node;
 
-	if (argc == 1) // one av input or multi input???
+	if (stack_a == 0)
 	{
-		printf("%s\n", argv[1]);
-		exit(1); // code 1 or 0?
+		printf("stack is empty\n");
+		exit(1);
 	}
-	a =  fill_stack_a(argc, argv);
-	display_stack(a);
-	free_stack(a);
+	temp_node = stack_a;
+	while (temp_node != 0)
+	{
+		printf("index add : [%p] : %d\n", temp_node, temp_node->nbr);
+		temp_node = temp_node->next;
+	}
+	//free(stack_a);
 }
