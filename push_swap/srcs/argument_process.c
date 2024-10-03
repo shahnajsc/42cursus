@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 08:42:11 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/03 22:47:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/03 23:12:54 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	is_int(int *nbr)
 	while (nbr[i])
 	{
 		if (!ft_isdigit(nbr[i]))
-			return (0);
+			return (0); // check 1 or 0
 		i++;
 	}
-	return (1);
+	return (1); // check 1 or 0
 
 }
 int	check_duplicate(char **args_nbr)
