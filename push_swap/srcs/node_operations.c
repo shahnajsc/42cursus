@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   node_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 15:07:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/04 17:05:25 by shachowd         ###   ########.fr       */
+/*   Created: 2024/10/04 15:46:03 by shachowd          #+#    #+#             */
+/*   Updated: 2024/10/04 16:57:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../includes/push_swap.h"
 
-int main(int argc, char **argv)
+t_node	*add_new_node(int number)
 {
-	t_node **a;
+	t_node	*new_node;
 
-	if (argc == 1) // one av input or multi input???
-	{
-		exit(1); // code 1 or 0?
-	}
-	a =  fill_stack_a(argc, argv);
-	display_stack(*a);
-	free_stack(*a);
+	new_node = (t_node *)malloc(sizeof(t_node));
+	if (!new_node)
+		return (NULL);
+	new_node->next = NULL;
+	new_node->nbr = number;
+	return (new_node);
+}
+
+void	add_node_front(t_node **top, t_node *new_node)
+{
+	if (!top || !new_node)
+		return ;
+	new_node->next = *top;
+	*top = new_node;
 }

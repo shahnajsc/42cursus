@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:36:00 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/03 19:33:18 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:01:43 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,18 @@ typedef enum s_error
 }	t_error;
 
 // arguments handle
-t_node		*fill_stack_a(int argc, char **argv);
+t_node		**fill_stack_a(int argc, char **argv);
+
+// t_node operation functions
+t_node	*add_new_node(int number);
+void	add_node_front(t_node **top, t_node *new_node);
 
 
 // test functions **** remove in final version
 void	display_stack(t_node *stack_a);
 
 // error handle
+void	free_grid(void **ptr);
 void	free_stack(t_node *stack);
 void	error_return(t_error err_type);
 

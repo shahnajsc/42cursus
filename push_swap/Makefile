@@ -4,7 +4,7 @@ NAME		= push_swap
 # NAME_BONUS	=  bonus executable name is different
 CC			= cc
 CFLAG		= -Wall -Wextra -Werror
-#LDFLAGS		= -fsanitize=adddress -fsanitize=adddress -g
+#LDFLAGS		= -fsanitize=adddress  -fsanitize=address -g
 INCLUDES	= -I./includes -I./libft/includes
 RM			= rm -f
 
@@ -15,6 +15,7 @@ LIBFT		= ./libft/libft.a
 MAN_DIR		= srcs/operations_a.c 	srcs/operations_b.c	\
 			srcs/operations_both.c	srcs/error_handle.c	\
 			srcs/argument_process.c	srcs/test_stages.c	\
+			srcs/node_operations.c	\
 
 # Source path
 MAN_SRCS	= main.c $(MAN_DIR)

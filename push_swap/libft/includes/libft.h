@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/28 18:57:31 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/04 13:12:51 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *haystack,
 						const char *needle, size_t len);
-int					ft_atoi(char const *str);
+long				ft_atoi(char const *str);
 void				*ft_calloc(size_t count, size_t size);
 char				*ft_strdup(const char *src);
 

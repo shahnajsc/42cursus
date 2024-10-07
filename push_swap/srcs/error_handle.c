@@ -6,11 +6,27 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:59:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/03 22:34:06 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:04:18 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	free_grid(void **ptr)
+{
+	int	i;
+
+	if (!ptr)
+		return ;
+	i = 0;
+	while (ptr[i] != NULL)
+	{
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr);
+	ptr = NULL;
+}
 
 void error_return(t_error err_type)
 {
