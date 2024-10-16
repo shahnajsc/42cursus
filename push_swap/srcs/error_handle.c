@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:59:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/07 17:09:59 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:08:41 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,19 @@ void	free_grid(void **ptr)
 	ptr = NULL;
 }
 
-void error_return(t_error err_type)
+void	error_arguments(char **args_nbr, int argc)
 {
 	ft_putstr_fd("Error\n", 2);
-	if (err_type == DUP_E)
-		ft_putstr_fd("there are duplicates", 2);
-	if (err_type == IS_INT_E)
-		ft_putstr_fd("some arguments aren’t integers", 2);
-	if (err_type == BIG_INT_E)
-		ft_putstr_fd("some arguments are bigger than an integer", 2);
-	exit(0);
+	if (argc == 2)
+		free_grid((void *)args_nbr);
+	exit(1);
 }
 
 void	free_stack(t_node **stack)
 {
 	t_node *temp_node;
 
-    if (!stack)
+	if (!stack || !(*stack))
 		return ;
 	while (*stack != NULL)
     {

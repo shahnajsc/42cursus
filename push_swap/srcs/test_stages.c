@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:52:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/07 17:11:15 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:12:16 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,22 @@ void display_stack(t_node **stack_a)
 	//t_node *top;
 	t_node *temp_node;
 
-	if (stack_a == NULL || *stack_a == NULL)
+	if (!stack_a)
 	{
 		printf("stack is empty\n");
 		exit(1);
 	}
 	temp_node = *stack_a;
-	while (temp_node != NULL)
+	while (temp_node != 0)
 	{
-		printf("index add : [%p] : %d\n", (void *)temp_node, temp_node->nbr);
+		printf("index add : [%p] : %d\n", temp_node, temp_node->nbr);
+		// if (temp_node->next)
+		// 	printf("%d\n", temp_node->next->nbr);
 		temp_node = temp_node->next;
+
 	}
-	free(stack_a);
+	//free(stack_a);
 }
+
+//tester https://github.com/LeoFu9487/push_swap_tester
+//bash basic_test.sh  bash loop.sh 100 10
