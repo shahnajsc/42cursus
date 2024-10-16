@@ -3,8 +3,8 @@
 NAME		= push_swap
 # NAME_BONUS	=  bonus executable name is different
 CC			= cc
-CFLAG		= -Wall -Wextra -Werror
-#LDFLAGS		= -fsanitize=adddress  -fsanitize=address -g
+CFLAG		= -Wall -Wextra -Werror -fsanitize=address -g
+LDFLAGS		= -fsanitize=adddress
 INCLUDES	= -I./includes -I./libft/includes
 RM			= rm -f
 
@@ -12,10 +12,12 @@ RM			= rm -f
 LIBFT		= ./libft/libft.a
 
 # Source
-MAN_DIR		= srcs/operations_a.c 	srcs/operations_b.c	\
-			srcs/operations_both.c	srcs/error_handle.c	\
-			srcs/argument_process.c	srcs/test_stages.c	\
-			srcs/node_operations.c	\
+MAN_DIR		= srcs/argument_process.c	srcs/error_handle.c	\
+			srcs/test_stages.c	\
+			operations/operations_node.c	operations/operations_utils.c	\
+			operations/operations_a.c	operations/operations_b.c	\
+			operations/operations_both.c	\
+			sort/push_swap.c	sort/sort_utils.c	\
 
 # Source path
 MAN_SRCS	= main.c $(MAN_DIR)
@@ -41,7 +43,7 @@ clean:
 	$(MAKE) -C ./libft clean
 	$(RM) .mandatory
 
-fclean: clean
+fclean:
 	$(MAKE) -C ./libft fclean
 	$(RM) $(NAME) .mandatory
 

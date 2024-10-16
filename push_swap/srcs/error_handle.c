@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:59:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/04 17:04:18 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:09:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ void error_return(t_error err_type)
 	exit(0);
 }
 
-void	free_stack(t_node *stack)
+void	free_stack(t_node **stack)
 {
 	t_node *temp_node;
 
-    while (stack != NULL)
+    if (!stack)
+		return ;
+	while (*stack != NULL)
     {
-        temp_node = stack;
-        stack = stack->next;
+        temp_node = *stack;
+        *stack = (*stack)->next;
         free(temp_node); // Free the current node
     }
+	*stack = NULL;
 }

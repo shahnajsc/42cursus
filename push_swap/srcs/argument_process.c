@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 08:42:11 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/04 16:56:05 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:59:42 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_node	**fill_stack_a(int argc, char **argv)
 		return (NULL);
 	while (i > 0)
 	{
-		new_node = add_new_node(ft_atoi(numbers[i]));
+		new_node = add_new_node(ft_atoi(numbers[i -1]));
 		if (!new_node)
 			return (NULL);
 		add_node_front(top, new_node);

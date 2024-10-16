@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_stages.c                                      :+:      :+:    :+:   */
+/*   ft_check_whitespace.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 11:52:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/07 17:11:15 by shachowd         ###   ########.fr       */
+/*   Created: 2024/10/11 13:19:25 by shachowd          #+#    #+#             */
+/*   Updated: 2024/10/11 16:10:56 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
-#include "../includes/push_swap.h"
-#include <stdio.h>
-
-void display_stack(t_node **stack_a)
+int check_white_spaces(char *str)
 {
-	//t_node *top;
-	t_node *temp_node;
+	int i;
 
-	if (stack_a == NULL || *stack_a == NULL)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		printf("stack is empty\n");
-		exit(1);
+		if (str[i] != 32 && (str[i] < 9 || str[i] > 13))
+			return (0);
+		i++;
 	}
-	temp_node = *stack_a;
-	while (temp_node != NULL)
-	{
-		printf("index add : [%p] : %d\n", (void *)temp_node, temp_node->nbr);
-		temp_node = temp_node->next;
-	}
-	free(stack_a);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/04 13:12:51 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:26:11 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					check_white_spaces(char *str);
 size_t				ft_strlen(const char *s);
 void				*ft_memset(void *str, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
