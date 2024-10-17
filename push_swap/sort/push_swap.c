@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 10:05:13 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/15 10:04:11 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/17 19:25:39 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,54 +40,48 @@ void	sort_three(t_pswap *psp)
 	}
 }
 
+int	get_position(t_pswap *psp, int lowest_index)
+{
+	int	position;
+	t_node *temp_a;
+
+	temp_a = *(psp->a);
+	while (temp_a != NULL)
+	{
+		if (lowest_index == temp_a->index)
+			position = temp_a->position;
+		temp_a = temp_a->next;
+	}
+	return (position);
+}
+
 void	sort_five(t_pswap *psp)
 {
+	int	lowest_index;
 	int	len;
-	int	forth_n;
-	int	fifth_n;
+	int position;
 
-	len = psp->length;
+	len = psp->length_a;
+	lowest_index = 0;
 	while (len > 3)
 	{
+		position = get_position(psp, lowest_index);
+		if ((*psp->a)->index != lowest_index)
+		{
+			if (position <= len / 2)
+				while ((*psp->a)->index != lowest_index)
+					ra(psp);
+			else
+				while ((*psp->a)->index != lowest_index)
+					rra(psp);
+		}
 		pb(psp);
+		lowest_index++;
 		len--;
 	}
-	// display_stack(psp->a);
-	// display_stack(psp->b);
-	forth_n = (*psp->b)->nbr;
-	fifth_n = (*psp->b)->next->nbr;
 	sort_three(psp);
-	//display_stack(psp->a);
-	if ((forth_n < (*psp->a)->nbr) && (fifth_n < (*psp->a)->nbr))
-	{
-		if (forth_n < fifth_n)
-			sb(psp);
-		pa(psp);
-		pa(psp);
-	}
-	if ((forth_n > (*psp->a)->next->next->nbr) && (fifth_n > (*psp->a)->next->next->nbr))
-	{
-		if (forth_n < fifth_n)
-			sb(psp);
-		pa(psp);
-		pa(psp);
-		ra(psp);
-		ra(psp);
-	}
-	else if ((forth_n < (*psp->a)->nbr) && (fifth_n > (*psp->a)->next->next->nbr))
-	{
-		pa(psp);
-		pa(psp);
-		ra(psp);
-	}
-	else if ((forth_n > (*psp->a)->nbr) && (fifth_n > (*psp->a)->next->next->nbr))
-	{
-		pa(psp);
-		pa(psp);
-		ra(psp);
-	}
-
-
+	pa(psp);
+	pa(psp);
 }
 
 // void	sort_turk(t_pswap *stacks)
@@ -99,28 +93,13 @@ void	sort_stack(t_pswap *p_swap)
 {
 	if (!p_swap)
 		return ;
-	if (p_swap->length == 2 && (*p_swap->a)->nbr > (*p_swap->a)->next->nbr)
+	if (p_swap->length_a == 2 && (*p_swap->a)->nbr > (*p_swap->a)->next->nbr)
 		sa(p_swap);
-	else if (p_swap->length == 3)
+	else if (p_swap->length_a == 3)
 		sort_three(p_swap);
-	else if (p_swap->length > 3 && p_swap->length <= 5)
+	else if (p_swap->length_a > 3 && p_swap->length_a <= 5)
 		sort_five(p_swap);
 	// else
 	// 	ft_putstr_fd("Error\n", 2);
 }
 
-
-// static void	sort_stack(t_pushswap *ps)
-// {
-// 	if (ps->a->size == 2 && ps->a->head->value > ps->a->head->previous->value)
-// 		sa(ps);
-// 	else if (ps->a->size == 3)
-// 		sort_three(ps);
-// 	else if (ps->a->size <= 5)
-// 		sort_five(ps);
-// 	else
-// 	{
-// 		push_a2b(ps, ps->a->size);
-// 		push_b2a(ps, ps->b->size);
-// 	}
-// }

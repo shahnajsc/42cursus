@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:52:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/11 12:12:16 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/17 09:41:23 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void display_stack(t_node **stack_a)
 	temp_node = *stack_a;
 	while (temp_node != 0)
 	{
-		printf("index add : [%p] : %d\n", temp_node, temp_node->nbr);
+		printf("index add : [%p] : value: %d position: %d\n", temp_node, temp_node->nbr, temp_node->index);
 		// if (temp_node->next)
 		// 	printf("%d\n", temp_node->next->nbr);
 		temp_node = temp_node->next;

@@ -3,7 +3,7 @@
 NAME		= push_swap
 # NAME_BONUS	=  bonus executable name is different
 CC			= cc
-CFLAG		= -Wall -Wextra -Werror -fsanitize=address -g
+CFLAG		= -Wall -Wextra -Werror  -fsanitize=address -g
 LDFLAGS		= -fsanitize=adddress
 INCLUDES	= -I./includes -I./libft/includes
 RM			= rm -f

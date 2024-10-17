@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:47:50 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/10 17:35:55 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/17 19:29:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	push_top(t_node **stack_to, t_node **stack_from)
 
 	if (!stack_to || !stack_from || *stack_from == NULL)
 		return ;
-	node_to_push = create_new_node((*stack_from)->nbr);
+	node_to_push = create_new_node((*stack_from)->nbr, (*stack_from)->index, (*stack_from)->position);
 	add_node_top(stack_to, node_to_push);
 	delete_node_top(stack_from);
 }
@@ -81,26 +81,5 @@ void	reverse_rotate(t_node **stack)
 	*stack = bottom;
 }
 
-// void	push_top2(t_node **stack_to, t_node **stack_from)
-// {
-// t_node *node_to_push;
 
-// 	if (!stack_to || !stack_from || *stack_from == NULL)
-// 		return ;
-// 	node_to_push = *stack_from;
-// 	*stack_from = (*stack_from)->next;
-// 	if ((*stack_from) != NULL)
-// 		(*stack_from)->prev = NULL;
-// 	if (*stack_to == NULL)
-// 	{
-// 		node_to_push->next = NULL;
-// 		*stack_to = node_to_push;
-// 	}
-// 	else
-// 	{
-// 		(*stack_to)->prev = node_to_push;
-// 		node_to_push->next = *stack_to;
-// 		*stack_to = node_to_push;
-// 	}
-// }
 

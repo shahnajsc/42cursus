@@ -6,12 +6,28 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 08:42:11 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/11 17:43:47 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/17 19:27:46 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h>
+
+int	get_index(char **numbers, int nbr)
+{
+	int	i;
+	int	index;
+
+	i = 0;
+	index = 0;
+	while (numbers[i] != NULL)
+	{
+		if (nbr > ft_atoi(numbers[i]))
+			index++;
+		i++;
+	}
+	return (index);
+}
 
 int	is_integer(char *nbr)
 {
@@ -81,7 +97,6 @@ int	is_nbrs_valid(char **numbers)
 	return (1);
 }
 
-
 char	**parse_numbers(int argc, char **argv)
 {
 	char	**args_nbr;
@@ -100,6 +115,7 @@ t_node	**fill_stack_a(int argc, char **argv, t_node **stack_a)
 	char	**numbers;
 	t_node	*new_node;
 	int		i;
+	int		index;
 
 	numbers = parse_numbers(argc, argv);
 	if (!numbers)
@@ -109,7 +125,8 @@ t_node	**fill_stack_a(int argc, char **argv, t_node **stack_a)
 		i++;
 	while (i > 0)
 	{
-		new_node = create_new_node(ft_atoi(numbers[i - 1]));
+		index = get_index(numbers, ft_atoi(numbers[i - 1]));
+		new_node = create_new_node(ft_atoi(numbers[i - 1]), index, (i - 1));
 		add_node_top(stack_a, new_node);
 		i--;
 	}
@@ -118,72 +135,25 @@ t_node	**fill_stack_a(int argc, char **argv, t_node **stack_a)
 	return (stack_a);
 }
 
-t_node	**fill_stack_b(int argc, char **argv, t_node **stack_a)
-{
-	char	**numbers;
-	t_node	*new_node;
-	int		i;
-
-	numbers = parse_numbers(argc, argv);
-	if (!numbers)
-		return (NULL);
-	i = 0;
-	while (numbers[i])
-		i++;
-	while (i > 0)
-	{
-		new_node = create_new_node(ft_atoi(numbers[i - 1]));
-		add_node_bottom(stack_a, new_node);
-		i--;
-	}
-	if (argc == 2)
-		free_grid((void *)numbers);
-	return (stack_a);
-}
-
-// static int	is_int(char *s)
+// t_node	**fill_stack_b(int argc, char **argv, t_node **stack_a)
 // {
-// 	long	number;
-// 	int		sign;
+// 	char	**numbers;
+// 	t_node	*new_node;
+// 	int		i;
 
-// 	number = 0;
-// 	sign = 1;
-// 	while (is_white_space(*s))
-// 		s++;
-// 	if (*s == '+' || *s == '-')
-// 		if (*s++ == '-')
-// 			sign = -1;
-// 	if (*s < '0' || *s > '9')
-// 		return (0);
-// 	while (*s >= '0' && *s <= '9')
+// 	numbers = parse_numbers(argc, argv);
+// 	if (!numbers)
+// 		return (NULL);
+// 	i = 0;
+// 	while (numbers[i])
+// 		i++;
+// 	while (i > 0)
 // 	{
-// 		number = number * 10 + *s++ - '0';
-// 		if ((number * sign < MIN_INT) || (number * sign > MAX_INT))
-// 			return (0);
+// 		new_node = create_new_node(ft_atoi(numbers[i - 1]));
+// 		add_node_bottom(stack_a, new_node);
+// 		i--;
 // 	}
-// 	while (is_white_space(*s))
-// 		s++;
-// 	if (*s)
-// 		return (0);
-// 	return (1);
-// }
-
-// static int	is_invalid(char **array)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = -1;
-// 	while (array[++i])
-// 	{
-// 		if (*array[i] == '\0' || is_all_white_space(array[i]))
-// 			return (1);
-// 		if (!is_int(array[i]))
-// 			return (1);
-// 		j = -1;
-// 		while (++j < i)
-// 			if (ft_atoi(array[j]) == ft_atoi(array[i]))
-// 				return (1);
-// 	}
-// 	return (0);
+// 	if (argc == 2)
+// 		free_grid((void *)numbers);
+// 	return (stack_a);
 // }

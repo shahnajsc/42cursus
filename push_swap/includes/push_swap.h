@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:36:00 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/14 17:51:09 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:42:38 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 typedef struct	s_node
 {
 	int				nbr;
+	int				index;
+	int				position;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -33,7 +35,7 @@ typedef struct s_pswap
 {
 	t_node	**a;
 	t_node	**b;
-	int		length;
+	int		length_a;
 }	t_pswap;
 
 
@@ -49,7 +51,7 @@ t_node		**fill_stack_a(int argc, char **argv, t_node **stack_a);
 t_node		**fill_stack_b(int argc, char **argv, t_node **stack_a);
 
 // t_node operation functions
-t_node	*create_new_node(int number);
+t_node	*create_new_node(int number, int pos_val, int position);
 void	add_node_top(t_node **top, t_node *new_node);
 void	add_node_bottom(t_node **top, t_node *new_node);
 void	delete_node_top(t_node **top);

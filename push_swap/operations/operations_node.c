@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:56:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/09 20:00:41 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:41:33 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "../includes/push_swap.h"
 
-t_node	*create_new_node(int number)
+t_node	*create_new_node(int number, int index, int position)
 {
 	t_node	*new_node;
 
@@ -24,6 +24,8 @@ t_node	*create_new_node(int number)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	new_node->nbr = number;
+	new_node->index = index;
+	new_node->position = position;
 	return (new_node);
 }
 
