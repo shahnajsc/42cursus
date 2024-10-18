@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:36:00 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/17 18:42:38 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/10/18 08:44:57 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 // struct
 
-typedef struct	s_node
+typedef struct s_node
 {
 	int				nbr;
 	int				index;
@@ -38,7 +38,6 @@ typedef struct s_pswap
 	int		length_a;
 }	t_pswap;
 
-
 typedef enum s_error
 {
 	DUP_E,
@@ -51,36 +50,36 @@ t_node		**fill_stack_a(int argc, char **argv, t_node **stack_a);
 t_node		**fill_stack_b(int argc, char **argv, t_node **stack_a);
 
 // t_node operation functions
-t_node	*create_new_node(int number, int pos_val, int position);
-void	add_node_top(t_node **top, t_node *new_node);
-void	add_node_bottom(t_node **top, t_node *new_node);
-void	delete_node_top(t_node **top);
-void	swap_top(t_node **stack);
-void	push_top(t_node **stack_to, t_node **stack_from);
-void	rotate_up(t_node **stack);
-void	reverse_rotate(t_node **stack);
+t_node		*create_new_node(int number, int pos_val, int position);
+void		add_node_top(t_node **top, t_node *new_node);
+void		add_node_bottom(t_node **top, t_node *new_node);
+void		delete_node_top(t_node **top);
+void		swap_top(t_node **stack);
+void		push_top(t_node **stack_to, t_node **stack_from);
+void		rotate_up(t_node **stack);
+void		reverse_rotate(t_node **stack);
 
 // sorting functions
-int	stack_length(t_node **stack);
-int	is_sorted(t_node **stack_a);
-void	sort_stack(t_pswap *p_swap);
+int			stack_length(t_node **stack);
+int			is_sorted(t_node **stack_a);
+void		sort_stack(t_pswap *p_swap);
 
 // operation functions
-void	sa(t_pswap *stacks);
-void	pa(t_pswap *stacks);
-void	ra(t_pswap *stacks);
-void	rra(t_pswap *stacks);
-void	sb(t_pswap *stacks);
-void	pb(t_pswap *stacks);
-void	rb(t_pswap *stacks);
-void	rrb(t_pswap *stacks);
+void		sa(t_pswap *stacks);
+void		pa(t_pswap *stacks);
+void		ra(t_pswap *stacks);
+void		rra(t_pswap *stacks);
+void		sb(t_pswap *stacks);
+void		pb(t_pswap *stacks);
+void		rb(t_pswap *stacks);
+void		rrb(t_pswap *stacks);
 
 // test functions **** remove in final version
-void	display_stack(t_node **stack_a);
+void		display_stack(t_node **stack_a);
 
 // error handle
-void	free_grid(void **ptr);
-void	free_stack(t_node **stack);
-void	error_arguments(char **args_nbr, int argc);
+void		free_grid(void **ptr);
+void		free_stack(t_node **stack);
+void		error_arguments(char **args_nbr, int argc);
 
 #endif
