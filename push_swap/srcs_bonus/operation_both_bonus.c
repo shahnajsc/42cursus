@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_both.c                                  :+:      :+:    :+:   */
+/*   operation_both_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 16:02:46 by shachowd          #+#    #+#             */
-/*   Updated: 2024/11/01 18:18:33 by shachowd         ###   ########.fr       */
+/*   Created: 2024/11/03 22:12:25 by shachowd          #+#    #+#             */
+/*   Updated: 2024/11/03 22:13:12 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 void	ss(t_pswap *stacks)
 {
@@ -18,7 +18,6 @@ void	ss(t_pswap *stacks)
 		return ;
 	swap_top(stacks->a);
 	swap_top(stacks->b);
-	ft_putstr_fd("ss\n", 1);
 }
 
 void	rr(t_pswap *stacks)
@@ -27,7 +26,6 @@ void	rr(t_pswap *stacks)
 		return ;
 	rotate_up(stacks->a);
 	rotate_up(stacks->b);
-	ft_putstr_fd("rr\n", 1);
 }
 
 void	rrr(t_pswap *stacks)
@@ -36,5 +34,4 @@ void	rrr(t_pswap *stacks)
 		return ;
 	reverse_rotate(stacks->a);
 	reverse_rotate(stacks->b);
-	ft_putstr_fd("rrr\n", 1);
 }

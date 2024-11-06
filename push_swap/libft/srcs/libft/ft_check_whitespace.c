@@ -6,15 +6,15 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:19:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/11 16:10:56 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:43:20 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int check_white_spaces(char *str)
+int	check_white_spaces(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_utils.c                                 :+:      :+:    :+:   */
+/*   operation_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 13:47:50 by shachowd          #+#    #+#             */
-/*   Updated: 2024/11/04 11:41:28 by shachowd         ###   ########.fr       */
+/*   Created: 2024/11/03 22:16:20 by shachowd          #+#    #+#             */
+/*   Updated: 2024/11/05 16:04:07 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 void	swap_top(t_node **stack)
 {

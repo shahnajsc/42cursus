@@ -6,18 +6,16 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:30:23 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/04 13:12:22 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:42:53 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 long	ft_atoi(const char *str)
 {
-	int			signcount;
+	int		signcount;
 	long	number;
 	long	check;
 
-	if (!str)
-		return (0);
 	signcount = 1;
 	number = 0;
 	while ((*str >= 9 && *str <= 13) || (*str == 32))

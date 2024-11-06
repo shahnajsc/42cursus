@@ -6,12 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 10:05:13 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/17 19:25:39 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:54:57 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	sort_three(t_pswap *psp)
 {
@@ -40,26 +39,11 @@ void	sort_three(t_pswap *psp)
 	}
 }
 
-int	get_position(t_pswap *psp, int lowest_index)
-{
-	int	position;
-	t_node *temp_a;
-
-	temp_a = *(psp->a);
-	while (temp_a != NULL)
-	{
-		if (lowest_index == temp_a->index)
-			position = temp_a->position;
-		temp_a = temp_a->next;
-	}
-	return (position);
-}
-
 void	sort_five(t_pswap *psp)
 {
 	int	lowest_index;
 	int	len;
-	int position;
+	int	position;
 
 	len = psp->length_a;
 	lowest_index = 0;
@@ -84,10 +68,38 @@ void	sort_five(t_pswap *psp)
 	pa(psp);
 }
 
-// void	sort_turk(t_pswap *stacks)
-// {
+void	final_sort(t_pswap *psp)
+{
+	t_pswap	*temp_p;
+	int		lowest_poiotiion;
+	int		lowest_value;
 
-// }
+	temp_p = psp;
+	set_position(psp->a);
+	lowest_value = min_value(psp->a);
+	lowest_poiotiion = get_position_a(psp->a, lowest_value);
+	if (lowest_poiotiion < stack_length(psp->a) / 2)
+	{
+		while ((*temp_p->a)->nbr != lowest_value)
+			ra(psp);
+	}
+	else
+	{
+		while ((*temp_p->a)->nbr != lowest_value)
+			rra(psp);
+	}
+}
+
+void	sort_bigger(t_pswap *psp)
+{
+	if (!psp)
+		return ;
+	pb(psp);
+	pb(psp);
+	push_to_b(psp);
+	push_back_to_a(psp);
+	final_sort(psp);
+}
 
 void	sort_stack(t_pswap *p_swap)
 {
@@ -99,7 +111,14 @@ void	sort_stack(t_pswap *p_swap)
 		sort_three(p_swap);
 	else if (p_swap->length_a > 3 && p_swap->length_a <= 5)
 		sort_five(p_swap);
-	// else
-	// 	ft_putstr_fd("Error\n", 2);
+	else if (p_swap->length_a > 5 && p_swap->length_a <= INT_MAX)
+		sort_bigger(p_swap);
 }
-
+//-4934 9 0 -66 -1 -456 431 11 22 66 87
+// printf("f_s A\n");
+// 	display_stack(psp->a);
+// 	printf("f_S  B\n");
+// 	display_stack(psp->b);
+// 	printf("\n");
+// 	printf("STACK_B\n");
+// 	display_stack(psp->b);

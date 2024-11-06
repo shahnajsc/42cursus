@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handle.c                                     :+:      :+:    :+:   */
+/*   error_handle_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:59:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/11/04 11:30:19 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:29:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 void	free_grid(void **ptr)
 {
@@ -49,4 +49,10 @@ void	free_stack(t_node **stack)
 		free(temp_node);
 	}
 	*stack = NULL;
+}
+
+int	operation_error(void)
+{
+	ft_putstr_fd("Error\n", 1);
+	return (1);
 }

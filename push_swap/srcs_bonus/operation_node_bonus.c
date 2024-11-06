@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_node.c                                  :+:      :+:    :+:   */
+/*   operation_node_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 19:56:25 by shachowd          #+#    #+#             */
-/*   Updated: 2024/11/06 10:54:58 by shachowd         ###   ########.fr       */
+/*   Created: 2024/11/03 22:14:44 by shachowd          #+#    #+#             */
+/*   Updated: 2024/11/03 22:14:46 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 t_node	*create_new_node(int number, int index, int position)
 {

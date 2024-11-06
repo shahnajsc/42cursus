@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 20:03:13 by shachowd          #+#    #+#             */
-/*   Updated: 2024/10/11 11:50:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:15:17 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@ void	rra(t_pswap *stacks)
 	reverse_rotate(stacks->a);
 	ft_putstr_fd("rra\n", 1);
 }
-

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argument_process.c                                 :+:      :+:    :+:   */
+/*   argument_process_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 08:42:11 by shachowd          #+#    #+#             */
-/*   Updated: 2024/11/04 14:36:07 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:27:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 int	is_integer(char *nbr)
 {
@@ -85,7 +85,7 @@ char	**parse_numbers(int argc, char **argv)
 {
 	char	**args_nbr;
 
-	if (argc == 2 && check_white_spaces(argv[0]))
+	if (argc == 2 && (check_white_spaces(argv[0]) || argv[0][0] == '\0'))
 		error_arguments(NULL, argc);
 	if (argc == 2)
 		args_nbr = ft_split(argv[0], ' ');
