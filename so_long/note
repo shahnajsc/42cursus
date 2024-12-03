@@ -1,0 +1,13 @@
+Map read from file
+- Map parsing validation
+    - It should be ‘.bar’ file <<
+    - It should be rectangular
+    - no empty line <<
+- Map criteria validation
+    - Wall with 1
+    - All the border is wall
+    - There must not be more then one exit
+    - There must not be more then one fish
+    - There should be collectibles
+    - Valid path should be there to exit
+    - At least 1 collectible, only one exit and player starting position.
