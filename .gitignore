@@ -1,5 +1,5 @@
 # System files
-/.DS_Store 
+/.DS_Store
 # vs files
 /.vscode
 # Executables files
@@ -14,6 +14,7 @@
 # Folders
 /subject
 /eval
+/so_long/mlx42
 project/libft/libft_git
 project/libft/libft_check
 project/Born2beRoot

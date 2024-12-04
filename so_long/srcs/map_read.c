@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:32:33 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/03 16:50:53 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:32:05 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ static void object_count(t_map *map, int row)
 	while (map->map[row][i])
 	{
 		if (map->map[row][i] == 'P')
+		{
 			map->player_c++;
+			map->start_r = row;
+			map->start_c = i;
+		}
 		else if (map->map[row][i] == 'C')
 			map->collec_c++;
 		else if (map->map[row][i] == 'E')
@@ -43,7 +47,7 @@ static void	check_empty_line(t_map *map, char *read_line)
 			line_c++;
 		i++;
 	}
-	if (line_c > (map->row_c))
+	if (line_c > (map->row_c - 1))
 		map_error(map, read_line, "Map has empty line");
 }
 
@@ -60,19 +64,42 @@ static void object_validation(t_map *map, char *read_line)
 	if (map->collec_c < 1)
 		map_error(map, read_line, "No collectibles found");
 }
-
-static void	map_validatation(t_map *map, char *read_line)
+static void	map_visited_fill(t_map *map, char **temp_map, int row, int col)
 {
-	int	row;
-	int	col;
+	if (temp_map[row][col] == '1')
+		return ;
+	if (temp_map[row][col] == 'E')
+		map->path_e = 1;
+	else if (temp_map[row][col] == 'C')
+		map->path_c++;
+	temp_map[row][col] = '1';
+	map_visited_fill(map, temp_map, row + 1, col);
+	map_visited_fill(map, temp_map, row - 1, col);
+	map_visited_fill(map, temp_map, row, col + 1);
+	map_visited_fill(map, temp_map, row, col - 1);
+}
+static void	object_path_validation(t_map *map, char *read_line)
+{
+	char	**temp_map;
 
-	row = 0;
+	temp_map = ft_grid_dup(map->map);
+	if (!temp_map)
+		map_error(map, read_line, "Duplicating map is failed");
+	map_visited_fill(map, temp_map, map->start_r, map->start_c);
+	if (!map->path_e)
+		map_error(map, read_line, "Valid path to exit is unavailable");
+	if (map->path_c != map->collec_c)
+		map_error(map, read_line, "Valid path to collectibles is unavailable");
+}
+
+static void	map_validatation(t_map *map, char *read_line, int row, int col)
+{
 	check_empty_line(map, read_line);
 	if (map->col_c <= map->row_c)
 		map_error(map, read_line, "Map is not rectangle");
 	if (map->row_c > MAX_ROW || map->col_c > MAX_COL)
 		map_error(map, read_line, "Map is larger then expected");
-	while (row < map->row_c)
+	while (++row < map->row_c)
 	{
 		if ((int)ft_strlen(map->map[row]) != map->col_c)
 			map_error(map, read_line, "Map is not rectangular");
@@ -80,17 +107,15 @@ static void	map_validatation(t_map *map, char *read_line)
 		col = -1;
 		while (++col < map->col_c)
 		{
-			ft_putchar_fd(map->map[row][col], 1);
 			if (!ft_strchr("01PCE\n", map->map[row][col]))
 				map_error(map, read_line, "Invalid character found");
 			if ((row == 0 || row == map->row_c - 1 || col == 0 ||
 					col == map->col_c - 1) && map->map[row][col] != '1')
 				map_error(map, read_line, "Map is not srounded by walls");
 		}
-		ft_putchar_fd('\n', 1);
-		row++;
 	}
 	object_validation(map, read_line);
+	object_path_validation(map, read_line);
 }
 
 void	map_read(t_map *map, int fd)
@@ -113,7 +138,7 @@ void	map_read(t_map *map, int fd)
 	if (!map->map)
 		map_error(NULL, read_line, "Map splitting error");
 	map->col_c = ft_strlen(map->map[0]);
-	map->row_c = ft_grid_len(map->map);
-	map_validatation(map, read_line);
+	map->row_c = ft_grid_rows(map->map);
+	map_validatation(map, read_line, -1, -1);
 	free(read_line);
 }

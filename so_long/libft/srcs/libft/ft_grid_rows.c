@@ -1,14 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_grid_rows.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 19:59:41 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/04 14:00:05 by shachowd         ###   ########.fr       */
+/*   Created: 2024/12/04 13:56:30 by shachowd          #+#    #+#             */
+/*   Updated: 2024/12/04 14:04:55 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
+int	ft_grid_rows(char **grid)
+{
+	int	len;
+
+	len = 0;
+	if (!grid)
+		return (0);
+	while (grid[len])
+		len++;
+	return (len);
+}

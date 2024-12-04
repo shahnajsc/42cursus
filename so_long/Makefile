@@ -4,16 +4,19 @@ NAME		= so_long
 
 CC			= cc
 CFLAG		= -Wall -Wextra -Werror
+MLX42_FLAGS	= -ldl -lglfw -pthread -lm
 #LDFLAGS		= -fsanitize=adddress -fsanitize=address -g
-INCLUDES	= -I./includes -I./libft/includes
+INCLUDES	= -I./includes -I./libft/includes -I./mlx42/includes
 RM			= rm -f
 
 # LIBFT
 LIBFT		= ./libft/libft.a
 
 # MLX
+MLX42_DIR	= ./mlx42
+MLX42		= $(MLX42_DIR)/build/libmlx42.a
 
-# Source
+# Source directory
 MAN_DIR		= srcs/map_read.c	srcs/error_handle.c	\
 			srcs/utils.c	\
 			tester.c	\

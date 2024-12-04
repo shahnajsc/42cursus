@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_grid_dup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 09:42:04 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/04 14:04:42 by shachowd         ###   ########.fr       */
+/*   Created: 2024/12/04 13:50:29 by shachowd          #+#    #+#             */
+/*   Updated: 2024/12/04 14:16:25 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	**ft_grid_dup(char **grid)
 {
-	void	*ptr;
-	size_t	total;
+	int		rows;
+	int		count;
+	char	**dup_grid;
 
-	total = count * size;
-	if (count && size && total / size != count)
-		return (0);
-	ptr = malloc(count * size);
-	if (!ptr)
-	{
+	count = 0;
+	rows = ft_grid_rows(grid);
+	dup_grid = (char **)malloc(sizeof(char *) * (rows + 1));
+	if (!dup_grid)
 		return (NULL);
+	while (count < rows)
+	{
+		dup_grid[count] = ft_strdup(grid[count]);
+		if (!dup_grid[count])
+		{
+			free_grid((void **)grid);
+			return (NULL);
+		}
+		count++;
 	}
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	return (dup_grid);
 }

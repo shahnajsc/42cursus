@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/03 10:51:44 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:14:25 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+int					ft_grid_rows(char **grid);
+void				free_grid(void **grid);
+char				**ft_grid_dup(char **grid);
+
 //PRINTF
 int					ft_print_char(char c);
 int					ft_print_percent(void);
