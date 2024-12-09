@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 09:16:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/04 20:35:19 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:57:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 // libraries
 # include "../libft/includes/libft.h"
-# include "mlx.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h> // remove it
 
-# define PX 64
+# define PX 70
 // MAX_COL = 3840 / PX
 # define MAX_COL 60
 // MAX_ROW = 2160 / PX
@@ -50,10 +50,20 @@ typedef struct s_map
 	int		start_c;
 } t_map;
 
+typedef struct s_slong
+{
+	t_map	*map;
+	mlx_t	*mlx;
+} t_slong;
+
+
 // Utils
 
 // Map validation
 void	map_read(t_map *map, int fd);
+
+// game
+void	game_start(t_slong *slong);
 
 // Error Handle
 void	file_error(int fd, char *path, char *err_msg);

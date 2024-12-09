@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:45:07 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/04 15:54:12 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:53:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void init_map(t_map *map)
 	map->start_r = 0;
 	map->start_c = 0;
 }
-static int	map_file_validate(char *file)
+static int	map_file_validation(char *file)
 {
 	int	len;
 	int	fd;
@@ -45,6 +45,7 @@ static int	map_file_validate(char *file)
 int	main(int argc, char **argv)
 {
 	t_map	map;
+	t_slong slong;
 	int		fd;
 
 	if (argc != 2)
@@ -52,9 +53,11 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	fd = map_file_validate(argv[1]);
+	fd = map_file_validation(argv[1]);
 	init_map(&map);
 	//ft_putnbr_fd(fd, 1);
 	map_read(&map, fd);
-
+	ft_bzero(&slong, sizeof(slong));
+	slong.map = &map;
+	game_start(&slong);
 }
