@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 09:16:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/09 16:57:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:56:16 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,20 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h> // remove it
 
-# define PX 70
-// MAX_COL = 3840 / PX
+# define PX 170
 # define MAX_COL 60
-// MAX_ROW = 2160 / PX
 # define MAX_ROW 33
-// BUFFER_SIZE  > MAX_COL * MAX_ROW
 # define BUFFER_SIZE 2014
 
+// Image PATH
+# define PLAYER_I "./assets/img/player.png"
+# define WALL_I "./assets/img/wall.png"
+# define EXIT_I "./assets/img/exit.png"
+# define COLLECTIBLE_I "./assets/img/collectible.png"
+# define SPACE_I "./assets/img/space.png"
+
 // enum
-typedef enum e_object
+typedef enum s_object
 {
 	P,
 	E,
