@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:50:29 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/04 14:16:25 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:55:46 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ char	**ft_grid_dup(char **grid)
 		}
 		count++;
 	}
+	dup_grid[count] = NULL;
 	return (dup_grid);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 09:16:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/10 19:56:16 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:45:48 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h> // remove it
 
-# define PX 170
+# define PX 110
 # define MAX_COL 60
 # define MAX_ROW 33
 # define BUFFER_SIZE 2014
@@ -71,7 +71,7 @@ void	game_start(t_slong *slong);
 
 // Error Handle
 void	file_error(int fd, char *path, char *err_msg);
-void	map_error(t_map *map, char *read_line, char *err_msg);
+void	map_error(t_map *map, char *err_msg);
 
 // tester
 void print_grid(t_map *map);
