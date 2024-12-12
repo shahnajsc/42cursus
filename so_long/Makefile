@@ -20,7 +20,7 @@ MLX42		= $(MLX42_DIR)/build/libmlx42.a
 # Source directory
 MAN_DIR		= srcs/map_read.c	srcs/error_handle.c	\
 			srcs/utils.c	srcs/game_start.c	\
-			tester.c	\
+			srcs/game_render.c	tester.c	\
 
 # Source path
 MAN_SRCS	= main.c $(MAN_DIR)

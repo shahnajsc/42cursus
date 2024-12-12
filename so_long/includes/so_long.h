@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 09:16:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/11 15:45:48 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/12 21:13:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h> // remove it
 
-# define PX 110
+# define PX 170
 # define MAX_COL 60
 # define MAX_ROW 33
 # define BUFFER_SIZE 2014
@@ -28,7 +28,7 @@
 # define WALL_I "./assets/img/wall.png"
 # define EXIT_I "./assets/img/exit.png"
 # define COLLECTIBLE_I "./assets/img/collectible.png"
-# define SPACE_I "./assets/img/space.png"
+# define FLOOR_I "./assets/img/floor.png"
 
 // enum
 typedef enum s_object
@@ -52,12 +52,24 @@ typedef struct s_map
 	int		path_c;
 	int		start_r;
 	int		start_c;
+	int		next_r;
+	int		next_c;
 } t_map;
+
+typedef struct s_image
+{
+	mlx_image_t	*player;
+	mlx_image_t	*floor;
+	mlx_image_t	*wall;
+	mlx_image_t	*collectible;
+	mlx_image_t	*exit;
+} t_image;
 
 typedef struct s_slong
 {
 	t_map	*map;
 	mlx_t	*mlx;
+	t_image	*image;
 } t_slong;
 
 
@@ -68,10 +80,12 @@ void	map_read(t_map *map, int fd);
 
 // game
 void	game_start(t_slong *slong);
+void	game_map_load(t_slong *slong);
 
 // Error Handle
 void	file_error(int fd, char *path, char *err_msg);
 void	map_error(t_map *map, char *err_msg);
+void	game_error(t_slong *slong, char *err_msg);
 
 // tester
 void print_grid(t_map *map);

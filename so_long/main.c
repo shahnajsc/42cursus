@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:45:07 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/11 12:47:22 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/12 21:04:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	init_slong(t_slong *slong, t_map *map)
 {
 	slong->map = map;
 	slong->mlx = NULL;
+	slong->image = NULL;
 }
 
 static int	map_file_validation(char *file)
@@ -69,5 +70,5 @@ int	main(int argc, char **argv)
 	init_slong(&slong, &map);
 	game_start(&slong);
 	// map_error(&map, "Valid map");
-	map_error(&map, "Exiting game");
+	//map_error(&map, "Exiting game");
 }

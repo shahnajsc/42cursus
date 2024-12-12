@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:07:01 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/11 10:56:09 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:42:55 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ void	map_error(t_map *map, char *err_msg)
 {
 	if (map && map->map)
 		free_grid((void **)map->map);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(err_msg, 2);
+	exit (1);
+}
+
+void	game_error(t_slong *slong, char *err_msg)
+{
+	if (slong && slong->map && slong->map->map)
+		free_grid((void **)slong->map->map);
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(err_msg, 2);
 	exit (1);

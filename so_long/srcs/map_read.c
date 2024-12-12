@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:32:33 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/11 12:20:48 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:52:40 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static void	object_path_validation(t_map *map)
 static void	map_validatation(t_map *map, char *read_line, int row, int col)
 {
 	check_empty_line(map, read_line);
+	printf("\nempty line checked\n");
 	if (map->col_c <= map->row_c)
 		map_error(map, "Map is not rectangle");
 	if (map->row_c > MAX_ROW || map->col_c > MAX_COL)
@@ -140,5 +141,7 @@ void	map_read(t_map *map, int fd)
 		map_error(NULL, "Map splitting error");
 	map->col_c = ft_strlen(map->map[0]);
 	map->row_c = ft_grid_rows(map->map);
+	printf("\nbefore map validation\n");
 	map_validatation(map, read_line, -1, -1);
+	printf("\nMap validated\n");
 }
