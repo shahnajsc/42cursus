@@ -6,27 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:07:01 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/12 18:42:55 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:12:02 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-// static void	free_grid(void **ptr)
-// {
-// 	int	i;
-
-// 	if (!ptr)
-// 		return ;
-// 	i = 0;
-// 	while (ptr[i] != NULL)
-// 	{
-// 		free(ptr[i]);
-// 		i++;
-// 	}
-// 	free(ptr);
-// 	ptr = NULL;
-// }
 
 void	file_error(int fd, char *file_name, char *err_msg)
 {
@@ -47,11 +31,25 @@ void	map_error(t_map *map, char *err_msg)
 	exit (1);
 }
 
-void	game_error(t_slong *slong, char *err_msg)
+void	game_error(t_slong *slong, char *err_msg, int exit_code)
 {
-	if (slong && slong->map && slong->map->map)
-		free_grid((void **)slong->map->map);
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(err_msg, 2);
-	exit (1);
+	game_close(slong, exit_code);
+}
+void	free_images(t_slong *slong)
+{
+	if (slong->image->player)
+		mlx_delete_image(slong->mlx, slong->image->player);
+	if (slong->image->wall)
+		mlx_delete_image(slong->mlx, slong->image->wall);
+	if (slong->image->floor)
+		mlx_delete_image(slong->mlx, slong->image->floor);
+	if (slong->image->collectible)
+		mlx_delete_image(slong->mlx, slong->image->collectible);
+	if (slong->image->exit_cl)
+		mlx_delete_image(slong->mlx, slong->image->exit_cl);
+	if (slong->image->exit_op)
+		mlx_delete_image(slong->mlx, slong->image->exit_op);
+	free(slong->image);
 }

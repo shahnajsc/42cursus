@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:43:29 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/12 21:04:55 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:59:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	game_start(t_slong *slong)
 	{
 		printf("game start erro\n");
 		printf("game ptr: %p\n", slong->mlx);
-		game_error(slong, "mlx init fail"); //msg
+		game_error(slong, "mlx init fail", EXIT_FAILURE); //msg
 	}
 	printf("game start worked\n");
 	game_map_load(slong);
+	mlx_key_hook(slong->mlx, key_hook_handle, slong);
+	mlx_close_hook(slong->mlx, close_hook_handle, slong);
 	mlx_loop(slong->mlx);
 	mlx_terminate(slong->mlx);
 }
