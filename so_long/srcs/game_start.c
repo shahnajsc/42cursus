@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:43:29 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/13 13:59:14 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:40:15 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	game_start(t_slong *slong)
 {
 	printf(" before game start erro\n");
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	slong->mlx = mlx_init(slong->map->col_c * PX, slong->map->row_c * PX, "so_long", true);
 	if (!slong->mlx)
 	{
