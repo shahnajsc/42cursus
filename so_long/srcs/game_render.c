@@ -20,14 +20,14 @@ static mlx_image_t	*texture_process(t_slong *slong, char *img_path)
 	texture = mlx_load_png(img_path);
 	if (!texture)
 	{
-		printf("texture erro\n");
+		//printf("texture erro\n");
 		game_error(slong, "texture fail", EXIT_FAILURE); // change msg
 	}
 	image = mlx_texture_to_image(slong->mlx, texture);
 	mlx_delete_texture(texture);
 	if (!image)
 	{
-		printf("image erro\n");
+		//printf("image erro\n");
 		game_error(slong, "image fail", EXIT_FAILURE); // change msg
 	}
 	return(image);

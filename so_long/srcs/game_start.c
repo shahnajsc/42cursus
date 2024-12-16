@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:43:29 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/15 13:40:15 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:31:30 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	game_start(t_slong *slong)
 {
-	printf(" before game start erro\n");
+	//printf(" before game start erro\n");
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	slong->mlx = mlx_init(slong->map->col_c * PX, slong->map->row_c * PX, "so_long", true);
 	if (!slong->mlx)
 	{
-		printf("game start erro\n");
-		printf("game ptr: %p\n", slong->mlx);
+		//printf("game start erro\n");
+		//printf("game ptr: %p\n", slong->mlx);
 		game_error(slong, "mlx init fail", EXIT_FAILURE); //msg
 	}
-	printf("game start worked\n");
+	//printf("game start worked\n");
 	game_map_load(slong);
 	mlx_key_hook(slong->mlx, key_hook_handle, slong);
 	mlx_close_hook(slong->mlx, close_hook_handle, slong);
