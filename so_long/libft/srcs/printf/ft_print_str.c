@@ -6,20 +6,20 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:17:00 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/11 23:32:47 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:27:52 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_str(char *str)
+int	ft_print_str(int fd, char *str)
 {
 	int	count;
 
 	count = 0;
 	if (!str)
 	{
-		if (write(1, "(null)", 6) != 6)
+		if (write(fd, "(null)", 6) != 6)
 		{
 			return (-1);
 		}
@@ -27,7 +27,7 @@ int	ft_print_str(char *str)
 	}
 	while (str[count])
 	{
-		if (write(1, &str[count], 1) != 1)
+		if (write(fd, &str[count], 1) != 1)
 		{
 			return (-1);
 		}

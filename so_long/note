@@ -18,3 +18,15 @@ git clone https://github.com/codam-coding-college/MLX42.git
 cd MLX42
 cmake -B build # build here refers to the outputfolder.
 cmake --build build -j4 # or do make -C build -j4
+
+
+	int			whole_string;
+	int			ber_len;
+	const char	*check_ber;
+
+	whole_string = ft_strlen(input);
+	ber_len = ft_strlen(ber);
+	check_ber = input + whole_string - ber_len;
+	if ((ft_strncmp(check_ber, ber, ber_len) == 0) && ft_strlen(input) > 4)
+		return (0);
+	return (1);

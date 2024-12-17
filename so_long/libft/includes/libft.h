@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/04 14:14:25 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:35:06 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,14 @@ void				free_grid(void **grid);
 char				**ft_grid_dup(char **grid);
 
 //PRINTF
-int					ft_print_char(char c);
-int					ft_print_percent(void);
-int					ft_print_str(char *str);
-int					ft_print_nbr(int n);
-int					ft_print_unsign(unsigned int nbr);
-int					ft_print_ptr(unsigned long ptr);
-char				*ft_strchr(const char *s, int c);
-int					ft_print_hex(unsigned long n, char *strhex);
-int					ft_printf(const char *str, ...);
+int					ft_print_char(int fd, char c);
+int					ft_print_percent(int fd);
+int					ft_print_str(int fd, char *str);
+int					ft_print_nbr(int fd, int n);
+int					ft_print_unsign(int fd, unsigned int nbr);
+int					ft_print_ptr(int fd, unsigned long ptr);
+char				*ft_strchr_pf(const char *s, int c);
+int					ft_print_hex(int fd, unsigned long n, char *strhex);
+int					ft_printf(int fd, const char *str, ...);
 
 #endif

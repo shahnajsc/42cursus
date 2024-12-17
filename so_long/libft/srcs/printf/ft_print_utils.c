@@ -6,31 +6,31 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:20:51 by shachowd          #+#    #+#             */
-/*   Updated: 2024/09/11 23:33:01 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:34:44 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_char(char c)
+int	ft_print_char(int fd, char c)
 {
-	if (write(1, &c, 1) != 1)
+	if (write(fd, &c, 1) != 1)
 	{
 		return (-1);
 	}
 	return (1);
 }
 
-int	ft_print_percent(void)
+int	ft_print_percent(int fd)
 {
-	if (write(1, "%", 1) != 1)
+	if (write(fd, "%", 1) != 1)
 	{
 		return (-1);
 	}
 	return (1);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_pf(const char *s, int c)
 {
 	while (*s && *s != (char)c)
 		s++;

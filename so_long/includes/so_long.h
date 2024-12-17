@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 09:16:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/13 16:23:59 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:39:19 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdio.h> // remove it
 
 # define PX 90
-# define MAX_COL 60
-# define MAX_ROW 33
 # define BUFFER_SIZE 2014
 
 // Image PATH
@@ -30,14 +28,6 @@
 # define EXIT_OP_I "./assets/img/exit_open.png"
 # define COLLECTIBLE_I "./assets/img/collectible.png"
 # define FLOOR_I "./assets/img/floor.png"
-
-// enum
-typedef enum s_object
-{
-	P,
-	E,
-	C
-} t_object;
 
 // structs
 
@@ -51,9 +41,11 @@ typedef struct s_map
 	int		exit_c;
 	int		path_e;
 	int		path_c;
-	int		start_r;
-	int		start_c;
-} t_map;
+	int		start_rw;
+	int		start_cl;
+	int		exit_rw;
+	int		exit_cl;
+}	t_map;
 
 typedef struct s_image
 {
@@ -63,7 +55,7 @@ typedef struct s_image
 	mlx_image_t	*collectible;
 	mlx_image_t	*exit_cl;
 	mlx_image_t	*exit_op;
-} t_image;
+}	t_image;
 
 typedef struct s_slong
 {
@@ -72,14 +64,9 @@ typedef struct s_slong
 	t_image	*image;
 	int		current_r;
 	int		current_c;
-	int		next_r;
-	int		next_c;
 	int		collec_picked;
 	int		moves;
-} t_slong;
-
-
-// Utils
+}	t_slong;
 
 // Map validation
 void	map_read(t_map *map, int fd);
@@ -87,7 +74,7 @@ void	map_read(t_map *map, int fd);
 // game
 void	game_start(t_slong *slong);
 void	game_map_load(t_slong *slong);
-void	window_img_load(t_slong *slong, mlx_image_t *img, int row, int col);
+void	window_load(t_slong *slong, mlx_image_t *img, int row, int col);
 void	key_hook_handle(mlx_key_data_t keypressed, void *param);
 void	close_hook_handle(void *param);
 
@@ -98,6 +85,10 @@ void	free_images(t_slong *slong);
 void	game_close(t_slong *slong, int exit_code);
 void	game_error(t_slong *slong, char *err_msg, int exit_code);
 
+//utils
+void	object_count(t_map *map, int row);
+void	check_empty_line(t_map *map, char *read_line);
+
 // tester
-void print_grid(t_map *map);
+void	print_grid(t_map *map); // remove it
 #endif
