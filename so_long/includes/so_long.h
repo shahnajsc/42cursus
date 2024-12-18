@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 09:16:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/17 15:39:19 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:14:15 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // libraries
 # include "../libft/includes/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
-# include <stdio.h> // remove it
 
 # define PX 90
 # define BUFFER_SIZE 2014
@@ -89,6 +88,4 @@ void	game_error(t_slong *slong, char *err_msg, int exit_code);
 void	object_count(t_map *map, int row);
 void	check_empty_line(t_map *map, char *read_line);
 
-// tester
-void	print_grid(t_map *map); // remove it
 #endif

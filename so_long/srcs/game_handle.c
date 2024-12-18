@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:43:42 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/17 16:57:16 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:19:02 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ void	game_movement(t_slong *sl, int next_r, int next_c)
 	{
 		sl->collec_picked++;
 		sl->map->map[next_r][next_c] = '0';
+		if (sl->collec_picked == sl->map->collec_c)
+			window_load(sl, sl->image->exit_op,
+				sl->map->exit_rw, sl->map->exit_cl);
 	}
-	if (sl->collec_picked == sl->map->collec_c) // need to work on it
-		window_load(sl, sl->image->exit_op, sl->map->exit_rw, sl->map->exit_cl);
 	if (sl->map->map[next_r][next_c] == 'E' &&
 				(sl->collec_picked == sl->map->collec_c))
 	{

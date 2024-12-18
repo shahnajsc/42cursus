@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:45:07 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/17 16:55:15 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:15:54 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	map_file_validation(char *file)
 		file_error(0, file, " is an invalid file type\n");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		file_error(fd, file, " file error\n"); //use srt erro
+		file_error(fd, file, " file error\n");
 	return (fd);
 }
 
