@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:45:07 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/18 10:15:54 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:27:08 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 	}
 	fd = map_file_validation(argv[1]);
 	init_map(&map);
-	map_read(&map, fd);
+	map_read(&map, fd, argv[1]);
 	ft_bzero(&slong, sizeof(slong));
 	init_slong(&slong, &map);
 	game_start(&slong);

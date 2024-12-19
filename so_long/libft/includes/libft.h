@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/17 16:35:06 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:59:50 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,8 @@ int					ft_print_ptr(int fd, unsigned long ptr);
 char				*ft_strchr_pf(const char *s, int c);
 int					ft_print_hex(int fd, unsigned long n, char *strhex);
 int					ft_printf(int fd, const char *str, ...);
+
+//READER
+char				*ft_line_reader(int fd, char *line, int buffer_size, int index);
 
 #endif

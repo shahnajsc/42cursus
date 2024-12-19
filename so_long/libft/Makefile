@@ -21,6 +21,7 @@ LIBFT_FILES		=	./ft_isalpha.c		./ft_isdigit.c		./ft_isalnum.c		./ft_isascii.c	\
 					./ft_lstsize.c		./ft_lstlast.c		./ft_lstadd_back.c	./ft_lstdelone.c	\
 					./ft_lstclear.c		./ft_lstiter.c		./ft_lstmap.c		./ft_strcmp.c	\
 					./ft_grid_rows.c	./ft_free_grid.c		./ft_grid_dup.c	\
+					./ft_line_reader.c	\
 
 PRINTF_FILES	=	./ft_printf.c		./ft_print_utils.c	./ft_print_str.c	./ft_print_ptr.c \
 					./ft_print_nbr.c	./ft_print_unsign.c ./ft_print_hex.c \

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:07:01 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/18 10:16:42 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:08:23 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	file_error(int fd, char *file_name, char *err_msg)
 {
 	if (fd > 2)
 		close (fd);
-	ft_printf(2, "Error\n%s %s \n", file_name, err_msg);
+	printf("Error\n%s %s \n", file_name, err_msg);
 	exit (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:59:41 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/17 12:51:59 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/19 22:24:24 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,24 @@ void	object_count(t_map *map, int row)
 	}
 }
 
-void	check_empty_line(t_map *map, char *read_line)
+int	map_row_count(char *file_path, char *read_line)
 {
-	int	line_c;
-	int	i;
+	int	rows;
+	int	fd;
 
-	line_c = 0;
-	i = 0;
-	while (read_line[i])
+	rows = 0;
+	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+		file_error(fd, file_path, " file error while counting map rows\n");
+	read_line = ft_line_reader(fd, read_line, BUFFER_SIZE, 0);
+	while (read_line)
 	{
-		if (read_line[i] == '\n')
-			line_c++;
-		i++;
+		rows++;
+		free(read_line);
+		read_line = ft_line_reader(fd, read_line, BUFFER_SIZE, 0);
 	}
-	if (line_c > (map->row_c - 1))
-		map_error(map, "Map has empty line\n");
+	close(fd);
+	if (read_line)
+		free(read_line);
+	return (rows);
 }
