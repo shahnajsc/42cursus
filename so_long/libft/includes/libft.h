@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:02:57 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/19 13:59:50 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:28:22 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,6 @@ int					ft_print_hex(int fd, unsigned long n, char *strhex);
 int					ft_printf(int fd, const char *str, ...);
 
 //READER
-char				*ft_line_reader(int fd, char *line, int buffer_size, int index);
+char				*ft_line_reader(int fd, char *line, int buffer, int index);
 
 #endif

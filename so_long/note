@@ -30,3 +30,32 @@ cmake --build build -j4 # or do make -C build -j4
 	if ((ft_strncmp(check_ber, ber, ber_len) == 0) && ft_strlen(input) > 4)
 		return (0);
 	return (1);
+
+    // void	map_read(t_map *map, int fd)
+// {
+// 	int		read_byte;
+// 	char	read_line[BUFFER_SIZE];
+
+// 	ft_bzero(read_line, BUFFER_SIZE);
+// 	read_byte = read(fd, read_line, BUFFER_SIZE);
+// 	close (fd);
+// 	if (read_byte == -1)
+// 		map_error(NULL, "Map reading error\n");
+// 	else if (read_byte == 0)
+// 		map_error(NULL, "Map is empty\n");
+// 	map->map = ft_split(read_line, '\n');
+// 	if (!map->map)
+// 		map_error(NULL, "Map splitting error\n");
+// 	print_grid(map);
+// 	map->col_c = ft_strlen(map->map[0]);
+// 	map->row_c = ft_grid_rows(map->map);
+// 	map_validatation(map, read_line, -1, -1);
+// }
+
+
+
+X Error of failed request:  BadAlloc (insufficient resources for operation)
+  Major opcode of failed request:  149 ()
+  Minor opcode of failed request:  2
+  Serial number of failed request:  184
+  Current serial number in output stream:  189

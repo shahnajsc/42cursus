@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 09:16:44 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/19 22:28:37 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:23:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // libraries
 # include "../libft/includes/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
-# include <stdio.h> // remove
 
 # define PX 90
 # define BUFFER_SIZE 2014
@@ -71,7 +70,7 @@ typedef struct s_slong
 // Map validation
 void	map_read(t_map *map, int fd, char *file_path);
 
-// game
+// Game
 void	game_start(t_slong *slong);
 void	game_map_load(t_slong *slong);
 void	window_load(t_slong *slong, mlx_image_t *img, int row, int col);
@@ -85,11 +84,9 @@ void	free_images(t_slong *slong);
 void	game_close(t_slong *slong, int exit_code);
 void	game_error(t_slong *slong, char *err_msg, int exit_code);
 
-//utils
+//Map utils
 void	object_count(t_map *map, int row);
+void	object_validation(t_map *map);
 int		map_row_count(char *file_path, char *read_line);
-
-//tester
-void 	print_grid(t_map *map);
 
 #endif

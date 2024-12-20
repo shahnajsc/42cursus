@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:45:07 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/19 18:27:08 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:08:41 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	map_file_validation(char *file)
 	int	fd;
 
 	if (file[0] == '\0' || check_white_spaces(file))
-		file_error(0, file, "Map file not found\n");
+		file_error(0, file, " map file not found\n");
 	len = ft_strlen(file);
 	if (len <= 4 || (len > 4 && file[len - 5] == '/'))
 		file_error(0, file, " is an invalid file type\n");
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_printf(2, "Error\n Wrong number of arguments\n");
+		ft_putstr_fd("Error\n Wrong number of arguments\n", 2);
 		return (1);
 	}
 	fd = map_file_validation(argv[1]);

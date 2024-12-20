@@ -6,25 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:32:33 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/19 22:28:20 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:22:57 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-static void	object_validation(t_map *map)
-{
-	if (map->player_c < 1)
-		map_error(map, "No player exists\n");
-	if (map->player_c > 1)
-		map_error(map, "More then one player\n");
-	if (map->exit_c < 1)
-		map_error(map, "No exit available\n");
-	if (map->exit_c > 1)
-		map_error(map, "More then one exit\n");
-	if (map->collec_c < 1)
-		map_error(map, "No collectibles found\n");
-}
 
 static void	map_visited_fill(t_map *map, char **temp_map, int row, int col)
 {
@@ -56,10 +42,14 @@ static void	object_path_validation(t_map *map)
 		map_error(map, "Valid path to collectibles is unavailable\n");
 }
 
-static void	map_validatation(t_map *map, int row, int col)
+static void	map_validatation(t_map *map, int empty_line, int row, int col)
 {
-	// if (map->col_c == map->row_c)
-	// 	map_error(map, "Map is not rectangular\n");
+	if (map->row_c < 3 || map->col_c < 3)
+		map_error(map, "Map is incomplete\n");
+	if (empty_line > 0)
+		map_error(map, "Map has empty line(s)\n");
+	if (map->col_c == map->row_c)
+		map_error(map, "Map is not rectangular\n");
 	while (++row < map->row_c)
 	{
 		if ((int)ft_strlen(map->map[row]) != map->col_c)
@@ -78,19 +68,19 @@ static void	map_validatation(t_map *map, int row, int col)
 	object_validation(map);
 	object_path_validation(map);
 }
+
 void	get_map(t_map *map, int fd, char *read_line, int *empty_line)
 {
 	int		i;
 
 	i = 0;
-	printf("row [%d]\n", map->row_c);
 	map->map = (char **)malloc(sizeof(char *) * (map->row_c + 1));
 	if (!map->map)
 		map_error(NULL, "Map memory allocation failed\n");
 	read_line = ft_line_reader(fd, read_line, BUFFER_SIZE, 0);
-	while (read_line) //i < map->row_c
+	while (read_line)
 	{
-		if (read_line[0] == '\0')
+		if (read_line[0] == '\n')
 			(*empty_line)++;
 		map->map[i] = ft_strtrim(read_line, "\n");
 		if (!map->map[i])
@@ -115,40 +105,14 @@ void	map_read(t_map *map, int fd, char *file_path)
 	empty_line = 0;
 	map->row_c = map_row_count(file_path, read_line);
 	if (map->row_c == 0)
+	{
+		close(fd);
 		map_error(NULL, "Map is empty\n");
+	}
 	get_map(map, fd, read_line, &empty_line);
 	close(fd);
 	if (!map->map)
 		map_error(map, "Map copying failed\n");
-	if (empty_line > 0)
-		map_error(map, "Map has empty line(s)\n");
-	printf("empty [%d]\n", empty_line);
 	map->col_c = ft_strlen(map->map[0]);
-	map_validatation(map, -1, -1);
+	map_validatation(map, empty_line, -1, -1);
 }
-
-//printf("row count [%d]\n", rows);
-
-
-
-
-// void	map_read(t_map *map, int fd)
-// {
-// 	int		read_byte;
-// 	char	read_line[BUFFER_SIZE];
-
-// 	ft_bzero(read_line, BUFFER_SIZE);
-// 	read_byte = read(fd, read_line, BUFFER_SIZE);
-// 	close (fd);
-// 	if (read_byte == -1)
-// 		map_error(NULL, "Map reading error\n");
-// 	else if (read_byte == 0)
-// 		map_error(NULL, "Map is empty\n");
-// 	map->map = ft_split(read_line, '\n');
-// 	if (!map->map)
-// 		map_error(NULL, "Map splitting error\n");
-// 	print_grid(map);
-// 	map->col_c = ft_strlen(map->map[0]);
-// 	map->row_c = ft_grid_rows(map->map);
-// 	map_validatation(map, read_line, -1, -1);
-// }

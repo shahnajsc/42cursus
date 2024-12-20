@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:59:41 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/19 22:24:24 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:24:24 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ void	object_count(t_map *map, int row)
 		}
 		i++;
 	}
+}
+
+void	object_validation(t_map *map)
+{
+	if (map->player_c < 1)
+		map_error(map, "No player exists\n");
+	if (map->player_c > 1)
+		map_error(map, "More then one player\n");
+	if (map->exit_c < 1)
+		map_error(map, "No exit available\n");
+	if (map->exit_c > 1)
+		map_error(map, "More then one exit\n");
+	if (map->collec_c < 1)
+		map_error(map, "No collectibles found\n");
 }
 
 int	map_row_count(char *file_path, char *read_line)

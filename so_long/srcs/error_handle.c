@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:07:01 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/19 22:08:23 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:08:05 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	file_error(int fd, char *file_name, char *err_msg)
 {
 	if (fd > 2)
 		close (fd);
-	printf("Error\n%s %s \n", file_name, err_msg);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(file_name, 2);
+	ft_putstr_fd(err_msg, 2);
 	exit (1);
 }
 
@@ -24,13 +26,15 @@ void	map_error(t_map *map, char *err_msg)
 {
 	if (map && map->map)
 		free_grid((void **)map->map);
-	ft_printf(2, "Error\n%s \n", err_msg);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(err_msg, 2);
 	exit (1);
 }
 
 void	game_error(t_slong *slong, char *err_msg, int exit_code)
 {
-	ft_printf(2, "Error\n%s \n", err_msg);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(err_msg, 2);
 	game_close(slong, exit_code);
 }
 

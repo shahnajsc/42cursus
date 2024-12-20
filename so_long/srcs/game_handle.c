@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:43:42 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/18 10:19:02 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:57:24 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	game_movement(t_slong *sl, int next_r, int next_c)
 {
 	if (sl->map->map[next_r][next_c] == '1')
 		return ;
+	sl->moves++;
+	ft_printf(1, "Total moves: %d \n", sl->moves);
 	if (sl->map->map[next_r][next_c] == 'C')
 	{
 		sl->collec_picked++;
@@ -52,10 +54,8 @@ void	game_movement(t_slong *sl, int next_r, int next_c)
 	window_load(sl, sl->image->floor, sl->current_r, sl->current_c);
 	if (sl->map->map[sl->current_r][sl->current_c] == 'E')
 		window_load(sl, sl->image->exit_cl, sl->current_r, sl->current_c);
-	sl->moves++;
 	sl->current_r = next_r;
 	sl->current_c = next_c;
-	ft_printf(1, "Total moves: %d \n", sl->moves);
 }
 
 void	key_hook_handle(mlx_key_data_t keyprsd, void *param)

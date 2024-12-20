@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 13:49:42 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/19 21:25:33 by shachowd         ###   ########.fr       */
+/*   Updated: 2024/12/20 13:42:01 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static void	read_check(int read_byte, char **line, int i)
 	}
 }
 
-char	*ft_line_reader(int fd, char *line, int buffer_size, int index)
+char	*ft_line_reader(int fd, char *line, int buffer, int index)
 {
 	int		read_byte;
-	char	read_char; // add index variable here if there is line
+	char	read_char;
 
-	line = (char *)malloc(sizeof(char) * buffer_size);
+	line = (char *)malloc(sizeof(char) * buffer);
 	if (!line)
 		return (NULL);
 	while (1)
@@ -55,13 +55,13 @@ char	*ft_line_reader(int fd, char *line, int buffer_size, int index)
 		read_check(read_byte, &line, index);
 		if (!line || read_byte == 0)
 			break ;
+		line[index++] = read_char;
 		if (read_char == '\n')
 			break ;
-		line[index++] = read_char;
-		if (index >= buffer_size)
+		if (index >= buffer)
 		{
-			buffer_size += buffer_size;
-			line = line_mem_realloc(line, buffer_size);
+			buffer += buffer;
+			line = line_mem_realloc(line, buffer);
 		}
 	}
 	if (line)
