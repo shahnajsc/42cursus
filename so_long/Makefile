@@ -44,13 +44,13 @@ mandatory : .mandatory
 	@touch .mandatory
 
 clean:
-	$(MAKE) -C ./libft clean
 	$(MAKE) -C ./MLX42/build clean
+	$(MAKE) -C ./libft clean
 	$(RM)  .mandatory
 
 fclean:
-	$(MAKE) -C ./libft fclean
 	$(MAKE) -C ./MLX42/build clean
+	$(MAKE) -C ./libft fclean
 	$(RM) $(NAME) .mandatory
 
 re: fclean all
