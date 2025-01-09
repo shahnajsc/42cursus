@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:02:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/30 16:11:25 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:54:29 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	main(int argc, char **argv)
 	}
 	init_data(&data, argc, argv);
 	data_struct_print(&data);
-
+	printf("\n");
+	thread_test(&data);
 }

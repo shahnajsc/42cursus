@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/30 16:08:57 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:31:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void	arg_error(char *err_msg, char *argv);
 // utils
 int		ft_uatoi(char *str);
 
-// remove below functions (display function)
+//TEST// remove below functions (display function)
 void	data_struct_print(t_data *data);
+void	thread_test(t_data *data);
 
 
 #endif
