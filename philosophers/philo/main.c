@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:02:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/09 17:54:29 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:20:03 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	init_data(t_data *data, int argc, char **argv)
 	while (i < argc)
 	{
 		printf("%d : %s\n", i, argv[i]);
-		if (ft_uatoi(argv[i]) <= 0)
+		if (ft_uatoi(argv[i]) <= 0) //check is 0 is valid in some cases?
 			arg_error("Invalid argument value(s)", argv[i]);
+		// if (i == 5 && ft_uatoi(argv[i]) < 0) //check is 0 is valid in some cases?
+		// 	arg_error("Invalid argument value(s)", argv[i]);
 		i++;
 	}
 	data->philo_num = ft_uatoi(argv[1]); //make own atoi !!!!1
@@ -33,6 +35,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	else
 		data->eat_must = atoi(argv[5]);
 	data->fork_num = atoi(argv[1]);
+	data->start_time = get_star_time();
 }
 
 int	main(int argc, char **argv)

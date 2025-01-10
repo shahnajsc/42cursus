@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/09 17:31:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:25:25 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 // libraries
 # include <stdlib.h>
+# include <limits.h>
 # include <stdio.h>
 # include <unistd.h> // do i need it??
+# include <sys/time.h>
 # include <pthread.h>
 
 // variable declaration
@@ -29,7 +31,14 @@ typedef struct s_data
 	int	sleep_time;
 	int	eat_must;
 	int	fork_num;
+	time_t	start_time;
 }	t_data;
+
+typedef struct s_philo
+{
+	int	philo_id;
+	pthread_t thread;
+}	t_philo;
 
 // *** Functions *** //
 
@@ -38,6 +47,7 @@ void	arg_error(char *err_msg, char *argv);
 
 // utils
 int		ft_uatoi(char *str);
+time_t	get_star_time(void);
 
 //TEST// remove below functions (display function)
 void	data_struct_print(t_data *data);

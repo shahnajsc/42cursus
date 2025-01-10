@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:39:30 by shachowd          #+#    #+#             */
-/*   Updated: 2024/12/30 14:58:26 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:18:58 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,35 @@
 
 int	ft_uatoi(char *str)
 {
-	int		check;
-	int		number;
+	long long int	number;
 
 	if (!str)
-		return (0);
-	check = 0;
+		return (-1);
 	number = 0;
 	while ((*str >= 9 && *str <= 13) || (*str == 32))
 		str++;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			return (0);
+			return (-1);
 		str++;
 	}
 	while (*str >= 48 && *str <= 59)
 	{
-		check = (number * 10) + *str - 48;
-		if (check / 10 != number)
-			return (0);
-		number = check;
+		number = (number * 10) + *str - 48;
+		if (number > INT_MAX)
+			return (-1);
 		str++;
 	}
-	return (number);
+	while (*str && (*str < 48 && *str > 59))
+		return (-1);
+	return ((int)number);
+}
+
+time_t	get_star_time(void)
+{
+	struct timeval		start_time;
+
+	gettimeofday(&start_time, NULL);
+	return ((start_time.tv_sec * 1000) + (start_time.tv_usec / 1000));
 }
