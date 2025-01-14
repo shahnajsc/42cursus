@@ -4,7 +4,7 @@ NAME 			= philo
 # Compiler and flags
 CC 				= cc
 CFLAGS 			= -Wall -Wextra -Werror
-#LDFLAGS 		= -fsanitize=address  -fsanitize=address -g
+#LDFLAGS 		= -fsanitize=address -fsanitize=address -g
 INCLUDES 		= -I./includes
 RM 				= rm -f
 
