@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/10 16:25:25 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:06:06 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,35 @@
 
 // variable declaration
 
+typedef enum s_state
+{
+	THINKING,
+	EATING,
+	SLEEPING,
+	DIED,
+}	t_state;
+
 typedef struct s_data
 {
-	int	philo_num;
+	int	philo_total;
 	int	die_time;
 	int	eat_time;
 	int	sleep_time;
-	int	eat_must;
-	int	fork_num;
-	time_t	start_time;
+	int	meals_total;
+	int	fork_total;
+	long	start_time;
+	struct s_philo *philo;
 }	t_data;
 
 typedef struct s_philo
 {
 	int	philo_id;
-	pthread_t thread;
+	pthread_t	thread;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	right_fork;
+	int	meal_eaten;
+	int	last_meal;
+
 }	t_philo;
 
 // *** Functions *** //
@@ -47,7 +61,7 @@ void	arg_error(char *err_msg, char *argv);
 
 // utils
 int		ft_uatoi(char *str);
-time_t	get_star_time(void);
+long	get_star_time(void);
 
 //TEST// remove below functions (display function)
 void	data_struct_print(t_data *data);

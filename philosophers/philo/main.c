@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:02:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/10 16:20:03 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:07:31 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ void	init_data(t_data *data, int argc, char **argv)
 		// 	arg_error("Invalid argument value(s)", argv[i]);
 		i++;
 	}
-	data->philo_num = ft_uatoi(argv[1]); //make own atoi !!!!1
+	data->philo_total = ft_uatoi(argv[1]); //make own atoi !!!!1
 	data->die_time = ft_uatoi(argv[2]);
 	data->eat_time = ft_uatoi(argv[3]);
 	data->sleep_time = ft_uatoi(argv[4]);
 	if (argc == 5)
-		data->eat_must = 0;
+		data->meals_total = 0;
 	else
-		data->eat_must = atoi(argv[5]);
-	data->fork_num = atoi(argv[1]);
+		data->meals_total = atoi(argv[5]);
+	data->fork_total = atoi(argv[1]);
 	data->start_time = get_star_time();
+	data->philo = malloc(sizeof(t_philo) * 1);
 }
 
 int	main(int argc, char **argv)

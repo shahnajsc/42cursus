@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:39:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/10 16:18:58 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:52:47 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	ft_uatoi(char *str)
 	return ((int)number);
 }
 
-time_t	get_star_time(void)
+long	get_star_time(void)
 {
 	struct timeval		start_time;
 
 	gettimeofday(&start_time, NULL);
-	return ((start_time.tv_sec * 1000) + (start_time.tv_usec / 1000));
+	return ((long)(start_time.tv_sec * 1000) + (start_time.tv_usec / 1000));
 }
