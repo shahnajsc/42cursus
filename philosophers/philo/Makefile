@@ -10,6 +10,7 @@ RM 				= rm -f
 
 # Source files by directory
 MAN_DIR 		= display_function.c	srcs/thread_test.c\
+				  srcs/data_init.c	srcs/thread_init.c	\
 				  srcs/utils.c	srcs/error_handle.c	\
 
 # Source path
