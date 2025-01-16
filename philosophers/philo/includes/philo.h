@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/15 15:11:04 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:01:16 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ typedef struct s_philo
 	pthread_t		thread_id;
 	int				meal_eaten;
 	long				last_meal;
-	//pthread_mutex_t	left_fork;
-	//pthread_mutex_t	right_fork;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	right_fork;
 	t_state			state;
 }	t_philo;
 

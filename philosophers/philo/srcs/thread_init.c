@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:16:46 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/15 16:21:34 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:01:57 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,6 @@ int	thread_initiate(t_data *data)
 			data->threads = NULL;
 			return (data_error("Thread creatiion failed"));
 		}
-		// else
-		// {
-		// 	printf("Karnel Thread ID: %ld\n", pthread_self());
-		// }
-		// 	printf(" thread created: %d  %ld\n", i + 1, get_star_time());
 		data->philo[i].thread_id = data->threads[i];
 		i++;
 	}
