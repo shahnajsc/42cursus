@@ -6,64 +6,64 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:16:46 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/16 15:01:57 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:40:18 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*threadt_print(void *arg)
+void	print_msg(t_philo *philo, char *str)
+{
+	pthread_mutex_lock(philo->msg_print);
+	printf("%ld %d %s\n", get_star_time(), philo->philo_id, str);
+	pthread_mutex_unlock(philo->msg_print);
+
+}
+
+void	wait_philo(t_philo *philo)
+{
+	
+}
+void	thinking_philo(t_philo *philo)
+{
+	print_msg(philo, "is thinking");
+}
+
+void	eating_philo(t_philo *philo)
+{
+	print_msg(philo, "is eating");
+}
+
+void	sleeping_philo(t_philo *philo)
+{
+	print_msg(philo, "is sleeping");
+}
+
+void	*routine_philo(void *arg)
 {
 	t_philo *philo;
 
 	philo = (t_philo  *)arg;
-	printf("**** Phili %d *****\n", philo->philo_id);
-	printf("Meal Eaten: %d\n", philo->meal_eaten);
-	printf("Last Meal: %ld\n", philo->last_meal);
-	printf("State: %u\n", philo->state);
-	printf("Thread id: %lu\n", philo->thread_id);
-	printf("Karnel Thread ID: %ld\n", pthread_self());
-	printf("\n");
-	// printf("inside routin: philo %d\n", philo->philo_id);
-	// if (philo->philo_id % 2 == 0)
-	// {
-	// 	printf("%ld philo %d is THINKING\n", get_star_time(), philo->philo_id);
-	// }
-	// else
-	// 	printf("%ld philo %d is EATING\n", get_star_time(), philo->philo_id);
+	thinking_philo(philo);
+	while (1)
+	{
+		thinking_philo(philo);
+		eating_philo(philo);
+		sleeping_philo(philo);
+		if (philo->last_meal + 1 < get_star_time())
+			break;
+	}
 	return (NULL);
 }
 
-// void	*routine(void *arg)
-// {
-// 	t_philo *philo;
-
-// 	philo = (t_philo  *)arg;
-// 	printf("**** Phili %d *****\n", philo->philo_id);
-// 	printf("Meal Eaten: %d\n", philo->meal_eaten);
-// 	printf("Last Meal: %ld\n", philo->last_meal);
-// 	printf("State: %u\n", philo->state);
-// 	printf("Thread id: %lu\n", philo->thread_id);
-// 	printf("\n");
-// 	// printf("inside routin: philo %d\n", philo->philo_id);
-// 	// if (philo->philo_id % 2 == 0)
-// 	// {
-// 	// 	printf("%ld philo %d is THINKING\n", get_star_time(), philo->philo_id);
-// 	// }
-// 	// else
-// 	// 	printf("%ld philo %d is EATING\n", get_star_time(), philo->philo_id);
-// 	return (NULL);
-// }
-
-int	thread_initiate(t_data *data)
+int	simulation_initite(t_data *data)
 {
 	int	i;
-	int t = 0;
 
 	i = 0;
 	while ( i < data->arg.philo_total)
 	{
-		if (pthread_create(&data->threads[i], NULL, &threadt_print, &data->philo[i]) != 0)
+		if (pthread_create(&data->threads[i], NULL, &routine, &data->philo[i]) != 0)
 		{
 			free(data->threads);
 			data->threads = NULL;
@@ -77,22 +77,7 @@ int	thread_initiate(t_data *data)
 	{
 		if (pthread_join(data->philo[i].thread_id, NULL) != 0)
 			return (data_error("Thread joined failed"));
-		t = t + 1;
-		pthread_mutex_lock(&data->plock);
-		//printf("value of t: %d\n", t);
-		pthread_mutex_unlock(&data->plock);
 		i++;
 	}
-	i = 0;
-	// while ( i < data->arg.philo_total)
-	// {
-	// 	//pthread_mutex_lock(&data->plock);
-	// 	t = t + 1;
-	// 	printf("value of t: %d\n", t);
-	// 	//pthread_mutex_unlock(&data->plock);
-	// 	i++;
-	// }
-	// pthread_mutex_destroy(data->philo->plock);
-	//printf("value of t: %d\n", i);
 	return (0);
 }

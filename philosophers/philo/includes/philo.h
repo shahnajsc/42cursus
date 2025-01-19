@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/16 16:01:16 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:23:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef enum s_state
 	EATING,
 	SLEEPING,
 	DIED,
+	FINNISH,
 }	t_state;
 
 typedef struct s_philo
@@ -48,18 +49,20 @@ typedef struct s_philo
 	int				philo_id;
 	pthread_t		thread_id;
 	int				meal_eaten;
-	long				last_meal;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
+	long			last_meal;
 	t_state			state;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*msg_print;
 }	t_philo;
 
 typedef struct s_data
 {
 	t_arg		arg;
-	t_philo		*philo;
 	pthread_t	*threads;
-	pthread_mutex_t	plock;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	msg_print;
+	t_philo		*philo;
 }	t_data;
 
 // FUNCTINS //
@@ -76,7 +79,7 @@ long	get_star_time(void);
 int		init_data(t_data *data, int argc, char ** argv);
 
 // thread handle
-int		thread_initiate(t_data *data);
+int		simulation_initite(t_data *data);
 //TEST// remove below functions (display function)
 void	data_struct_print(t_data *data);
 int		thread_test(t_data *data);
