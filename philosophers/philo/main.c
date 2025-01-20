@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:02:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/17 19:23:28 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:39:29 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 	if (init_data(data, argc, argv))
 		free_clean_exit(data, 1);
 	//data_struct_print(data);
-	if (simulation_initite(data))
+	printf("time: %ld\n", get_time_ms()- data->arg.start_time);
+	if (simulation_initiate(data))
 		free_clean_exit(data, 1);
 	// if (thread_test(data))
 	// 	printf("thread error\n");

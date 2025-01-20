@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/17 19:23:14 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:04:05 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,38 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*msg_print;
+	pthread_mutex_t	*data_update;
+	struct s_data	*data;
 }	t_philo;
 
 typedef struct s_data
 {
 	t_arg		arg;
+	int			meals_full_philo;
 	pthread_t	*threads;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	msg_print;
+	pthread_mutex_t	data_update;
 	t_philo		*philo;
 }	t_data;
 
 // FUNCTINS //
+
+// data initialization
+int		init_data(t_data *data, int argc, char ** argv);
+
+// simulation handle
+int		simulation_initiate(t_data *data);
+int		simulation_monitor(t_data *data);
+
+//routine handle
+void	thinking_philo(t_philo *philo);
+void	eating_philo(t_philo *philo);
+void	sleeping_philo(t_philo *philo);
+void	philo_waiting(t_philo *philo, int wait_time);
+
+// printing
+void	print_msg(t_philo *philo, char *str);
 
 //error handle
 int		data_error(char *err_msg);
@@ -73,13 +93,9 @@ int		free_clean_exit(t_data *data, int exit_code);
 
 // utils
 int		ft_uatoi(char *str);
-long	get_star_time(void);
+long	get_time_ms(void);
+void	print_msg(t_philo *philo, char *str);
 
-// data initialization
-int		init_data(t_data *data, int argc, char ** argv);
-
-// thread handle
-int		simulation_initite(t_data *data);
 //TEST// remove below functions (display function)
 void	data_struct_print(t_data *data);
 int		thread_test(t_data *data);
