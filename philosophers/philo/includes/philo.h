@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/20 17:04:05 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:09:45 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,9 @@ typedef struct s_arg
 
 typedef enum s_state
 {
-	THINKING,
-	EATING,
-	SLEEPING,
+	ACTIVE,
 	DIED,
-	FINNISH,
+	FINISH,
 }	t_state;
 
 typedef struct s_philo
@@ -51,6 +49,7 @@ typedef struct s_philo
 	int				meal_eaten;
 	long			last_meal;
 	t_state			state;
+	int				*dead_flag;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*msg_print;
@@ -62,6 +61,7 @@ typedef struct s_data
 {
 	t_arg		arg;
 	int			meals_full_philo;
+	int			dead_flag;
 	pthread_t	*threads;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	msg_print;
@@ -76,7 +76,7 @@ int		init_data(t_data *data, int argc, char ** argv);
 
 // simulation handle
 int		simulation_initiate(t_data *data);
-int		simulation_monitor(t_data *data);
+void		*simulation_monitor(t_data *data);
 
 //routine handle
 void	thinking_philo(t_philo *philo);

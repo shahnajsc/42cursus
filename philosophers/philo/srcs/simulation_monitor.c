@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:17:10 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/20 17:33:11 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:27:20 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int	check_if_dead(t_data *data)
 	while (i < data->arg.philo_total)
 	{
 		pthread_mutex_lock(&data->data_update);
-		if ((current_time - data->philo->last_meal) >= data->arg.die_time)
+		if ((current_time - data->philo[i].last_meal) >= data->arg.die_time)
 		{
+			data->philo[i].state = DIED;
+			data->dead_flag = 1;
 			pthread_mutex_unlock(&data->data_update);
 			print_msg(&data->philo[i], "is dead");
 			return (1);
@@ -43,7 +45,10 @@ int	check_max_meals(t_data *data)
 	{
 		pthread_mutex_lock(&data->data_update);
 		if (data->philo[i].meal_eaten == data->arg.meals_total)
+		{
 			data->meals_full_philo++;
+			data->philo[i].state = FINISH;
+		}
 		pthread_mutex_unlock(&data->data_update);
 		i++;
 	}
@@ -52,7 +57,7 @@ int	check_max_meals(t_data *data)
 	return (0);
 }
 
-int	simulation_monitor(t_data *data)
+void	*simulation_monitor(t_data *data)
 {
 	int	i;
 
@@ -60,9 +65,9 @@ int	simulation_monitor(t_data *data)
 	while (1)
 	{
 		if (check_if_dead(data))
-			return (1);
+			return (data);
 		if (check_max_meals(data))
-			return (0);
+			return (data);
 	}
-	return (0);
+	return (data);
 }

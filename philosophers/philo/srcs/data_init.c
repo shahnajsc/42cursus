@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:53:22 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/20 15:39:42 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:13:33 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static int	init_philo(t_data *data)
 		data->philo[i].philo_id = i + 1;
 		data->philo[i].last_meal  = data->arg.start_time;
 		data->philo[i].meal_eaten = 0;
-		data->philo[i].state = THINKING;
+		data->philo[i].state = ACTIVE;
+		data->philo[i].dead_flag =&data->dead_flag;
 		data->philo[i].left_fork = &data->forks[i];
 		if (i == data->arg.philo_total - 1)
 			data->philo[i].right_fork = &data->forks[0];
@@ -82,6 +83,8 @@ int	init_data(t_data *data, int argc, char ** argv)
 	memset(data, 0, sizeof(t_data));
 	if (init_argument(&data->arg, argc, argv))
 		return (data_error("Invalid argument value"));
+	data->meals_full_philo  = 0;
+	data->dead_flag = 0;
 	data->threads = (pthread_t *)malloc(sizeof(pthread_t) * data->arg.philo_total);
 	if (!data->threads)
 		return (data_error("Memory allocation failed for threads"));

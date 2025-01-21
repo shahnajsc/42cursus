@@ -6,20 +6,11 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:16:46 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/20 17:40:36 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:45:14 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-
-// void	get_fork(t_philo *philo)
-// {
-// 	pthread_mutex_lock(philo->left_fork);
-// 	pthread_mutex_lock(philo->right_fork);
-// 	pthread_mutex_unlock(philo->left_fork);
-// 	pthread_mutex_unlock(philo->right_fork);
-// }
 
 void	*routine_philo(void *arg)
 {
@@ -28,8 +19,8 @@ void	*routine_philo(void *arg)
 	philo = (t_philo  *)arg;
 	thinking_philo(philo);
 	if  (philo->philo_id % 2 == 0)
-		philo_waiting(philo, philo->data->arg.eat_time);
-	while (1)
+		philo_waiting(philo, philo->data->arg.die_time - 10);
+	while (philo->dead_flag == 0)
 	{
 		eating_philo(philo);
 		sleeping_philo(philo);
