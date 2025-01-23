@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:02:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/21 14:51:52 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:48:38 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ int	main(int argc, char **argv)
 	if (!data)
 		return (data_error("Memory allocation failed for data struct"));
 	if (init_data(data, argc, argv))
-		free_clean_exit(data, 1);
-	//data_struct_print(data);
-	printf("time: %ld\n", get_time_ms()- data->arg.start_time);
-	if (simulation_initiate(data))
-		free_clean_exit(data, 1);
-	// if (thread_test(data))
-	// 	printf("thread error\n");
-	free_clean_exit(data, 0);
-	return (0);
+	{
+		free_clean_exit(data);
+		return (EXIT_FAILURE);
+	}
+	if (simulation_initiate(data) == FAILURE)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 //	printf("data init done\n");
+	//data_struct_print(data);
+	// if (thread_test(data))
+	// 	printf("thread error\n");
+	// usleep(10000);
+	// printf("time: %ld\n", get_time_ms()- data->arg.start_time);

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:16:46 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/21 17:45:14 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:24:23 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 void	*routine_philo(void *arg)
 {
 	t_philo *philo;
+	int i = 0;
 
 	philo = (t_philo  *)arg;
 	thinking_philo(philo);
-	if  (philo->philo_id % 2 == 0)
-		philo_waiting(philo, philo->data->arg.die_time - 10);
-	while (philo->dead_flag == 0)
+	if (philo->philo_id % 2 == 0 && philo->data->arg.philo_total != 1)
+		philo_waiting(philo, philo->data->arg.eat_time - 10);
+	while (philo->philo_state == ACTIVE) //philo->dead_flag == 0
 	{
 		eating_philo(philo);
 		sleeping_philo(philo);
 		thinking_philo(philo);
-		// if (philo->last_meal + 1 < get_star_time())
-		// 	break;
+		i++;
+		//printf(" %d has complted slot[%d] status: %d\n", philo->philo_id, i, philo->data->sim_state);
 	}
 	return (NULL);
 }
@@ -47,7 +48,7 @@ int	wait_to_join(t_data *data)
 	return (0);
 }
 
-int	simulation_initiate(t_data *data)
+t_simstate	simulation_initiate(t_data *data)
 {
 	int	i;
 
@@ -56,15 +57,29 @@ int	simulation_initiate(t_data *data)
 	{
 		if (pthread_create(&data->threads[i], NULL, &routine_philo, &data->philo[i]) != 0)
 		{
-			free(data->threads);
-			data->threads = NULL;
-			return (data_error("Thread creatiion failed"));
+			free_clean_exit(data);
+			printf("Thread creatiion failed\n");
+			return (FAILURE);
 		}
 		data->philo[i].thread_id = data->threads[i];
 		i++;
 	}
-	simulation_monitor(data);
+	// pthread_mutex_lock(&data->data_update);
+	// 	data->sim_state = RUNNING;
+	// pthread_mutex_unlock(&data->data_update);
+	// printf("1. thread creation done\n");
+	if (simulation_monitor(data) == FAILURE)
+	{
+		free_clean_exit(data);
+		return (FAILURE);
+	}
+	// printf("2. simulation done\n");
 	if (wait_to_join(data))
-		return (1);
-	return (0);
+	{
+		free_clean_exit(data);
+		return (FAILURE);
+	}
+	// printf("3. wait join done\n");
+	free_clean_exit(data);
+	return (FINISH);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/21 17:09:45 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:35:13 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,20 @@ typedef struct s_arg
 	long	start_time;
 }	t_arg;
 
-typedef enum s_state
+typedef enum e_philostate
 {
 	ACTIVE,
 	DIED,
+	FULL,
+}	t_philostat;
+
+typedef enum e_simstate
+{
+	RUNNING,
+	PENDING,
 	FINISH,
-}	t_state;
+	FAILURE,
+}	t_simstate;
 
 typedef struct s_philo
 {
@@ -48,25 +56,22 @@ typedef struct s_philo
 	pthread_t		thread_id;
 	int				meal_eaten;
 	long			last_meal;
-	t_state			state;
-	int				*dead_flag;
+	t_philostat		philo_state;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*msg_print;
-	pthread_mutex_t	*data_update;
 	struct s_data	*data;
 }	t_philo;
 
 typedef struct s_data
 {
-	t_arg		arg;
-	int			meals_full_philo;
-	int			dead_flag;
-	pthread_t	*threads;
+	t_arg			arg;
+	int				meals_full_philo;
+	t_simstate		sim_state;
+	pthread_t		*threads;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	msg_print;
 	pthread_mutex_t	data_update;
-	t_philo		*philo;
+	t_philo			*philo;
 }	t_data;
 
 // FUNCTINS //
@@ -75,8 +80,8 @@ typedef struct s_data
 int		init_data(t_data *data, int argc, char ** argv);
 
 // simulation handle
-int		simulation_initiate(t_data *data);
-void		*simulation_monitor(t_data *data);
+t_simstate		simulation_initiate(t_data *data);
+t_simstate		simulation_monitor(t_data *data);
 
 //routine handle
 void	thinking_philo(t_philo *philo);
@@ -89,7 +94,7 @@ void	print_msg(t_philo *philo, char *str);
 
 //error handle
 int		data_error(char *err_msg);
-int		free_clean_exit(t_data *data, int exit_code);
+void		free_clean_exit(t_data *data);
 
 // utils
 int		ft_uatoi(char *str);

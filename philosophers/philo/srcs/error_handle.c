@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:09:02 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/21 14:30:07 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:28:35 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void 	mutex_destroy(t_data *data)
 	pthread_mutex_destroy(&data->data_update);
 	pthread_mutex_destroy(&data->msg_print);
 }
-int	free_clean_exit(t_data *data, int exit_code)
+void	free_clean_exit(t_data *data)
 {
 	if (data)
 		mutex_destroy(data);
@@ -53,5 +53,4 @@ int	free_clean_exit(t_data *data, int exit_code)
 		free(data);
 		data = NULL;
 	}
-	return (exit_code);
 }
