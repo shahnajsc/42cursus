@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:53:22 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/27 17:15:56 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/27 20:46:08 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	init_mutex(t_data *data)
 		{
 			pthread_mutex_destroy(&data->msg_print);
 			pthread_mutex_destroy(&data->data_update);
-			// forks?
+			while (i--)
+				pthread_mutex_destroy(&data->forks[i]);
 			return (1);
 		}
 		i++;

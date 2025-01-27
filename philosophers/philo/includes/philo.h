@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/23 15:35:13 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:21:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ t_simstate		simulation_initiate(t_data *data);
 t_simstate		simulation_monitor(t_data *data);
 
 //routine handle
-void	thinking_philo(t_philo *philo);
-void	eating_philo(t_philo *philo);
-void	sleeping_philo(t_philo *philo);
-void	philo_waiting(t_philo *philo, int wait_time);
+int	thinking_philo(t_philo *philo);
+int	eating_philo(t_philo *philo);
+int	sleeping_philo(t_philo *philo);
+int	philo_waiting(t_philo *philo, int wait_time);
 
 // printing
 void	print_msg(t_philo *philo, char *str);
