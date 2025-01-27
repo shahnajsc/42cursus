@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:37:41 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/24 14:38:15 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:04:13 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	philo_waiting(t_philo *philo, int wait_time)
 		// if (philo->state  != ACTIVE)
 		// 	return ;
 		usleep(100);
-		if (philo->philo_state == FULL)
-			return ;
+		// if (philo->philo_state == FULL)
+		// 	return ;
 		if (philo->philo_state == DIED)
 			return ;
 	}

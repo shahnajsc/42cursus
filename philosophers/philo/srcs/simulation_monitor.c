@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:17:10 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/24 14:42:26 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:09:19 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,23 @@ t_simstate	check_max_meals(t_data *data)
 	i = 0;
 	while (i < data->arg.philo_total)
 	{
+		pthread_mutex_lock(&data->data_update);
 		if (data->philo[i].meal_eaten == data->arg.meals_total && data->philo[i].philo_state != FULL)
 		{
-			pthread_mutex_lock(&data->data_update);
 			data->meals_full_philo++;
 			data->philo[i].philo_state = FULL;
 			pthread_mutex_unlock(&data->data_update);
 		}
+		pthread_mutex_unlock(&data->data_update);
 		i++;
 	}
 	if (data->meals_full_philo == data->arg.philo_total)
 	{
-		pthread_mutex_lock(&data->data_update);
+		pthread_mutex_lock(&data->msg_print);
 		data->sim_state = FINISH;
 		usleep(500);
 		printf("%ld All philosophers finished their maximum meals\n", get_time_ms() - data->arg.start_time);
-		pthread_mutex_unlock(&data->data_update);
+		pthread_mutex_unlock(&data->msg_print);
 		return (FINISH);
 	}
 	return (RUNNING);
