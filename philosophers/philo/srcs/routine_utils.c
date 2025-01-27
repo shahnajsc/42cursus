@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:37:41 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/27 16:04:13 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:50:07 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,38 @@ void	thinking_philo(t_philo *philo)
 {
 	print_msg(philo, "is thinking");
 }
+int	lock_both_forks(t_philo *philo)
+{
+	if (philo->data->sim_state == FINISH || philo->data->sim_state == FAILURE)
+		return (-1);
+	pthread_mutex_lock(philo->left_fork);
+	if (philo->philo_state != ACTIVE)
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		return (-1);
+	}
+	print_msg(philo, "has taken left fork");
+	if (philo->data->arg.philo_total == 1)
+	{
+		philo_waiting(philo, philo->data->arg.die_time);
+		pthread_mutex_unlock(philo->left_fork);
+		return (-1);
+	}
+	pthread_mutex_lock(philo->right_fork);
+	if (philo->philo_state != ACTIVE)
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
+		return (-1);
+	}
+	print_msg(philo, "has taken right fork");
+	return (1);
+}
 
 void	eating_philo(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
-	pthread_mutex_lock(philo->right_fork);
-	print_msg(philo, "has taken left fork");
-	print_msg(philo, "has taken right fork");
+	if (lock_both_forks(philo) < 0)
+		return ;
 	pthread_mutex_lock(&philo->data->data_update);
 	philo->meal_eaten++;
 	philo->last_meal = get_time_ms();

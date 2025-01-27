@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:53:22 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/23 16:18:54 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:15:56 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,24 @@ int	init_mutex(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->arg.philo_total)
-	{
-		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
-			return (1);
-		i++;
-	}
 	if (pthread_mutex_init(&data->msg_print, NULL) != 0)
 		return(1);
 	if (pthread_mutex_init(&data->data_update, NULL) != 0)
+	{
+		pthread_mutex_destroy(&data->msg_print);
 		return(1);
+	}
+	while (i < data->arg.philo_total)
+	{
+		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+		{
+			pthread_mutex_destroy(&data->msg_print);
+			pthread_mutex_destroy(&data->data_update);
+			// forks?
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -100,7 +108,7 @@ int	init_data(t_data *data, int argc, char ** argv)
 	if (!data->philo)
 		return (data_error("Memory allocation failed for philos"));
 	memset(data->philo, 0, sizeof(t_philo) * data->arg.philo_total);
-	if (init_philo(data))
+	if (init_philo(data) != 0)
 		return (data_error("Philo initialization failed"));
 	return (0);
 }
