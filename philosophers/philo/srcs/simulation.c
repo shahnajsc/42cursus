@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:16:46 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/23 16:24:23 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:15:19 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*routine_philo(void *arg)
 {
 	t_philo *philo;
-	int i = 0;
+	//int i = 0;
 
 	philo = (t_philo  *)arg;
 	thinking_philo(philo);
@@ -26,7 +26,7 @@ void	*routine_philo(void *arg)
 		eating_philo(philo);
 		sleeping_philo(philo);
 		thinking_philo(philo);
-		i++;
+		//i++;
 		//printf(" %d has complted slot[%d] status: %d\n", philo->philo_id, i, philo->data->sim_state);
 	}
 	return (NULL);

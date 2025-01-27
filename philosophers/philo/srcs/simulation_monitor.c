@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:17:10 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/23 17:17:02 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:42:26 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_simstate	check_if_dead(t_data *data)
 			data->philo[i].philo_state = DIED;
 			data->sim_state = FAILURE;
 			pthread_mutex_unlock(&data->data_update);
+			usleep(500);
 			print_msg(&data->philo[i], "is dead");
 			return (FAILURE);
 		}
@@ -56,6 +57,7 @@ t_simstate	check_max_meals(t_data *data)
 	{
 		pthread_mutex_lock(&data->data_update);
 		data->sim_state = FINISH;
+		usleep(500);
 		printf("%ld All philosophers finished their maximum meals\n", get_time_ms() - data->arg.start_time);
 		pthread_mutex_unlock(&data->data_update);
 		return (FINISH);
@@ -65,9 +67,8 @@ t_simstate	check_max_meals(t_data *data)
 
 t_simstate	simulation_monitor(t_data *data)
 {
-	int	i;
+	//int	i = 0;
 
-	i = 0;
 	while (1)
 	{
 		if (check_if_dead(data)  == FAILURE)

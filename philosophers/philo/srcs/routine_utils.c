@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:37:41 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/23 17:11:00 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:38:15 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void	eating_philo(t_philo *philo)
 void	sleeping_philo(t_philo *philo)
 {
 	print_msg(philo, "is sleeping");
-	philo_waiting(philo, philo->data->arg.sleep_time + 1);
+	philo_waiting(philo, philo->data->arg.sleep_time);
 }
