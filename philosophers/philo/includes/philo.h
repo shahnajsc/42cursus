@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/27 21:21:10 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:23:25 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,33 +77,32 @@ typedef struct s_data
 // FUNCTINS //
 
 // data initialization
-int		init_data(t_data *data, int argc, char ** argv);
+int				init_data(t_data *data, int argc, char **argv);
 
 // simulation handle
 t_simstate		simulation_initiate(t_data *data);
 t_simstate		simulation_monitor(t_data *data);
 
 //routine handle
-int	thinking_philo(t_philo *philo);
-int	eating_philo(t_philo *philo);
-int	sleeping_philo(t_philo *philo);
-int	philo_waiting(t_philo *philo, int wait_time);
+int				thinking_philo(t_philo *philo);
+int				eating_philo(t_philo *philo);
+int				sleeping_philo(t_philo *philo);
+int				philo_waiting(t_philo *philo, int wait_time);
 
 // printing
-void	print_msg(t_philo *philo, char *str);
+void			print_msg(t_philo *philo, char *str);
 
 //error handle
-int		data_error(char *err_msg);
-void		free_clean_exit(t_data *data);
+int				data_error(char *err_msg);
+void			free_and_clean(t_data *data);
 
 // utils
-int		ft_uatoi(char *str);
-long	get_time_ms(void);
-void	print_msg(t_philo *philo, char *str);
+int				ft_uatoi(char *str);
+long			get_time_ms(void);
+void			print_msg(t_philo *philo, char *str);
 
 //TEST// remove below functions (display function)
-void	data_struct_print(t_data *data);
-int		thread_test(t_data *data);
-
+void			data_struct_print(t_data *data);
+int				thread_test(t_data *data);
 
 #endif

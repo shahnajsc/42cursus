@@ -9,7 +9,7 @@ INCLUDES 		= -I./includes
 RM 				= rm -f
 
 # Source files by directory
-MAN_DIR 		= display_function.c	srcs/thread_test.c\
+MAN_DIR 		= display_function.c	thread_test.c\
 				  srcs/data_init.c	srcs/error_handle.c	\
 				  srcs/simulation.c	srcs/simulation_monitor.c\
 				  srcs/routine_utils.c	\
