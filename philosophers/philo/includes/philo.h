@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/28 17:23:25 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:25:31 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ void			free_and_clean(t_data *data);
 int				ft_uatoi(char *str);
 long			get_time_ms(void);
 void			print_msg(t_philo *philo, char *str);
+t_philostat		check_philo_state(t_philo *philo);
+t_simstate		check_sim_state(t_data *data);
 
 //TEST// remove below functions (display function)
 void			data_struct_print(t_data *data);

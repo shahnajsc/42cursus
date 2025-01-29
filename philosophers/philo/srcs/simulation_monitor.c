@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:17:10 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/28 16:58:05 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:57:44 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_simstate	check_if_dead(t_data *data)
 	int		i;
 
 	i = 0;
+	pthread_mutex_lock(&data->data_update);
 	while (i < data->arg.philo_total)
 	{
-		pthread_mutex_lock(&data->data_update);
 		if ((get_time_ms() - data->philo[i].last_meal) >= data->arg.die_time)
 		{
 			data->philo[i].philo_state = DIED;
@@ -29,9 +29,9 @@ t_simstate	check_if_dead(t_data *data)
 			print_msg(&data->philo[i], "is dead");
 			return (FAILURE);
 		}
-		pthread_mutex_unlock(&data->data_update);
 		i++;
 	}
+	pthread_mutex_unlock(&data->data_update);
 	return (RUNNING);
 }
 
@@ -53,14 +53,15 @@ t_simstate	check_max_meals(t_data *data)
 		pthread_mutex_unlock(&data->data_update);
 		i++;
 	}
+	pthread_mutex_lock(&data->data_update);
 	if (data->meals_full_philo == data->arg.philo_total)
 	{
-		pthread_mutex_lock(&data->data_update);
 		usleep(500);
 		data->sim_state = FINISH;
 		pthread_mutex_unlock(&data->data_update);
 		return (FINISH);
 	}
+	pthread_mutex_unlock(&data->data_update);
 	return (RUNNING);
 }
 

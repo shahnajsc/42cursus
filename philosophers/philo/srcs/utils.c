@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:39:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/28 16:09:47 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:39:30 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,26 @@ long	get_time_ms(void)
 	if (gettimeofday(&start_time, NULL) == -1)
 		return (-1);
 	return ((long)(start_time.tv_sec * 1000) + (start_time.tv_usec / 1000));
+}
+
+t_philostat	check_philo_state(t_philo *philo)
+{
+	t_philostat state;
+
+	pthread_mutex_lock(&philo->data->data_update);
+	state =  philo->philo_state;
+	pthread_mutex_unlock(&philo->data->data_update);
+	return (state);
+}
+
+t_simstate	check_sim_state(t_data *data)
+{
+	t_simstate state;
+
+	pthread_mutex_lock(&data->data_update);
+	state =  data->sim_state;
+	pthread_mutex_unlock(&data->data_update);
+	return (state);
 }
 
 void	print_msg(t_philo *philo, char *str)
