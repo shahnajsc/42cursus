@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:37:41 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/29 14:53:27 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:47:28 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int	philo_waiting(t_philo *philo, int wait_time)
 	start_time = get_time_ms();
 	while ((get_time_ms() - start_time) < wait_time)
 	{
-		//if (philo->philo_state == DIED)
 		if (check_philo_state(philo) == DIED)
+			return (1);
+		if (check_philo_state(philo) == FULL)
 			return (1);
 		usleep(100);
 	}
@@ -29,13 +30,16 @@ int	philo_waiting(t_philo *philo, int wait_time)
 
 int	thinking_philo(t_philo *philo)
 {
+	// if (check_sim_state(philo->data) == FAILURE)
+	// 	return (1);
 	print_msg(philo, "is thinking");
 	return (0);
 }
 
 int	lock_both_forks(t_philo *philo)
 {
-	if (check_sim_state(philo->data) == FINISH || check_sim_state(philo->data) == FAILURE)
+	if (check_sim_state(philo->data) == FINISH
+		|| check_sim_state(philo->data) == FAILURE)
 		return (1);
 	pthread_mutex_lock(philo->left_fork);
 	if (check_philo_state(philo) != ACTIVE)
@@ -44,12 +48,12 @@ int	lock_both_forks(t_philo *philo)
 		return (1);
 	}
 	print_msg(philo, "has taken left fork");
-	// if (philo->data->arg.philo_total == 1)
-	// {
-	// 	philo_waiting(philo, philo->data->arg.die_time);
-	// 	pthread_mutex_unlock(philo->left_fork);
-	// 	return (1);
-	// }
+	if (philo->data->arg.philo_total == 1)
+	{
+		philo_waiting(philo, philo->data->arg.die_time);
+		pthread_mutex_unlock(philo->left_fork);
+		return (1);
+	}
 	pthread_mutex_lock(philo->right_fork);
 	if (check_philo_state(philo) != ACTIVE)
 	{
@@ -63,6 +67,8 @@ int	lock_both_forks(t_philo *philo)
 
 int	eating_philo(t_philo *philo)
 {
+	// if (check_sim_state(philo->data) == FAILURE)
+	// 	return (1);
 	if (lock_both_forks(philo))
 		return (1);
 	pthread_mutex_lock(&philo->data->data_update);
@@ -83,6 +89,8 @@ int	eating_philo(t_philo *philo)
 
 int	sleeping_philo(t_philo *philo)
 {
+	// if (check_sim_state(philo->data) == FAILURE)
+	// 	return (1);
 	print_msg(philo, "is sleeping");
 	if (philo_waiting(philo, philo->data->arg.sleep_time))
 		return (1);

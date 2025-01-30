@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:39:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/29 10:39:30 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:31:41 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ long	get_time_ms(void)
 
 t_philostat	check_philo_state(t_philo *philo)
 {
-	t_philostat state;
+	t_philostat	state;
 
 	pthread_mutex_lock(&philo->data->data_update);
-	state =  philo->philo_state;
+	state = philo->philo_state;
 	pthread_mutex_unlock(&philo->data->data_update);
 	return (state);
 }
 
 t_simstate	check_sim_state(t_data *data)
 {
-	t_simstate state;
+	t_simstate	state;
 
 	pthread_mutex_lock(&data->data_update);
-	state =  data->sim_state;
+	state = data->sim_state;
 	pthread_mutex_unlock(&data->data_update);
 	return (state);
 }

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:16:46 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/29 14:49:19 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:51:40 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,12 @@ void	*routine_philo(void *arg)
 	philo = (t_philo *)arg;
 	if (thinking_philo(philo))
 		return (arg);
-	//pthread_mutex_lock(&philo->data->data_update);
 	if (philo->philo_id % 2 == 0 && philo->data->arg.philo_total != 1)
 	{
-		//pthread_mutex_unlock(&philo->data->data_update);
 		if (philo_waiting(philo, philo->data->arg.eat_time - 10))
 			return (arg);
 	}
-	//pthread_mutex_unlock(&philo->data->data_update);
-	while (check_philo_state(philo) == ACTIVE)
+	while (check_philo_state(philo) == ACTIVE && check_sim_state(philo->data) == RUNNING)
 	{
 		if (eating_philo(philo))
 			return (arg);

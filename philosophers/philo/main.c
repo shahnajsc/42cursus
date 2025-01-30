@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:02:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/28 17:23:31 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:37:59 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,4 @@ int	main(int argc, char **argv)
 	if (simulation_initiate(data) == FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
-	// 5 600 200 200 2
-	//5 601 200 200 2
 }
