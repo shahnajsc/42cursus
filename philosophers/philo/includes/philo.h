@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 11:09:49 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/29 10:25:31 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:50:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 # define PHILO_H
 
 // LIBRARIES //
-# include <unistd.h>		// for write, usleep
-# include <stdio.h>			// for printf
-# include <stdlib.h>		// for mallo, free, NULL
-# include <string.h>		// for memset
-# include <pthread.h>		// for thread
-# include <sys/time.h>		// for gettimeofday
-# include <limits.h>		// for INT_MAX
+# include <unistd.h>		//for write, usleep //
+# include <stdio.h>			// for printf //
+# include <stdlib.h>		// for mallo, free, NULL //
+# include <string.h>		// for memset //
+# include <pthread.h>		// for thread //
+# include <sys/time.h>		// for gettimeofday //
+# include <limits.h>		// for INT_MAX //
 
-// VARIABLE DECLARATIN //
+//.......Data Structure........//
 
 typedef struct s_arg
 {
@@ -45,7 +45,6 @@ typedef enum e_philostate
 typedef enum e_simstate
 {
 	RUNNING,
-	PENDING,
 	FINISH,
 	FAILURE,
 }	t_simstate;
@@ -74,7 +73,7 @@ typedef struct s_data
 	t_philo			*philo;
 }	t_data;
 
-// FUNCTINS //
+//.......Functions.......//
 
 // data initialization
 int				init_data(t_data *data, int argc, char **argv);
@@ -83,28 +82,24 @@ int				init_data(t_data *data, int argc, char **argv);
 t_simstate		simulation_initiate(t_data *data);
 t_simstate		simulation_monitor(t_data *data);
 
-//routine handle
+// routine handle
 int				thinking_philo(t_philo *philo);
 int				eating_philo(t_philo *philo);
 int				sleeping_philo(t_philo *philo);
 int				philo_waiting(t_philo *philo, int wait_time);
 
 // printing
-void			print_msg(t_philo *philo, char *str);
+void			routine_msg_print(t_philo *philo, char *str);
+void			closing_msg_print(t_philo *philo);
 
-//error handle
+// error handle
 int				data_error(char *err_msg);
 void			free_and_clean(t_data *data);
 
 // utils
 int				ft_uatoi(char *str);
 long			get_time_ms(void);
-void			print_msg(t_philo *philo, char *str);
 t_philostat		check_philo_state(t_philo *philo);
 t_simstate		check_sim_state(t_data *data);
-
-//TEST// remove below functions (display function)
-void			data_struct_print(t_data *data);
-int				thread_test(t_data *data);
 
 #endif

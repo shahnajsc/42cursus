@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 09:53:22 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/28 16:42:31 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:24:28 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	init_philo(t_data *data)
 	return (0);
 }
 
-int	init_mutex(t_data *data)
+static int	init_mutex(t_data *data)
 {
 	int	i;
 

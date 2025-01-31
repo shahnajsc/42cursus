@@ -9,11 +9,10 @@ INCLUDES 		= -I./includes
 RM 				= rm -f
 
 # Source files by directory
-MAN_DIR 		= display_function.c	thread_test.c\
-				  srcs/data_init.c	srcs/error_handle.c	\
+MAN_DIR 		= srcs/data_init.c	srcs/error_handle.c	\
 				  srcs/simulation.c	srcs/simulation_monitor.c\
-				  srcs/routine_utils.c	\
-				  srcs/utils.c
+				  srcs/routine_utils.c	srcs/print_msg.c	\
+				  srcs/utils.c	\
 
 # Source path
 
@@ -21,7 +20,6 @@ MAN_SRCS		=	main.c $(MAN_DIR)
 
 # Marker files (object) to track which version is built
 #mandatory : .mandatory
-#bonus : .bonus
 
 all: mandatory
 

@@ -6,13 +6,13 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:16:46 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/30 13:51:40 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:19:48 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*routine_philo(void *arg)
+static void	*routine_philo(void *arg)
 {
 	t_philo	*philo;
 
@@ -24,7 +24,7 @@ void	*routine_philo(void *arg)
 		if (philo_waiting(philo, philo->data->arg.eat_time - 10))
 			return (arg);
 	}
-	while (check_philo_state(philo) == ACTIVE && check_sim_state(philo->data) == RUNNING)
+	while (check_philo_state(philo) != DIED)
 	{
 		if (eating_philo(philo))
 			return (arg);
@@ -36,7 +36,7 @@ void	*routine_philo(void *arg)
 	return (arg);
 }
 
-int	wait_to_join(t_data *data)
+static int	wait_to_join(t_data *data)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ int	wait_to_join(t_data *data)
 	return (0);
 }
 
-int	create_thread(t_data *data)
+static int	create_thread(t_data *data)
 {
 	int	i;
 

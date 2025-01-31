@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:09:02 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/30 10:31:50 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:25:10 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	data_error(char *err_msg)
 	return (1);
 }
 
-static	void	mutex_destroy(t_data *data)
+static void	mutex_destroy(t_data *data)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: shachowd <shachowd@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 13:39:30 by shachowd          #+#    #+#             */
-/*   Updated: 2025/01/30 16:31:41 by shachowd         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:31:15 by shachowd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,4 @@ t_simstate	check_sim_state(t_data *data)
 	state = data->sim_state;
 	pthread_mutex_unlock(&data->data_update);
 	return (state);
-}
-
-void	print_msg(t_philo *philo, char *str)
-{
-	pthread_mutex_lock(&philo->data->msg_print);
-	printf("%ld %d %s\n", (get_time_ms() - philo->data->arg.start_time),
-		philo->philo_id, str);
-	pthread_mutex_unlock(&philo->data->msg_print);
 }
